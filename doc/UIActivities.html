@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>goodViberations: UI Specification</title>
+</head>
+<body>
+<a href="ReadMe.html"><- ReadMe.html</a>
+<h1>goodViberations: UI Specification</h1>
+<h2>Introduction</h2>
+<p>The UI, described in this document, is used to render the data to
+    the end user. The UI facilitates the user's interaction  (CRUD) with the data. The actual work of creating new data,
+    retrieving data, updating data, deleting data, and ensuring data integrity is specified in
+    <a href="Functionality.html">Functionality.html</a>.</p>
+<p>This document lists the activities in the app, the widgets present in each activity.</p>
+<h2>Activity design</h2>
+<p>
+    The activities wanted in this app are as follows:
+</p>
+<h3>Level 1 Activity</h3>
+<ul>
+    <li>
+        MainActivity:Welcome Activity, level 1 activity
+        <ol>
+            <li>Open Store, button</li>
+            <li>Create New Store, button</li>
+            <li>Clear Existing Store, button</li>
+            <li>Import/Export Store, button</li>
+            <li>About, button</li>
+            <li>Help, button</li>
+        </ol>
+    </li>
+</ul>
+<h3>Level 2 Activities</h3>
+<ul>
+    <li>
+        OpenStoreActivity:Open Store Activity, level 2 activity
+        <ol>
+            <li>Password, text field</li>
+            <li>Memorable Date, text field</li>
+            <li>open store button, button</li>
+            <li>Change Store Password, button</li>
+        </ol>
+    </li>
+    <li>
+        CreateNewStoreActivity:Create New Store Activity, level 2 activity
+        <ol>
+            <li>Password, text field</li>
+            <li>Memorable Date, text field</li>
+            <li>Confirm Password, text field</li>
+            <li>Confirm Memorable Date, text field</li>
+            <li>create store, button</li>
+        </ol>
+    </li>
+    <li>
+        ChangeStorePasswordActivity:Change Store Password Activity, level 2 activity
+        <ol>
+            <li>New Password, text field</li>
+            <li>New Memorable Date, text field</li>
+            <li>Confirm New Password, text field</li>
+            <li>Confirm New Memorable Date<, text field/li>
+            <li>Save Changes, button</li>
+        </ol>
+    </li>
+    <li>
+        ImportExportStoreActivity:Import/Export Store Activity, level 2 activity
+        <ol>
+            <li>Import Store, button</li>
+            <li>Export Store, button</li>
+        </ol>
+    </li>
+    <li>
+        AboutActivity:About Activity, level 2 activity
+        <ol>
+            <li>about text, html text</li>
+            <li>copyright, text</li>
+            <li>date, text</li>
+            <li>build number, text</li>
+        </ol>
+    </li>
+    <li>
+        HelpActivity:Help Activity, level 2 activity
+        <ol>
+            <li>Help text, html resource</li>
+        </ol>
+    </li>
+</ul>
+<h3>Level 3 Activities</h3>
+<ul>
+    <li>ListEntriesActivity:List Entries Activity, level 3 activity
+        <ol>
+            <li>Vertically scrolling list of single line text entries</li>
+            <li>new entry, button</li>
+            <li>exit, button</li>
+        </ol>
+    </li>
+</ul>
+<h3>Level 4 Activities</h3>
+<ul>
+    <li>ViewEntryActivity:View Entry Activity, level 4 activity<br/>
+        <ol>
+            <li>entry name, text</li>
+            <li>creation date and time, text</li>
+            <li>last modified date and time, text</li>
+            <li>notes, multiline text</li>
+            <li>password, text</li>
+            <li>list of detail fields, vertical list of single line text entries</li>
+            <li>delete, button</li>
+            <li>edit, button</li>
+            <li>exit, button</li>
+        </ol>
+    </li>
+    <li>AddEntryActivity:Add Entry Activity, level 4 activity<br/>
+        <ol>
+            <li>entry name, text field</li>
+            <li>creation date and time, text</li>
+            <li>last modified date and time, text</li>
+            <li>notes, multiline text area</li>
+            <li>password, text  field</li>
+            <li>list of detail fields, vertical list of single line text  field entries</li>
+            <li>delete field, button</li>
+            <li>add field, button</li>
+            <li>save, button</li>
+            <li>cancel, button</li>
+        </ol>
+    </li>
+    <li>DeleteEntryActivity:Delete Entry Activity, level 4 activity</br>
+        <ol>
+            <li>entry name, text field</li>
+            <li>confirm delete, button</li>
+            <li>cancel, button</li>
+        </ol>
+    </li>
+    <li>EditEntryActivity:Edit Entry Activity, level 4 activity<br/>
+        <ol>
+            <li>entry name, text field</li>
+            <li>creation date and time, text</li>
+            <li>last modified date and time, text</li>
+            <li>notes, multiline text area</li>
+            <li>password, text  field</li>
+            <li>list of detail fields, vertical list of single line text  field entries</li>
+            <li>delete field, button</li>
+            <li>add field, button</li>
+            <li>save, button</li>
+            <li>cancel, button</li>
+        </ol>
+    </li>
+    <li>SearchEntriesActivity:Search Entries Activity, level 4 activity<br/>
+        <ol>
+            <li>entry name, text field</li>
+            <li>search, button</li>
+            <li>cancel, button</li>
+        </ol>
+    </li>
+</ul>
+<h3>Misc. definitions</h3>
+<p>Some terms used in this project are defined below:</p>
+<h4>Entry</h4>
+<p>
+    An entry is defined to be a set of text fields, each field has a name and a value. Some fields
+    are unique to an entry type, some are common to all entries. Some field values reflect a data type,
+    and so have a syntax associated with them. For example, email must be a valur email address syntax,
+    url must be a valid http url syntax, name starts with an uppercase.
+</p>
+</body>

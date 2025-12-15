@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>goodViberations Functionality Specification</title>
+</head>
+<body>
+<a href="ReadMe.html"><- ReadMe.html</a>
+<h1>goodViberations: Functionality Specification</h1>
+<h2>Introduction</h2>
+<p>
+    This app is a data entry app, the implementation of the app uses activities (forms in conventional terms) to perform
+    the common CRUD (Create, Read, Update, Delete) operations seen in most data centric computer software.
+</p>
+    <p>The UI, described in <a href="UIActivities.html">UIActivities.html</a>, is used to render the data to
+    the end user. The UI facilitates the user's interaction  (CRUD) with the data. The actual work of creating new data,
+    retrieving data, updating data, deleting data, and ensuring data integrity is specified in this document.</p>
+<p>
+    In order to successfully encapsulate the functionality required to define the data and to
+    implement the CRUD operations on the data, this document describes:
+</p>
+<ul>
+    <li>The data structures used by the app</li>
+    <li>The storage and retrieval of data from the app</li>
+    <li>The binding of the data structures to the UI</li>
+</ul>
+<h2>Data structures</h2>
+<p>
+    The data structures used by the app are based on a list of entries.
+</p>
+<p>
+    Each entry is a master, with a fixed set of fields and a detail that is a list of detail fields.
+</p>
+
+<h3>The master has the following fixed set of fields</h3>
+<ul>
+    <li>name: the name of the entry, the value is unique to each entry, uniqueness is case insensitive.
+        That is to say that a the values "a Name", "A Name", "a name" or "A NAME" are all considered to be
+        the same name when checking for uniqueness.
+        The name may not be an empty string, it must contain at least one character.</li>
+    <li>notes: a multiline text entry, the value is not unique to each entry, it may be an empty string.</li>
+    <li>creation date and time: a date time. The initial value is the current date and time.</li>
+    <li>last modified date and time: a date time. The initial value is the current date and time.</li>
+    <li>password: a password entry, the value is not unique to each entry</li>
+</ul>
+<p>
+    The master also has a list of fields, the detail fields, as described below.
+</p>
+    <h3>Detail fields</h3>
+<p>
+    Detail field instances relate to a specific master entry instance.
+    Detail fields can be considered to be a set of text fields, each field has a name and a value.
+    The name must be unique to the master entry instance.
+</p>
+<p>
+    Some field values reflect a data type,
+    and so have a syntax associated with them. For example, email must be a valid email address syntax,
+    url must be a valid http url syntax.
+</p>
+<h2>Data storage and retrieval</h2>
+<p>
+    The list of entries are stored as xml.<br/>
+</p>
+<h2>Data binding to the UI</h2>
+The complete list of activities is described in <a href="UIActivities.html">UIActivities.html</a>.
+This section is going to contain the functionality that should be present in each activity.
+</body>
+</html>

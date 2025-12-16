@@ -17,20 +17,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.j3t.dataentryapp.ui.theme.DataEntryAppTheme
 
-class MainActivity : ComponentActivity() {
+class ImportExportStoreActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             DataEntryAppTheme {
-                MainActivityContent()
+                ImportExportStoreActivityContent()
             }
         }
     }
 }
 
 @Composable
-fun MainActivityContent() {
+fun ImportExportStoreActivityContent() {
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
         Column(
             modifier = Modifier
@@ -39,23 +39,11 @@ fun MainActivityContent() {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Button(onClick = { /* TODO: Navigate to OpenStoreActivity */ }) {
-                Text("Open Store")
+            Button(onClick = { /* TODO: Implement import store */ }) {
+                Text("Import Store")
             }
-            Button(onClick = { /* TODO: Navigate to CreateNewStoreActivity */ }) {
-                Text("Create New Store")
-            }
-            Button(onClick = { /* TODO: Implement clear existing store */ }) {
-                Text("Clear Existing Store")
-            }
-            Button(onClick = { /* TODO: Navigate to ImportExportStoreActivity */ }) {
-                Text("Import/Export Store")
-            }
-            Button(onClick = { /* TODO: Navigate to AboutActivity */ }) {
-                Text("About")
-            }
-            Button(onClick = { /* TODO: Navigate to HelpActivity */ }) {
-                Text("Help")
+            Button(onClick = { /* TODO: Implement export store */ }) {
+                Text("Export Store")
             }
         }
     }
@@ -63,8 +51,8 @@ fun MainActivityContent() {
 
 @Preview(showBackground = true)
 @Composable
-fun MainActivityContentPreview() {
+fun ImportExportStoreActivityContentPreview() {
     DataEntryAppTheme {
-        MainActivityContent()
+        ImportExportStoreActivityContent()
     }
 }

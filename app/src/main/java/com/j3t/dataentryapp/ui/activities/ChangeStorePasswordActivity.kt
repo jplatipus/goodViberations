@@ -1,4 +1,4 @@
-package com.j3t.dataentryapp
+package com.j3t.dataentryapp.ui.activities
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -22,24 +22,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.j3t.dataentryapp.ui.theme.DataEntryAppTheme
 
-class CreateNewStoreActivity : ComponentActivity() {
+class ChangeStorePasswordActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             DataEntryAppTheme {
-                CreateNewStoreActivityContent()
+                ChangeStorePasswordActivityContent()
             }
         }
     }
 }
 
 @Composable
-fun CreateNewStoreActivityContent() {
-    var password by remember { mutableStateOf("") }
-    var memorableDate by remember { mutableStateOf("") }
-    var confirmPassword by remember { mutableStateOf("") }
-    var confirmMemorableDate by remember { mutableStateOf("") }
+fun ChangeStorePasswordActivityContent() {
+    var newPassword by remember { mutableStateOf("") }
+    var newMemorableDate by remember { mutableStateOf("") }
+    var confirmNewPassword by remember { mutableStateOf("") }
+    var confirmNewMemorableDate by remember { mutableStateOf("") }
 
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
         Column(
@@ -50,27 +50,27 @@ fun CreateNewStoreActivityContent() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             OutlinedTextField(
-                value = password,
-                onValueChange = { password = it },
-                label = { Text("Password") }
+                value = newPassword,
+                onValueChange = { newPassword = it },
+                label = { Text("New Password") }
             )
             OutlinedTextField(
-                value = memorableDate,
-                onValueChange = { memorableDate = it },
-                label = { Text("Memorable Date") }
+                value = newMemorableDate,
+                onValueChange = { newMemorableDate = it },
+                label = { Text("New Memorable Date") }
             )
             OutlinedTextField(
-                value = confirmPassword,
-                onValueChange = { confirmPassword = it },
-                label = { Text("Confirm Password") }
+                value = confirmNewPassword,
+                onValueChange = { confirmNewPassword = it },
+                label = { Text("Confirm New Password") }
             )
             OutlinedTextField(
-                value = confirmMemorableDate,
-                onValueChange = { confirmMemorableDate = it },
-                label = { Text("Confirm Memorable Date") }
+                value = confirmNewMemorableDate,
+                onValueChange = { confirmNewMemorableDate = it },
+                label = { Text("Confirm New Memorable Date") }
             )
-            Button(onClick = { /* TODO: Implement create store */ }) {
-                Text("Create Store")
+            Button(onClick = { /* TODO: Implement save changes */ }) {
+                Text("Save Changes")
             }
         }
     }
@@ -78,8 +78,8 @@ fun CreateNewStoreActivityContent() {
 
 @Preview(showBackground = true)
 @Composable
-fun CreateNewStoreActivityContentPreview() {
+fun ChangeStorePasswordActivityContentPreview() {
     DataEntryAppTheme {
-        CreateNewStoreActivityContent()
+        ChangeStorePasswordActivityContent()
     }
 }

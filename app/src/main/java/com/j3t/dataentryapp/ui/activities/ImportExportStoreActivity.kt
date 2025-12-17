@@ -1,4 +1,4 @@
-package com.j3t.dataentryapp
+package com.j3t.dataentryapp.ui.activities
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -6,7 +6,6 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -18,20 +17,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.j3t.dataentryapp.ui.theme.DataEntryAppTheme
 
-class DeleteEntryActivity : ComponentActivity() {
+class ImportExportStoreActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             DataEntryAppTheme {
-                DeleteEntryActivityContent()
+                ImportExportStoreActivityContent()
             }
         }
     }
 }
 
 @Composable
-fun DeleteEntryActivityContent() {
+fun ImportExportStoreActivityContent() {
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
         Column(
             modifier = Modifier
@@ -40,14 +39,11 @@ fun DeleteEntryActivityContent() {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text("Entry Name") // Placeholder
-            Row {
-                Button(onClick = { /* TODO: Implement confirm delete */ }) {
-                    Text("Confirm Delete")
-                }
-                Button(onClick = { /* TODO: Implement cancel */ }) {
-                    Text("Cancel")
-                }
+            Button(onClick = { /* TODO: Implement import store */ }) {
+                Text("Import Store")
+            }
+            Button(onClick = { /* TODO: Implement export store */ }) {
+                Text("Export Store")
             }
         }
     }
@@ -55,8 +51,8 @@ fun DeleteEntryActivityContent() {
 
 @Preview(showBackground = true)
 @Composable
-fun DeleteEntryActivityContentPreview() {
+fun ImportExportStoreActivityContentPreview() {
     DataEntryAppTheme {
-        DeleteEntryActivityContent()
+        ImportExportStoreActivityContent()
     }
 }

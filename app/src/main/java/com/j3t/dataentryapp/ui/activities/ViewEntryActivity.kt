@@ -1,4 +1,4 @@
-package com.j3t.dataentryapp
+package com.j3t.dataentryapp.ui.activities
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -18,20 +18,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.j3t.dataentryapp.ui.theme.DataEntryAppTheme
 
-class ListEntriesActivity : ComponentActivity() {
+class ViewEntryActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             DataEntryAppTheme {
-                ListEntriesActivityContent()
+                ViewEntryActivityContent()
             }
         }
     }
 }
 
 @Composable
-fun ListEntriesActivityContent() {
+fun ViewEntryActivityContent() {
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
         Column(
             modifier = Modifier
@@ -40,14 +40,22 @@ fun ListEntriesActivityContent() {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            Text("Entry Name")
+            Text("Creation Date and Time")
+            Text("Last Modified Date and Time")
+            Text("Notes...")
+            Text("Password")
             LazyColumn(modifier = Modifier.weight(1f)) {
-                // Placeholder for list of entries
-                items(10) { index ->
-                    Text("Entry $index")
+                // Placeholder for list of detail fields
+                items(5) { index ->
+                    Text("Detail Field $index")
                 }
             }
-            Button(onClick = { /* TODO: Navigate to AddEntryActivity */ }) {
-                Text("New Entry")
+            Button(onClick = { /* TODO: Navigate to DeleteEntryActivity */ }) {
+                Text("Delete")
+            }
+            Button(onClick = { /* TODO: Navigate to EditEntryActivity */ }) {
+                Text("Edit")
             }
             Button(onClick = { /* TODO: Exit activity */ }) {
                 Text("Exit")
@@ -58,8 +66,8 @@ fun ListEntriesActivityContent() {
 
 @Preview(showBackground = true)
 @Composable
-fun ListEntriesActivityContentPreview() {
+fun ViewEntryActivityContentPreview() {
     DataEntryAppTheme {
-        ListEntriesActivityContent()
+        ViewEntryActivityContent()
     }
 }

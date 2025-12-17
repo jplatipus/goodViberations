@@ -1,0 +1,35 @@
+body {
+    font-family: Arial, Verdana, sans-serif;
+    background-color: black;
+    color: azure;
+    padding: 15px;
+    border-radius: 20px;
+
+    border-style: solid;
+    border-color: ghostwhite;
+    border-width: 3px;
+
+    display:block;
+    box-sizing: border-box;
+}
+a {
+    color: lightblue;
+}
+* {
+    font-family: inherit;
+}
+
+.centeredStyle {
+    margin-left: auto;
+    margin-right: auto;
+    border-style: solid;
+    border-color: ghostwhite;
+    border-width: 3px;
+    border-radius: 20px;
+    padding: 15px;
+}
+
+cite {
+    color: lightgray;
+    padding-left: 1em;
+}

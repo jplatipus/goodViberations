@@ -1,4 +1,4 @@
-package com.j3t.dataentryapp
+package com.j3t.dataentryapp.ui.activities
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -17,20 +17,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.j3t.dataentryapp.ui.theme.DataEntryAppTheme
 
-class ImportExportStoreActivity : ComponentActivity() {
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             DataEntryAppTheme {
-                ImportExportStoreActivityContent()
+                MainActivityContent()
             }
         }
     }
 }
 
 @Composable
-fun ImportExportStoreActivityContent() {
+fun MainActivityContent() {
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
         Column(
             modifier = Modifier
@@ -39,11 +39,23 @@ fun ImportExportStoreActivityContent() {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Button(onClick = { /* TODO: Implement import store */ }) {
-                Text("Import Store")
+            Button(onClick = { /* TODO: Navigate to OpenStoreActivity */ }) {
+                Text("Open Store")
             }
-            Button(onClick = { /* TODO: Implement export store */ }) {
-                Text("Export Store")
+            Button(onClick = { /* TODO: Navigate to CreateNewStoreActivity */ }) {
+                Text("Create New Store")
+            }
+            Button(onClick = { /* TODO: Implement clear existing store */ }) {
+                Text("Clear Existing Store")
+            }
+            Button(onClick = { /* TODO: Navigate to ImportExportStoreActivity */ }) {
+                Text("Import/Export Store")
+            }
+            Button(onClick = { /* TODO: Navigate to AboutActivity */ }) {
+                Text("About")
+            }
+            Button(onClick = { /* TODO: Navigate to HelpActivity */ }) {
+                Text("Help")
             }
         }
     }
@@ -51,8 +63,8 @@ fun ImportExportStoreActivityContent() {
 
 @Preview(showBackground = true)
 @Composable
-fun ImportExportStoreActivityContentPreview() {
+fun MainActivityContentPreview() {
     DataEntryAppTheme {
-        ImportExportStoreActivityContent()
+        MainActivityContent()
     }
 }

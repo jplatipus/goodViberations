@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>blog: goodViberations app, built using AI Agent(s)</title>
+    <link rel="stylesheet" href="img/styles.css">
 </head>
 <body>
 <a href="ReadMe.html"><- ReadMe.html</a>
@@ -12,7 +13,63 @@
     This file is maintained as the project progresses. Initially this paragraph is
     the first and last paragraph, as time and new pieces are added, this paragraph will still be the
     last one, but no longer the first. This is how a blog works, I think.
+</P>
+<p>
+    The project sources can be found on GitHub: <a href="https://github.com/jplatipus/goodViberations">
+    https://github.com/jplatipus/goodViberations</a>
 </p>
+<h1>16 Dec 2025: git tag v3.0</h1>
+<h3>Code refactoring to move activity classes</h3>
+<p>As mentioned in tag v2.0, all the classes are in com.j3t.dataentryapp. The classes should be moved to
+    com.j3t.dataentryapp.ui.activities.</p>
+<p>The first prompt given to the agent was:<br/><br/>
+    <cite>can you move all the activity classes to the package
+    com.j3t.dataentryapp.ui.activities</cite><br/><br/>
+    The agent duly refactored the code and manifest to the new package structure without moving the files.
+</p>
+<p>
+    The next prompt was:<br/><br/>
+    <cite>you also need to move the activity files to the ui folder</cite><br/><br/>
+    The agent duly moved the activity files to the correct folder.
+</p>
+<p>
+    The <a href="UIActivities.html">UIActivities.html</a> file has been updated to reflect the new package structure.
+    It is hoped that by doing so, a fresh code generation request will place the files in the correct package and folder.
+    This has not been tried, as the code is already there at present.
+</p>
+<p>
+    The project has been compiled (build menu -> assemble app run configuration). The code compiled without a hitch.
+
+    Once built, each generated  UI activity is opened, a preview is displayed, which is very helpful:
+    it is possible to see what the initial UI looks like, and it is also possible to see if each activity
+    has the widgets (buttons, text fields, lists...) that it should have. Everything looks good. Below is a screenshot of
+    Android Studio's preview:
+</p>
+<p>
+<table class="centeredStyle" style="width:80%" >
+    <tr>
+        <td>
+            <img src="img/v3_0_review_generated_UI_code.png" alt="v3_0_review_generated_UI_code.png" width="100%"/>
+        </td>
+    </tr>
+    <tr>
+        <td style="vertical-align: bottom">
+            <div style="text-align:center">Preview of generate UI code.</div>
+        </td>
+    </tr>
+</table>
+</p>
+</p>
+<h3>Improve the documentation styles</h3>
+<p>A stylesheet (doc/img/styles.css) has been added to the project. This file defines the default font, page border,
+    colours and a few other styles to make the documentation more attractive to me. Each HTML file has been updated to
+    link to the stylesheet.
+</p>
+<p>
+    GitHub displays HTML files in the raw format. The project's readme file on GitHub, which must be in Markdown, has a hyperlink to my
+    website (<a href="https://www.j3ltd.com">www.j3ltd.com</a>), where the documentation can be viewed using a standard web browser.
+</p>
+
 <h1>15 Dec 2025: git tag v2.0</h1>
 <p>
     I am now working on <strong>tag v2.0</strong>, adding the ui specification (<a href="UIActivities.html">UIActivities.html</a>),
@@ -35,21 +92,31 @@
     At this point it is possible to run the agent on the specification files. The expected output is
     a set of class files for the UI and data layer. Once generated these can be reviewed to see what
     Gemini has created. This gives me the opportunity to get acquainted with using the IDE to preview
-    UI classes, and to learn a bit of Kotlin, from a consumer's viewpoint.
+    UI classes and to learn a bit of Kotlin, from a consumer's viewpoint.
 </p>
 <p>
     The following prompt is given, it was suggested by the IDE's smart code suggestion:<br/><br/>
-    <cite style="padding-left: 1em;">can you generate the code for the ui specification</cite>
+    <cite>can you generate the code for the ui specification?</cite>
 </p>
 <p>
-    <table style="width:100%">
+    <table class="centeredStyle" style="width:80%" >
+        <tr>
+            <td>
+                <img src="img/v2_0_ui_spec_generated_code.png" alt="v2_0_ui_spec_generated_code.png"/>
+            </td>
+            <td style="vertical-align: top">
+                <p>
+                It looks like it generated the classes I hoped for, they now need to be reviewed: I hope to be able to
+                preview them in the IDE.
+                </p>
+                <p>One class and class file was generated per activity. It may be worth specifying a package to put these
+                    classes in, at present all the classes are in com.j3t.dataentryapp. It would be better in
+                    com.j3t.dataentryapp.ui.activities</p>
+            </td>
+        </tr>
     <tr>
-        <td>
-            <img src="img/v2_0_ui_spec_generated_code.png" alt="v2_0_ui_spec_generated_code.png"/>
-        </td>
-        <td style="vertical-align: top">
-            Looks like it generated the classes I hoped for, they now need to be reviewed: I hope to be able to
-            preview them in the IDE.
+        <td colspan="2" style="vertical-align: bottom">
+            <div style="text-align:center">Conversation to generate ui classes using the agent.</div>
         </td>
     </tr>
     </table>

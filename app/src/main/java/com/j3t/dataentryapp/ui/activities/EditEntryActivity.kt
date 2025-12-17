@@ -1,4 +1,4 @@
-package com.j3t.dataentryapp
+package com.j3t.dataentryapp.ui.activities
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -24,23 +24,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.j3t.dataentryapp.ui.theme.DataEntryAppTheme
 
-class AddEntryActivity : ComponentActivity() {
+class EditEntryActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             DataEntryAppTheme {
-                AddEntryActivityContent()
+                EditEntryActivityContent()
             }
         }
     }
 }
 
 @Composable
-fun AddEntryActivityContent() {
-    var entryName by remember { mutableStateOf("") }
-    var notes by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
+fun EditEntryActivityContent() {
+    var entryName by remember { mutableStateOf("Sample Entry") } // Placeholder
+    var notes by remember { mutableStateOf("Some notes") } // Placeholder
+    var password by remember { mutableStateOf("password") } // Placeholder
 
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
         Column(
@@ -70,7 +70,7 @@ fun AddEntryActivityContent() {
             LazyColumn(modifier = Modifier.weight(1f)) {
                 // Placeholder for list of detail fields
                 items(2) { index ->
-                    OutlinedTextField(value = "", onValueChange = {}, label = { Text("Detail Field $index") })
+                    OutlinedTextField(value = "Detail value", onValueChange = {}, label = { Text("Detail Field $index") })
                 }
             }
             Row {
@@ -95,8 +95,8 @@ fun AddEntryActivityContent() {
 
 @Preview(showBackground = true)
 @Composable
-fun AddEntryActivityContentPreview() {
+fun EditEntryActivityContentPreview() {
     DataEntryAppTheme {
-        AddEntryActivityContent()
+        EditEntryActivityContent()
     }
 }

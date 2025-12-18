@@ -17,6 +17,45 @@
     The project sources can be found on GitHub: <a href="https://github.com/jplatipus/goodViberations">
     https://github.com/jplatipus/goodViberations</a>
 </p>
+<h1>17 Dec 2025: git tag v3.0</h1>
+<p>
+    I am now working on <strong>tag v3.0</strong>.<br/><br/>
+    The following is to be carried out:
+    <ul>
+        <li>add help file for MainActivity (html) to the project.</li>
+        <li>add about file for AboutActivity (html) to the project.</li>
+        <li>update MainActivity so that the help button navigates to the HelpActivity,
+            specifying which help file to display</li>
+        <li>update MainActivity so that the about button navigates to the AboutActivity</li>
+        <li>add an ok button on the AboutActivity that navigates back to MainActivity</li>
+        <li>add an ok button on the HelpActivity that navigates back to MainActivity</li>
+    </ul>
+    I did not know where html assets should be placed in the project, so I asked the agent:<br/><br/>
+    <cite>where in the project should I put help files which are displayed to the user in the HelpActivity?</cite><br/></br/>
+    The agent responded with the following helpful answer:<br/><br/>
+    <cite>
+        For help files, especially HTML content, the best practice is to place them in the assets directory.
+        In your project, this would be located at /pathToThisProject/goodViberations/app/src/main/assets.
+        If this folder doesn't exist, you should create it.<br/><br/>
+        You can then access these files in your HelpActivity by using the AssetManager.
+    </cite><br/>
+</p>
+<p>
+    <ul>
+        <li>New asset files have been created (About.html and MainActivityHelp.html) in the assets folder.</li>
+        <li>The UIActivities specification has been updated to reflect the new asset folder structure.</li>
+        <li>
+            The AboutActivity UI specification and the HelpActivity UI specification
+            have been updated to display the relevant html asset file.</li>
+        <li>
+            The AboutActivity UI specification and the HelpActivity UI specification have been updated to
+            display an ok button added so that the activity can be popped
+            off the activity stack.
+        </li>
+        <li>The Functionality specification has detail added for the navigation from the MainActivity to the AboutActivity and HelpActivity.</li>
+    </ul>
+    At this point I believe that everything intended for this build is now in place. It is time to ask the agent to perform the changes.
+</p>
 <h1>16 Dec 2025: git tag v3.0</h1>
 <h3>Code refactoring to move activity classes</h3>
 <p>

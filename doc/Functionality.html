@@ -29,8 +29,25 @@
     <li>The binding of the data structures to the UI</li>
     <li>The functionality of the app, including the navigation between activities</li>
 </ul>
-<p>
 
-</p>
+<h2>MainActivity functionality</h2>
+    <p>
+        when the about button is tapped, the activity navigates to the AboutActivity
+    </p>
+    <p>
+        when the help button is tapped, the activity navigates to the HelpActivity, requesting that
+        the asset file MainActivityHelp.html be displayed.
+    </p>
+<h2>AboutActivity functionality</h2>
+    <p>
+        The text displayed is the asset file About.html<br/>
+        when the ok button is tapped, the activity is popped off the activity stack
+    </p>
+<h2>HelpActivity functionality</h2>
+    <p>
+        The text displayed is the html content of the asset file the calling activity has
+        requested to be displayed.<br/>
+        when the ok button is tapped, the activity is popped off the activity stack
+    </p>
 </body>
 </html>

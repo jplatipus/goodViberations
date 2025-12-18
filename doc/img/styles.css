@@ -32,4 +32,5 @@ a {
 cite {
     color: lightgray;
     padding-left: 1em;
+    display:block;
 }

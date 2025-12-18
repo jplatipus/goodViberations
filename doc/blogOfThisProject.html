@@ -19,9 +19,12 @@
 </p>
 <h1>16 Dec 2025: git tag v3.0</h1>
 <h3>Code refactoring to move activity classes</h3>
-<p>As mentioned in tag v2.0, all the classes are in com.j3t.dataentryapp. The classes should be moved to
-    com.j3t.dataentryapp.ui.activities.</p>
-<p>The first prompt given to the agent was:<br/><br/>
+<p>
+    As mentioned in tag v2.0, all the classes are in com.j3t.dataentryapp. The classes should be moved to
+    com.j3t.dataentryapp.ui.activities.
+</p>
+<p>
+    The first prompt given to the agent was:<br/><br/>
     <cite>can you move all the activity classes to the package
     com.j3t.dataentryapp.ui.activities</cite><br/><br/>
     The agent duly refactored the code and manifest to the new package structure without moving the files.
@@ -45,19 +48,18 @@
     Android Studio's preview:
 </p>
 <p>
-<table class="centeredStyle" style="width:80%" >
-    <tr>
-        <td>
-            <img src="img/v3_0_review_generated_UI_code.png" alt="v3_0_review_generated_UI_code.png" width="100%"/>
-        </td>
-    </tr>
-    <tr>
-        <td style="vertical-align: bottom">
-            <div style="text-align:center">Preview of generate UI code.</div>
-        </td>
-    </tr>
-</table>
-</p>
+    <table class="centeredStyle" style="width:80%" >
+        <tr>
+            <td>
+                <img src="img/v3_0_review_generated_UI_code.png" alt="v3_0_review_generated_UI_code.png" width="100%"/>
+            </td>
+        </tr>
+        <tr>
+            <td style="vertical-align: bottom">
+                <div style="text-align:center">Preview of generated UI code.</div>
+            </td>
+        </tr>
+    </table>
 </p>
 <h3>Improve the documentation styles</h3>
 <p>A stylesheet (doc/img/styles.css) has been added to the project. This file defines the default font, page border,
@@ -105,19 +107,21 @@
             </td>
             <td style="vertical-align: top">
                 <p>
-                It looks like it generated the classes I hoped for, they now need to be reviewed: I hope to be able to
-                preview them in the IDE.
+                    It looks like it generated the classes I hoped for, they now need to be reviewed: I hope to be able to
+                    preview them in the IDE.
                 </p>
-                <p>One class and class file was generated per activity. It may be worth specifying a package to put these
+                <p>
+                    One class and class file was generated per activity. It may be worth specifying a package to put these
                     classes in, at present all the classes are in com.j3t.dataentryapp. It would be better in
-                    com.j3t.dataentryapp.ui.activities</p>
+                    com.j3t.dataentryapp.ui.activities
+                </p>
             </td>
         </tr>
-    <tr>
-        <td colspan="2" style="vertical-align: bottom">
-            <div style="text-align:center">Conversation to generate ui classes using the agent.</div>
-        </td>
-    </tr>
+        <tr>
+            <td colspan="2" style="vertical-align: bottom">
+                <div style="text-align:center">Conversation to generate ui classes using the agent.</div>
+            </td>
+        </tr>
     </table>
 </p>
 <h1>In the beginning (git tags v1.0 and v2.0)</h1>

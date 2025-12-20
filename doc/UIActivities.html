@@ -20,144 +20,261 @@
 <p>This document lists the activities in the app, the widgets present in each activity.</p>
 <h2>Activity design</h2>
 <p>
-    All the activity classes should be in the package com.j3t.dataentryapp.ui.activities<br/>
+    <ul>
+        <li>All the activity classes should be in the package com.j3t.dataentryapp.ui.activities</li>
+        <li>All the activity classes should be in the folder src/main/java/com/j3t/dataentryapp/ui/act</li>
+        <li>The title is displayed at the top of the activity's  view.</li>
+        <li>The activity widgets are placed within a vertically scrolling view. This allows the activity's contents to
+        be viewable by the user in portrait and landscape modes.</li>
+        <li>Each widget is a class member variable,  this allows for functionality to   be added to       alter the widget's appearance.</li>
+    </ul>
     The activities wanted in this app are as follows:
 </p>
 <h3>Level 1 Activity</h3>
-<ul>
-    <li>
-        MainActivity:Welcome Activity, level 1 activity
-        <ol>
-            <li>open store, button</li>
-            <li>create new store, button</li>
-            <li>clear existing store, button</li>
-            <li>import/export store, button</li>
-            <li>about, button</li>
-            <li>help, button</li>
-        </ol>
-    </li>
-</ul>
+<p>
+    <strong>Class name:</strong> MainActivity<br/>
+    <strong>Title:</strong> Options<br/>
+    <table class="tblActivity">
+        <thead>
+            <tr>
+                <th>Widget label</th><th>Widget type</th><th>Widget name</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr><td>open store</td><td>button</td><td>btnOpenStore</td></tr>
+                <tr><td>create new store</td><td>button</td><td>btnCreateNewStore</td></tr>
+                <tr><td>change store password</td><td>button</td><td>btnChangeStorePassword</td></tr>
+                <tr><td>clear existing store</td><td>button</td><td>btnClearExistingStore</td></tr>
+                <tr><td>import/export store</td><td>button</td><td>btnImportExportStore</td></tr>
+                <tr><td>about</td><td>button</td><td>btnAbout</td></tr>
+                <tr><td>help</td><td>button</td><td>btnHelp</td></tr>
+        </tbody>
+    </table>
+</p>
 <h3>Level 2 Activities</h3>
-<ul>
-    <li>
-        OpenStoreActivity:Open Store Activity, level 2 activity
-        <ol>
-            <li>password, text field</li>
-            <li>memorable date, text field</li>
-            <li>open store button, button</li>
-            <li>change store password, button</li>
-        </ol>
-    </li>
-    <li>
-        CreateNewStoreActivity:Create New Store Activity, level 2 activity
-        <ol>
-            <li>password, text field</li>
-            <li>memorable date, text field</li>
-            <li>confirm password, text field</li>
-            <li>confirm memorable date, text field</li>
-            <li>create store, button</li>
-        </ol>
-    </li>
-    <li>
-        ChangeStorePasswordActivity:Change Store Password Activity, level 2 activity
-        <ol>
-            <li>new password, text field</li>
-            <li>new memorable date, text field</li>
-            <li>confirm new password, text field</li>
-            <li>confirm new memorable date<, text field/li>
-            <li>save changes, button</li>
-        </ol>
-    </li>
-    <li>
-        ImportExportStoreActivity:Import/Export Store Activity, level 2 activity
-        <ol>
-            <li>import store, button</li>
-            <li>export store, button</li>
-        </ol>
-    </li>
-    <li>
-        AboutActivity:About Activity, level 2 activity
-        <ol>
-            <li>about text, html text</li>
-            <li>ok, button</li>
-        </ol>
-    </li>
-    <li>
-        HelpActivity:Help Activity, level 2 activity
-        <ol>
-            <li>help text, html resource</li>
-            <li>ok, button</li>
-        </ol>
-    </li>
-</ul>
+<p>
+    <strong>Class name:</strong> OpenStoreActivity<br/>
+    <strong>Title:</strong> Open Store<br/>
+    <table  class="tblActivity">
+        <thead>
+        <tr>
+            <th>Widget label</th><th>Widget type</th><th>Widget name</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr><td>password</td><td>text field</td><td>txtPassword</td></tr>
+            <tr><td>memorable date</td><td>text field</td><td>txtMemorableDate</td></tr>
+            <tr><td>open store</td><td>button</td><td>btnOpenStore</td></tr>
+            <tr><td>back</td><td>button</td><td>btnBack</td></tr>
+        </tbody>
+    </table>
+</p>
+<p>
+    <strong>Class name:</strong> CreateNewStoreActivity<br/>
+    <strong>Title:</strong> Create Store<br/>
+    <table  class="tblActivity">
+        <thead>
+        <tr>
+            <th>Widget label</th><th>Widget type</th><th>Widget name</th>
+        </tr>
+        </thead>
+            <tbody>
+                <tr><td>password</td><td>text field</td><td>txtPassword</td></tr>
+                <tr><td>memorable date</td><td>text field</td><td>txtMemorableDate</td></tr>
+                <tr><td>confirm password</td><td>text field</td><td>txtConfirmPassword</td></tr>
+                <tr><td>confirm memorable date</td><td>text field</td><td>txtConfirmMemorableDate</td></tr>
+                <tr><td>create store</td><td>button</td><td>btnCreateStore</td></tr>
+                <tr><td>back</td><td>button</td><td>btnBack</td></tr>
+            </tbody>
+    </table>
+</p>
+<p>
+    <strong>Class name:</strong> ChangeStorePasswordActivity<br/>
+    <strong>Title:</strong>Change Store Password<br/>
+    <table  class="tblActivity">
+        <thead>
+        <tr>
+            <th>Widget label</th><th>Widget type</th><th>Widget name</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr><td>new password</td><td>text field</td><td>txtNewPassword</td></tr>
+            <tr><td>new password</td><td>text field</td><td>txtNewPassword</td></tr>
+            <tr><td>new memorable date</td><td>text field<td>txtNewMemorableDate</td></tr>
+            <tr><td>confirm new password</td><td>text field<td>txtConfirmNewPassword</td></tr>
+            <tr><td>confirm new memorable date</td><td>text field</td><td>txtConfirmNewMemorableDate</td></tr>
+            <tr><td>save changes</td><td>button</td><td>btnSaveChanges</td></tr>
+            <tr><td>back</td><td>button</td><td>btnBack</td></tr>
+        </tbody>
+    </table>
+</p>
+<p>
+    <strong>Class name:</strong> ImportExportStoreActivity<br/>
+    <strong>Title:</strong>Import/Export Store<br/>
+    <table  class="tblActivity">
+        <thead>
+        <tr>
+            <th>Widget label</th><th>Widget type</th><th>Widget name</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr><td>import store</td><td>button</td><td>btnImportStore</td></tr>
+            <tr><td>export store</td><td>button</td><td>btnExportStore</td></tr>
+            <tr><td>back</td><td>button</td><td>btnBack</td></tr>
+        </tbody>
+    </table>
+</p>
+<p>
+    <strong>Class name:</strong> AboutActivity<br/>
+    <strong>Title:</strong>About<br/>
+    <table  class="tblActivity">
+        <thead>
+        <tr>
+            <th>Widget label</th><th>Widget type</th><th>Widget name</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr><td>about text</td><td>html text</td><td>htmlText</td></tr>
+            <tr><td>ok</td><td>button</td><td>btnOk</td></tr>
+            <tr><td>back</td><td>button</td><td>btnBack</td></tr>
+        </tbody>
+    </table>
+</p>
+<p>
+    <strong>Class name:</strong> HelpActivity<br/>
+    <strong>Title:</strong>Help<br/>
+    <table  class="tblActivity">
+        <thead>
+        <tr>
+            <th>Widget label</th><th>Widget type</th><th>Widget name</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr><td>help text</td><td>html text</td><td>htmlText</td></tr>
+            <tr><td>ok</td><td>button</td><td>btnOk</td></tr>
+            <tr><td>back</td><td>button</td><td>btnBack</td></tr>
+        </tbody>
+    </table>
+</p>
 <h3>Level 3 Activities</h3>
-<ul>
-    <li>ListEntriesActivity:List Entries Activity, level 3 activity
-        <ol>
-            <li>Vertically scrolling list of single line text entries</li>
-            <li>new entry, button</li>
-            <li>exit, button</li>
-        </ol>
-    </li>
-</ul>
+<p>
+    <strong>Class name:</strong> ListEntriesActivity<br/>
+    <strong>Title:</strong>List Entries<br/>
+    <table  class="tblActivity">
+        <thead>
+        <tr>
+            <th>Widget label</th><th>Widget type</th><th>Widget name</th>
+        </tr>
+        </thead>
+        <tbody>
+                <tr><td>entries</td><td>vertically scrolling list</td><td>vlsEntryNames</td></tr>
+                <tr><td>new entry</td><td>button</td><td>btnNewEntry</td></tr>
+                <tr><td>search entryNames</td><td>button</td><td>btnSearchEntryNames</td></tr>
+                <tr><td>back</td><td>button</td><td>btnBack</td></tr>
+        </tbody>
+    </table>
+</p>
 <h3>Level 4 Activities</h3>
-<ul>
-    <li>ViewEntryActivity:View Entry Activity, level 4 activity<br/>
-        <ol>
-            <li>entry name, text</li>
-            <li>creation date and time, text</li>
-            <li>last modified date and time, text</li>
-            <li>notes, multiline text</li>
-            <li>password, text</li>
-            <li>list of detail fields, vertical list of single line text entries</li>
-            <li>delete, button</li>
-            <li>edit, button</li>
-            <li>exit, button</li>
-        </ol>
-    </li>
-    <li>AddEntryActivity:Add Entry Activity, level 4 activity<br/>
-        <ol>
-            <li>entry name, text field</li>
-            <li>creation date and time, text</li>
-            <li>last modified date and time, text</li>
-            <li>notes, multiline text area</li>
-            <li>password, text  field</li>
-            <li>list of detail fields, vertical list of single line text field entries</li>
-            <li>delete field, button</li>
-            <li>add field, button</li>
-            <li>save, button</li>
-            <li>cancel, button</li>
-        </ol>
-    </li>
-    <li>DeleteEntryActivity:Delete Entry Activity, level 4 activity</br>
-        <ol>
-            <li>entry name, text field</li>
-            <li>confirm delete, button</li>
-            <li>cancel, button</li>
-        </ol>
-    </li>
-    <li>EditEntryActivity:Edit Entry Activity, level 4 activity<br/>
-        <ol>
-            <li>entry name, text field</li>
-            <li>creation date and time, text</li>
-            <li>last modified date and time, text</li>
-            <li>notes, multiline text area</li>
-            <li>password, text  field</li>
-            <li>list of detail fields, vertical list of single line text field entries</li>
-            <li>delete field, button</li>
-            <li>add field, button</li>
-            <li>save, button</li>
-            <li>cancel, button</li>
-        </ol>
-    </li>
-    <li>SearchEntriesActivity:Search Entries Activity, level 4 activity<br/>
-        <ol>
-            <li>entry name, text field</li>
-            <li>search, button</li>
-            <li>cancel, button</li>
-        </ol>
-    </li>
-</ul>
+<p>
+    <strong>Class name:</strong> ViewEntryActivity<br/>
+    <strong>Title:</strong>View Entry<br/>
+    <table  class="tblActivity">
+        <thead>
+        <tr>
+            <th>Widget label</th><th>Widget type</th><th>Widget name</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr><td>entry name</td><td>text</td><td>lblEntryName</td></tr>
+            <tr><td>creation date and time</td><td>text</td><td>lblDateTime</td></tr>
+            <tr><td>last modified date and time</td><td>text</td><td>lblLastModifiedDateTime</td></tr>
+            <tr><td>notes</td><td>multiline text</td><td>mblNotes</td></tr>
+            <tr><td>password</td><td>text</td><td>lblPassword</td></tr>
+            <tr><td>fields</td><td>vertical list of single line text entries</td><td>vlsFields</td></tr>
+            <tr><td>delete</td><td>button</td><td>btnDelete</td></tr>
+            <tr><td>edit</td><td>button</td><td>btnEdit</td></tr>
+            <tr><td>back</td><td>button</td><td>btnBack</td></tr>
+        </tbody>
+    </table>
+</p>
+<p>
+    <strong>Class name:</strong> AddEntryActivity<br/>
+    <strong>Title:</strong>New Entry<br/>
+    <table  class="tblActivity">
+        <thead>
+        <tr>
+            <th>Widget label</th><th>Widget type</th><th>Widget name</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr><td>entry name</td><td>text field</td><td>txtEntryName</td></tr>
+            <tr><td>creation date and time</td><td>text</td><td>lblDateTime</td></tr>
+            <tr><td>last modified date and time</td><td>text</td><td>lblLastModifiedDateTime</td></tr>
+            <tr><td>notes</td><td>multiline text area</td><td>mtxNotes</td></tr>
+            <tr><td>password</td><td>text  field</td><td>txtPassword</td></tr>
+            <tr><td>fields</td><td>vertical list of single line text field entries</td><td>vlsFields</td></tr>
+            <tr><td>delete field</td><td>button</td><td>btnDelField</td></tr>
+            <tr><td>add field</td><td>button</td><td>btnAddField</td></tr>
+            <tr><td>save</td><td>button</td><td>btnSave</td></tr>
+            <tr><td>back</td><td>button</td><td>btnBack</td></tr>
+        </tbody>
+    </table>
+</p>
+<p>
+    <strong>Class name:</strong> DeleteEntryActivity<br/>
+    <strong>Title:</strong>Delete Entry<br/>
+    <table  class="tblActivity">
+        <thead>
+        <tr>
+            <th>Widget label</th><th>Widget type</th><th>Widget name</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr><td>entry name</td><td>text</td><td>lblEntryName</td></tr>
+            <tr><td>confirm delete</td><td>button</td><td>btnConfirmDelete</td></tr>
+            <tr><td>back</td><td>button</td><td>btnBack</td></tr>
+        </tbody>
+    </table>
+</p>
+<p>
+    <strong>Class name:</strong> EditEntryActivity<br/>
+    <strong>Title:</strong>Edit Entry<br/>
+    <table  class="tblActivity">
+        <thead>
+        <tr>
+            <th>Widget label</th><th>Widget type</th><th>Widget name</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr><td>entry name</td><td>text field</td><td>txtEntryName</td></tr>
+            <tr><td>creation date and time</td><td>text</td><td>lblDateTime</td></tr>
+            <tr><td>last modified date and time</td><td>text</td><td>lblLastModifiedDateTime</td></tr>
+            <tr><td>notes</td><td>multiline text area</td><td>mtxNotes</td></tr>
+            <tr><td>password</td><td>text  field</td><td>txtPassword</td></tr>
+            <tr><td>list of detail fields</td><td>vertical list of single line text field entries</td><td>lstDetailFields</td></tr>
+            <tr><td>delete field</td><td>button</td><td>btnDelField</td></tr>
+            <tr><td>add field</td><td>button</td><td>btnAddField</td></tr>
+            <tr><td>save</td><td>button</td><td>btnSave</td></tr>
+            <tr><td>back</td><td>button</td><td>btnBack</td></tr>
+        </tbody>
+    </table>
+</p>
+<p>
+    <strong>Class name:</strong> SearchEntriesActivity<br/>
+    <strong>Title:</strong>Find Entry<br/>
+    <table  class="tblActivity">
+        <thead>
+        <tr>
+            <th>Widget label</th><th>Widget type</th><th>Widget name</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr><td>entry name</td><td>text field</td><td>txtEntryName</td>
+            <tr><td>search</td><td>button</td><td>btnSearch</td></tr>
+            <tr><td>back</td><td>button</td><td>btnBack</td></tr>
+        </tbody>
+    </table>
+</p>
 <h3>Misc. definitions</h3>
 <p>Some terms used in this project are defined below:</p>
 <h4>Entry</h4>

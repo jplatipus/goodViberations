@@ -34,3 +34,16 @@ cite {
     padding-left: 1em;
     display:block;
 }
+
+.tblActivity {
+    padding: 15px;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: ghostwhite;
+    border-width: 3px;
+    text-align:left;
+}
+
+th, td {
+  padding: 10px;
+}

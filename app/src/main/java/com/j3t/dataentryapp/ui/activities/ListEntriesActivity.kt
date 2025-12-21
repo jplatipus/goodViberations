@@ -1,65 +1,46 @@
 package com.j3t.dataentryapp.ui.activities
 
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.Button
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import android.widget.Button
+import android.widget.ListView
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.j3t.dataentryapp.ui.theme.DataEntryAppTheme
+import androidx.compose.ui.viewinterop.AndroidView
+import com.j3t.dataentryapp.R
 
-class ListEntriesActivity : ComponentActivity() {
+class ListEntriesActivity : AppCompatActivity() {
+
+    private lateinit var vlsEntryNames: ListView
+    private lateinit var btnNewEntry: Button
+    private lateinit var btnSearchEntryNames: Button
+    private lateinit var btnBack: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            DataEntryAppTheme {
-                ListEntriesActivityContent()
-            }
-        }
-    }
-}
+        setContentView(R.layout.activity_list_entries)
 
-@Composable
-fun ListEntriesActivityContent() {
-    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-        Column(
-            modifier = Modifier
-                .padding(innerPadding)
-                .fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            LazyColumn(modifier = Modifier.weight(1f)) {
-                // Placeholder for list of entries
-                items(10) { index ->
-                    Text("Entry $index")
-                }
-            }
-            Button(onClick = { /* TODO: Navigate to AddEntryActivity */ }) {
-                Text("New Entry")
-            }
-            Button(onClick = { /* TODO: Exit activity */ }) {
-                Text("Exit")
-            }
-        }
-    }
-}
+        title = "List Entries"
 
-@Preview(showBackground = true)
-@Composable
-fun ListEntriesActivityContentPreview() {
-    DataEntryAppTheme {
-        ListEntriesActivityContent()
+        vlsEntryNames = findViewById(R.id.vlsEntryNames)
+        btnNewEntry = findViewById(R.id.btnNewEntry)
+        btnSearchEntryNames = findViewById(R.id.btnSearchEntryNames)
+        btnBack = findViewById(R.id.btnBack)
+    }
+
+    @Preview(showBackground = true, name = "ListEntries Activity Preview")
+    @Composable
+    fun ListEntriesActivityPreview() {
+        // This Composable wraps the XML layout for previewing.
+        AndroidView(
+            factory = { context ->
+                // Inflate the XML layout using the activity's context.
+                android.view.View.inflate(context, R.layout.activity_list_entries, null)
+            },
+            update = { view ->
+                // You can add logic here to update the view in the preview if needed.
+                // For example, finding a button and setting its text.
+            }
+        )
     }
 }

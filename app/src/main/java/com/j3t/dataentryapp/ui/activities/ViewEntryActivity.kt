@@ -1,73 +1,57 @@
 package com.j3t.dataentryapp.ui.activities
 
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.Button
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import android.widget.Button
+import android.widget.ListView
+import android.widget.TextView
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.j3t.dataentryapp.ui.theme.DataEntryAppTheme
+import androidx.compose.ui.viewinterop.AndroidView
+import com.j3t.dataentryapp.R
 
-class ViewEntryActivity : ComponentActivity() {
+class ViewEntryActivity : AppCompatActivity() {
+
+    private lateinit var lblEntryName: TextView
+    private lateinit var lblDateTime: TextView
+    private lateinit var lblLastModifiedDateTime: TextView
+    private lateinit var mblNotes: TextView
+    private lateinit var lblPassword: TextView
+    private lateinit var vlsFields: ListView
+    private lateinit var btnDelete: Button
+    private lateinit var btnEdit: Button
+    private lateinit var btnBack: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            DataEntryAppTheme {
-                ViewEntryActivityContent()
-            }
-        }
-    }
-}
+        setContentView(R.layout.activity_view_entry)
 
-@Composable
-fun ViewEntryActivityContent() {
-    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-        Column(
-            modifier = Modifier
-                .padding(innerPadding)
-                .fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text("Entry Name")
-            Text("Creation Date and Time")
-            Text("Last Modified Date and Time")
-            Text("Notes...")
-            Text("Password")
-            LazyColumn(modifier = Modifier.weight(1f)) {
-                // Placeholder for list of detail fields
-                items(5) { index ->
-                    Text("Detail Field $index")
-                }
-            }
-            Button(onClick = { /* TODO: Navigate to DeleteEntryActivity */ }) {
-                Text("Delete")
-            }
-            Button(onClick = { /* TODO: Navigate to EditEntryActivity */ }) {
-                Text("Edit")
-            }
-            Button(onClick = { /* TODO: Exit activity */ }) {
-                Text("Exit")
-            }
-        }
-    }
-}
+        title = "View Entry"
 
-@Preview(showBackground = true)
-@Composable
-fun ViewEntryActivityContentPreview() {
-    DataEntryAppTheme {
-        ViewEntryActivityContent()
+        lblEntryName = findViewById(R.id.lblEntryName)
+        lblDateTime = findViewById(R.id.lblDateTime)
+        lblLastModifiedDateTime = findViewById(R.id.lblLastModifiedDateTime)
+        mblNotes = findViewById(R.id.mblNotes)
+        lblPassword = findViewById(R.id.lblPassword)
+        vlsFields = findViewById(R.id.vlsFields)
+        btnDelete = findViewById(R.id.btnDelete)
+        btnEdit = findViewById(R.id.btnEdit)
+        btnBack = findViewById(R.id.btnBack)
+    }
+
+    @Preview(showBackground = true, name = "View Entry Activity Preview")
+    @Composable
+    fun ViewEntryActivityPreview() {
+        // This Composable wraps the XML layout for previewing.
+        AndroidView(
+            factory = { context ->
+                // Inflate the XML layout using the activity's context.
+                android.view.View.inflate(context, R.layout.activity_view_entry, null)
+            },
+            update = { view ->
+                // You can add logic here to update the view in the preview if needed.
+                // For example, finding a button and setting its text.
+            }
+        )
     }
 }

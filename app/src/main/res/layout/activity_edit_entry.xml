@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activities.EditEntryActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <EditText
+            android:id="@+id/txtEntryName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="entry name" />
+
+        <TextView
+            android:id="@+id/lblDateTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="creation date and time" />
+
+        <TextView
+            android:id="@+id/lblLastModifiedDateTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="last modified date and time" />
+
+        <EditText
+            android:id="@+id/mtxNotes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="notes"
+            android:inputType="textMultiLine" />
+
+        <EditText
+            android:id="@+id/txtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="password" />
+
+        <ListView
+            android:id="@+id/lstDetailFields"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+
+        <Button
+            android:id="@+id/btnDelField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="delete field" />
+
+        <Button
+            android:id="@+id/btnAddField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="add field" />
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="save" />
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="back" />
+    </LinearLayout>
+</ScrollView>

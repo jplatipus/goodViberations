@@ -29,7 +29,7 @@
         <li>update MainActivity so that the about button navigates to the AboutActivity.</li>
         <li>add an ok button on the AboutActivity that navigates back to MainActivity.</li>
         <li>add an ok button on the HelpActivity that navigates back to MainActivity.</li>
-        <li>specify variable names for all the UI widgets.</li>
+        <li>specify class member variable names for all the UI widgets.</li>
     </ul>
     I did not know where html assets should be placed in the project, so I asked the agent:<br/><br/>
     <cite>where in the project should I put help files which are displayed to the user in the HelpActivity?</cite><br/></br/>
@@ -55,7 +55,47 @@
         </li>
         <li>The Functionality specification has detail added for the navigation from the MainActivity to the AboutActivity and HelpActivity.</li>
     </ul>
+</p>
+<p>
+    The   agent's context  has been cleared. I intend generate    to code   again from the specs.
+</p>
+<p>
     At this point I believe that everything intended for this build is now in place. It is time to ask the agent to perform the changes.
+</p>
+<p>
+    The agent generated the UI code but did not add <cite>appcompat = "1.7.1"</cite>. I asked Gemini to do this,
+    it claimed to have updated my gradle files, but it did not. So I did it manually<br/><br/>
+    Adding the appcompat resolves the compilation errors.<br/><br/>
+    I noticed that there is no code to generate a preview of each UI class. I asked Gemini to do this,
+    but it did not. Gemini listed the code that it claimed to have added:<br/>
+
+<pre><cite>
+    @Preview(showBackground = true, name = "About Activity Preview")
+    @Composable
+    fun AboutActivityPreview() {
+        // This Composable wraps the XML layout for previewing.
+        AndroidView(
+            factory = { context ->
+                // Inflate the XML layout using the activity's context.
+                android.view.View.inflate(context, R.layout.activity_about, null)
+            },
+            update = { view ->
+                // You can add logic here to update the view in the preview if needed.
+                // For example, finding a button and setting its text.
+            }
+        )
+    }
+</cite></pre>
+
+    I did it manually. and repeated the process for each class in the com.j3t.dataentryapp.ui
+package. THis involved pasting the method, changing its name and updating the call to
+android.view.View.inflate() to reflect the layout that should be previewed.
+</p>
+<p>
+    The code compiles, and is previewed in the Android Studio IDE. The code generated has generated
+    member variables for the widgets. All looks good, so the tag v3.0 can be pusehd to GitHub.
+</p>
+<p>
 </p>
 <h1>16 Dec 2025: git tag v3.0</h1>
 <h3>Code refactoring to move activity classes</h3>

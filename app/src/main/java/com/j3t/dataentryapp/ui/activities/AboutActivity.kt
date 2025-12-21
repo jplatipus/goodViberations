@@ -1,55 +1,44 @@
 package com.j3t.dataentryapp.ui.activities
 
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import android.webkit.WebView
+import android.widget.Button
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.j3t.dataentryapp.ui.theme.DataEntryAppTheme
+import androidx.compose.ui.viewinterop.AndroidView
+import com.j3t.dataentryapp.R
 
-class AboutActivity : ComponentActivity() {
+class AboutActivity : AppCompatActivity() {
+
+    private lateinit var htmlText: WebView
+    private lateinit var btnOk: Button
+    private lateinit var btnBack: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            DataEntryAppTheme {
-                AboutActivityContent()
+        setContentView(R.layout.activity_about)
+
+        title = "About"
+
+        htmlText = findViewById(R.id.htmlText)
+        btnOk = findViewById(R.id.btnOk)
+        btnBack = findViewById(R.id.btnBack)
+    }
+
+    @Preview(showBackground = true, name = "About Activity Preview")
+    @Composable
+    fun AboutActivityPreview() {
+        // This Composable wraps the XML layout for previewing.
+        AndroidView(
+            factory = { context ->
+                // Inflate the XML layout using the activity's context.
+                android.view.View.inflate(context, R.layout.activity_about, null)
+            },
+            update = { view ->
+                // You can add logic here to update the view in the preview if needed.
+                // For example, finding a button and setting its text.
             }
-        }
-    }
-}
-
-@Composable
-fun AboutActivityContent() {
-    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-        Column(
-            modifier = Modifier
-                .padding(innerPadding)
-                .fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text("About this app...") // Placeholder
-            Text("Copyright (c) 2025") // Placeholder
-            Text("December 2025") // Placeholder
-            Text("Build 1.0.0") // Placeholder
-        }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun AboutActivityContentPreview() {
-    DataEntryAppTheme {
-        AboutActivityContent()
+        )
     }
 }

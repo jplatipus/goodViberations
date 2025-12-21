@@ -1,70 +1,51 @@
 package com.j3t.dataentryapp.ui.activities
 
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import android.widget.Button
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.j3t.dataentryapp.ui.theme.DataEntryAppTheme
+import androidx.compose.ui.viewinterop.AndroidView
+import com.j3t.dataentryapp.R
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var btnOpenStore: Button
+    private lateinit var btnCreateNewStore: Button
+    private lateinit var btnChangeStorePassword: Button
+    private lateinit var btnClearExistingStore: Button
+    private lateinit var btnImportExportStore: Button
+    private lateinit var btnAbout: Button
+    private lateinit var btnHelp: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            DataEntryAppTheme {
-                MainActivityContent()
-            }
-        }
-    }
-}
+        setContentView(R.layout.activity_main)
 
-@Composable
-fun MainActivityContent() {
-    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-        Column(
-            modifier = Modifier
-                .padding(innerPadding)
-                .fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Button(onClick = { /* TODO: Navigate to OpenStoreActivity */ }) {
-                Text("Open Store")
-            }
-            Button(onClick = { /* TODO: Navigate to CreateNewStoreActivity */ }) {
-                Text("Create New Store")
-            }
-            Button(onClick = { /* TODO: Implement clear existing store */ }) {
-                Text("Clear Existing Store")
-            }
-            Button(onClick = { /* TODO: Navigate to ImportExportStoreActivity */ }) {
-                Text("Import/Export Store")
-            }
-            Button(onClick = { /* TODO: Navigate to AboutActivity */ }) {
-                Text("About")
-            }
-            Button(onClick = { /* TODO: Navigate to HelpActivity */ }) {
-                Text("Help")
-            }
-        }
-    }
-}
+        title = "Options"
 
-@Preview(showBackground = true)
-@Composable
-fun MainActivityContentPreview() {
-    DataEntryAppTheme {
-        MainActivityContent()
+        btnOpenStore = findViewById(R.id.btnOpenStore)
+        btnCreateNewStore = findViewById(R.id.btnCreateNewStore)
+        btnChangeStorePassword = findViewById(R.id.btnChangeStorePassword)
+        btnClearExistingStore = findViewById(R.id.btnClearExistingStore)
+        btnImportExportStore = findViewById(R.id.btnImportExportStore)
+        btnAbout = findViewById(R.id.btnAbout)
+        btnHelp = findViewById(R.id.btnHelp)
+    }
+
+    @Preview(showBackground = true, name = "Main Activity Preview")
+    @Composable
+    fun MainActivityPreview() {
+        // This Composable wraps the XML layout for previewing.
+        AndroidView(
+            factory = { context ->
+                // Inflate the XML layout using the activity's context.
+                android.view.View.inflate(context, R.layout.activity_main, null)
+            },
+            update = { view ->
+                // You can add logic here to update the view in the preview if needed.
+                // For example, finding a button and setting its text.
+            }
+        )
     }
 }

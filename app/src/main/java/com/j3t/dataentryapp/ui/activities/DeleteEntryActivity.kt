@@ -1,62 +1,44 @@
 package com.j3t.dataentryapp.ui.activities
 
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import android.widget.Button
+import android.widget.TextView
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.j3t.dataentryapp.ui.theme.DataEntryAppTheme
+import androidx.compose.ui.viewinterop.AndroidView
+import com.j3t.dataentryapp.R
 
-class DeleteEntryActivity : ComponentActivity() {
+class DeleteEntryActivity : AppCompatActivity() {
+
+    private lateinit var lblEntryName: TextView
+    private lateinit var btnConfirmDelete: Button
+    private lateinit var btnBack: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            DataEntryAppTheme {
-                DeleteEntryActivityContent()
-            }
-        }
-    }
-}
+        setContentView(R.layout.activity_delete_entry)
 
-@Composable
-fun DeleteEntryActivityContent() {
-    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-        Column(
-            modifier = Modifier
-                .padding(innerPadding)
-                .fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text("Entry Name") // Placeholder
-            Row {
-                Button(onClick = { /* TODO: Implement confirm delete */ }) {
-                    Text("Confirm Delete")
-                }
-                Button(onClick = { /* TODO: Implement cancel */ }) {
-                    Text("Cancel")
-                }
-            }
-        }
-    }
-}
+        title = "Delete Entry"
 
-@Preview(showBackground = true)
-@Composable
-fun DeleteEntryActivityContentPreview() {
-    DataEntryAppTheme {
-        DeleteEntryActivityContent()
+        lblEntryName = findViewById(R.id.lblEntryName)
+        btnConfirmDelete = findViewById(R.id.btnConfirmDelete)
+        btnBack = findViewById(R.id.btnBack)
+    }
+
+    @Preview(showBackground = true, name = "Delete Entry Activity Preview")
+    @Composable
+    fun DeleteEntryActivityPreview() {
+        // This Composable wraps the XML layout for previewing.
+        AndroidView(
+            factory = { context ->
+                // Inflate the XML layout using the activity's context.
+                android.view.View.inflate(context, R.layout.activity_delete_entry, null)
+            },
+            update = { view ->
+                // You can add logic here to update the view in the preview if needed.
+                // For example, finding a button and setting its text.
+            }
+        )
     }
 }

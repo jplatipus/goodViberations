@@ -1,102 +1,60 @@
 package com.j3t.dataentryapp.ui.activities
 
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.Button
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ListView
+import android.widget.TextView
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.j3t.dataentryapp.ui.theme.DataEntryAppTheme
+import androidx.compose.ui.viewinterop.AndroidView
+import com.j3t.dataentryapp.R
 
-class AddEntryActivity : ComponentActivity() {
+class AddEntryActivity : AppCompatActivity() {
+
+    private lateinit var txtEntryName: EditText
+    private lateinit var lblDateTime: TextView
+    private lateinit var lblLastModifiedDateTime: TextView
+    private lateinit var mtxNotes: EditText
+    private lateinit var txtPassword: EditText
+    private lateinit var vlsFields: ListView
+    private lateinit var btnDelField: Button
+    private lateinit var btnAddField: Button
+    private lateinit var btnSave: Button
+    private lateinit var btnBack: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            DataEntryAppTheme {
-                AddEntryActivityContent()
-            }
-        }
+        setContentView(R.layout.activity_add_entry)
+
+        title = "New Entry"
+
+        txtEntryName = findViewById(R.id.txtEntryName)
+        lblDateTime = findViewById(R.id.lblDateTime)
+        lblLastModifiedDateTime = findViewById(R.id.lblLastModifiedDateTime)
+        mtxNotes = findViewById(R.id.mtxNotes)
+        txtPassword = findViewById(R.id.txtPassword)
+        vlsFields = findViewById(R.id.vlsFields)
+        btnDelField = findViewById(R.id.btnDelField)
+        btnAddField = findViewById(R.id.btnAddField)
+        btnSave = findViewById(R.id.btnSave)
+        btnBack = findViewById(R.id.btnBack)
     }
-}
 
-@Composable
-fun AddEntryActivityContent() {
-    var entryName by remember { mutableStateOf("") }
-    var notes by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
-
-    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-        Column(
-            modifier = Modifier
-                .padding(innerPadding)
-                .fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            OutlinedTextField(
-                value = entryName,
-                onValueChange = { entryName = it },
-                label = { Text("Entry Name") }
-            )
-            Text("Creation Date and Time")
-            Text("Last Modified Date and Time")
-            OutlinedTextField(
-                value = notes,
-                onValueChange = { notes = it },
-                label = { Text("Notes") }
-            )
-            OutlinedTextField(
-                value = password,
-                onValueChange = { password = it },
-                label = { Text("Password") }
-            )
-            LazyColumn(modifier = Modifier.weight(1f)) {
-                // Placeholder for list of detail fields
-                items(2) { index ->
-                    OutlinedTextField(value = "", onValueChange = {}, label = { Text("Detail Field $index") })
-                }
+    @Preview(showBackground = true, name = "Add Entry Activity Preview")
+    @Composable
+    fun AddEntryActivityPreview() {
+        // This Composable wraps the XML layout for previewing.
+        AndroidView(
+            factory = { context ->
+                // Inflate the XML layout using the activity's context.
+                android.view.View.inflate(context, R.layout.activity_add_entry, null)
+            },
+            update = { view ->
+                // You can add logic here to update the view in the preview if needed.
+                // For example, finding a button and setting its text.
             }
-            Row {
-                Button(onClick = { /* TODO: Implement delete field */ }) {
-                    Text("Delete Field")
-                }
-                Button(onClick = { /* TODO: Implement add field */ }) {
-                    Text("Add Field")
-                }
-            }
-            Row {
-                Button(onClick = { /* TODO: Implement save */ }) {
-                    Text("Save")
-                }
-                Button(onClick = { /* TODO: Implement cancel */ }) {
-                    Text("Cancel")
-                }
-            }
-        }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun AddEntryActivityContentPreview() {
-    DataEntryAppTheme {
-        AddEntryActivityContent()
+        )
     }
 }

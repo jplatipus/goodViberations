@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activities.ImportExportStoreActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <Button
+            android:id="@+id/btnImportStore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="import store" />
+
+        <Button
+            android:id="@+id/btnExportStore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="export store" />
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="back" />
+    </LinearLayout>
+</ScrollView>

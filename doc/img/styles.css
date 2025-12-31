@@ -1,19 +1,23 @@
+html {
+background-color: black;
+}
+
 body {
     font-family: Arial, Verdana, sans-serif;
-    background-color: black;
-    color: azure;
+    background-color: WhiteSmoke;
+    color: black;
     padding: 15px;
     border-radius: 20px;
 
     border-style: solid;
-    border-color: ghostwhite;
+    border-color: GhostWhite;
     border-width: 3px;
 
     display:block;
     box-sizing: border-box;
 }
 a {
-    color: lightblue;
+    color: SlateGray;
 }
 * {
     font-family: inherit;
@@ -23,14 +27,14 @@ a {
     margin-left: auto;
     margin-right: auto;
     border-style: solid;
-    border-color: ghostwhite;
+    border-color: GhostWhite;
     border-width: 3px;
     border-radius: 20px;
     padding: 15px;
 }
 
 cite {
-    color: lightgray;
+    color: black;
     padding-left: 1em;
     display:block;
 }
@@ -39,11 +43,14 @@ cite {
     padding: 15px;
     border-radius: 20px;
     border-style: solid;
-    border-color: ghostwhite;
+    border-color: GhostWhite;
+    background-color: LightGray;
     border-width: 3px;
     text-align:left;
+    border-collapse: collapse;
 }
 
 th, td {
   padding: 10px;
+  border-bottom: 1px solid #eee;
 }

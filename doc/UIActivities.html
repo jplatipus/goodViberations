@@ -3,53 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>goodViberations: UI Specification</title>
-    <link rel="stylesheet" href="img/styles.css?v=4">
+    <link rel="stylesheet" href="img/styles.css?v=5">
 </head>
 <body>
 <a href="ReadMe.html"><- ReadMe.html</a>
-<h1>goodViberations: UI Specification</h1>
+<h1>UI Specification</h1>
 <h2>Introduction</h2>
-<p>The UI, described in this document, is used to render the data to
-    the end user. The UI facilitates the user's interaction  (CRUD) with the data. The actual work of creating new data,
-    retrieving data, updating data, deleting data, and ensuring data integrity is specified in
-    <a href="Functionality.html">Functionality.html</a>.
+<p>The UI, described in this document, specifies the app activity classes which currently have no
+    functionality specified. As development of this project progresses, UI class specifications are
+    moved out of this document, into a functionality document which specifies the UI and the
+    functionality of the activity.
+    </p>
+<p>
+    The functionality specification documents are kept in the functionality folder.
+    The file <a href="Functionality.html">Functionality.html</a> gives a detailed overview of
+    the functionality specification documents.
 </p>
 <p>
     The data structures used in this app are described in <a href="DataLayer.html">DataLayer.html</a>
 </p>
-<p>This document lists the activities in the app, the widgets present in each activity.</p>
 <h2>Activity design</h2>
 <p>
     <ul>
         <li>All the activity classes should be in the package com.j3t.dataentryapp.ui.activities</li>
-        <li>All the activity classes should be in the folder src/main/java/com/j3t/dataentryapp/ui/act</li>
+        <li>All the activity classes should be in the folder src/main/java/com/j3t/dataentryapp/ui/activities</li>
         <li>The title is displayed at the top of the activity's  view.</li>
         <li>The activity widgets are placed within a vertically scrolling view. This allows the activity's contents to
         be viewable by the user in portrait and landscape modes.</li>
-        <li>Each widget is a class member variable,  this allows for functionality to   be added to       alter the widget's appearance.</li>
+        <li>Each widget is a class member variable, this allows for functionality to be added to
+            alter the widget's appearance at runtime.</li>
     </ul>
-    The activities wanted in this app are as follows:
-</p>
-<h3>Level 1 Activity</h3>
-<p>
-    <strong>Class name:</strong> MainActivity<br/>
-    <strong>Title:</strong> Options<br/>
-    <table class="tblActivity">
-        <thead>
-            <tr>
-                <th>Widget label</th><th>Widget type</th><th>Widget name</th>
-            </tr>
-        </thead>
-        <tbody>
-                <tr><td>open store</td><td>button</td><td>btnOpenStore</td></tr>
-                <tr><td>create new store</td><td>button</td><td>btnCreateNewStore</td></tr>
-                <tr><td>change store password</td><td>button</td><td>btnChangeStorePassword</td></tr>
-                <tr><td>clear existing store</td><td>button</td><td>btnClearExistingStore</td></tr>
-                <tr><td>import/export store</td><td>button</td><td>btnImportExportStore</td></tr>
-                <tr><td>about</td><td>button</td><td>btnAbout</td></tr>
-                <tr><td>help</td><td>button</td><td>btnHelp</td></tr>
-        </tbody>
-    </table>
+    The activities with no functionality specified yet are as follows:
 </p>
 <h3>Level 2 Activities</h3>
 <p>
@@ -66,6 +50,7 @@
             <tr><td>memorable date</td><td>text field</td><td>txtMemorableDate</td></tr>
             <tr><td>open store</td><td>button</td><td>btnOpenStore</td></tr>
             <tr><td>back</td><td>button</td><td>btnBack</td></tr>
+            <tr><td>help</td><td>button</td><td>btnHelp</td></tr>
         </tbody>
     </table>
 </p>
@@ -85,6 +70,7 @@
                 <tr><td>confirm memorable date</td><td>text field</td><td>txtConfirmMemorableDate</td></tr>
                 <tr><td>create store</td><td>button</td><td>btnCreateStore</td></tr>
                 <tr><td>back</td><td>button</td><td>btnBack</td></tr>
+                <tr><td>help</td><td>button</td><td>btnHelp</td></tr>
             </tbody>
     </table>
 </p>
@@ -105,6 +91,7 @@
             <tr><td>confirm new memorable date</td><td>text field</td><td>txtConfirmNewMemorableDate</td></tr>
             <tr><td>save changes</td><td>button</td><td>btnSaveChanges</td></tr>
             <tr><td>back</td><td>button</td><td>btnBack</td></tr>
+            <tr><td>help</td><td>button</td><td>btnHelp</td></tr>
         </tbody>
     </table>
 </p>
@@ -121,38 +108,7 @@
             <tr><td>import store</td><td>button</td><td>btnImportStore</td></tr>
             <tr><td>export store</td><td>button</td><td>btnExportStore</td></tr>
             <tr><td>back</td><td>button</td><td>btnBack</td></tr>
-        </tbody>
-    </table>
-</p>
-<p>
-    <strong>Class name:</strong> AboutActivity<br/>
-    <strong>Title:</strong>About<br/>
-    <table  class="tblActivity">
-        <thead>
-        <tr>
-            <th>Widget label</th><th>Widget type</th><th>Widget name</th>
-        </tr>
-        </thead>
-        <tbody>
-            <tr><td>about text</td><td>html text</td><td>htmlText</td></tr>
-            <tr><td>ok</td><td>button</td><td>btnOk</td></tr>
-            <tr><td>back</td><td>button</td><td>btnBack</td></tr>
-        </tbody>
-    </table>
-</p>
-<p>
-    <strong>Class name:</strong> HelpActivity<br/>
-    <strong>Title:</strong>Help<br/>
-    <table  class="tblActivity">
-        <thead>
-        <tr>
-            <th>Widget label</th><th>Widget type</th><th>Widget name</th>
-        </tr>
-        </thead>
-        <tbody>
-            <tr><td>help text</td><td>html text</td><td>htmlText</td></tr>
-            <tr><td>ok</td><td>button</td><td>btnOk</td></tr>
-            <tr><td>back</td><td>button</td><td>btnBack</td></tr>
+            <tr><td>help</td><td>button</td><td>btnHelp</td></tr>
         </tbody>
     </table>
 </p>
@@ -171,6 +127,7 @@
                 <tr><td>new entry</td><td>button</td><td>btnNewEntry</td></tr>
                 <tr><td>search entryNames</td><td>button</td><td>btnSearchEntryNames</td></tr>
                 <tr><td>back</td><td>button</td><td>btnBack</td></tr>
+                <tr><td>help</td><td>button</td><td>btnHelp</td></tr>
         </tbody>
     </table>
 </p>
@@ -194,6 +151,7 @@
             <tr><td>delete</td><td>button</td><td>btnDelete</td></tr>
             <tr><td>edit</td><td>button</td><td>btnEdit</td></tr>
             <tr><td>back</td><td>button</td><td>btnBack</td></tr>
+            <tr><td>help</td><td>button</td><td>btnHelp</td></tr>
         </tbody>
     </table>
 </p>
@@ -217,6 +175,7 @@
             <tr><td>add field</td><td>button</td><td>btnAddField</td></tr>
             <tr><td>save</td><td>button</td><td>btnSave</td></tr>
             <tr><td>back</td><td>button</td><td>btnBack</td></tr>
+            <tr><td>help</td><td>button</td><td>btnHelp</td></tr>
         </tbody>
     </table>
 </p>
@@ -233,6 +192,7 @@
             <tr><td>entry name</td><td>text</td><td>lblEntryName</td></tr>
             <tr><td>confirm delete</td><td>button</td><td>btnConfirmDelete</td></tr>
             <tr><td>back</td><td>button</td><td>btnBack</td></tr>
+            <tr><td>help</td><td>button</td><td>btnHelp</td></tr>
         </tbody>
     </table>
 </p>
@@ -256,6 +216,7 @@
             <tr><td>add field</td><td>button</td><td>btnAddField</td></tr>
             <tr><td>save</td><td>button</td><td>btnSave</td></tr>
             <tr><td>back</td><td>button</td><td>btnBack</td></tr>
+            <tr><td>help</td><td>button</td><td>btnHelp</td></tr>
         </tbody>
     </table>
 </p>
@@ -272,6 +233,7 @@
             <tr><td>entry name</td><td>text field</td><td>txtEntryName</td>
             <tr><td>search</td><td>button</td><td>btnSearch</td></tr>
             <tr><td>back</td><td>button</td><td>btnBack</td></tr>
+            <tr><td>help</td><td>button</td><td>btnHelp</td></tr>
         </tbody>
     </table>
 </p>
@@ -281,7 +243,15 @@
 <p>
     An entry is defined to be a set of text fields, each field has a name and a value. Some fields
     are unique to an entry type, some are common to all entries. Some field values reflect a data type,
-    and so have a syntax associated with them. For example, email must be a valur email address syntax,
-    url must be a valid http url syntax, name starts with an uppercase.
+    and so have a syntax associated with them. For example:
+    <ul>
+        <li>email must have a valid email address syntax,</li>
+        <li>url must have a valid http url syntax.</li>
+        <li>name starts with an uppercase.</li>
+    <li>name is unique, name is case insensitive for purposes of uniqueness. For example name Name
+        and NAME are all treated as the same in terms of sorting and uniqueness, so only one of name,
+        Name or NAME can be present in the list of entries.</li>
+        <li>name is not null, </li>
+    </ul>
 </p>
 </body>

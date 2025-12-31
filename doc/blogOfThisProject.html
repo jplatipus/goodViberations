@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>blog: goodViberations app, built using AI Agent(s)</title>
-    <link rel="stylesheet" href="img/styles.css?v=4">
+    <link rel="stylesheet" href="img/styles.css?v=5">
 </head>
 <body>
 <a href="ReadMe.html"><- ReadMe.html</a>
@@ -17,13 +17,51 @@
     The project sources can be found on GitHub: <a href="https://github.com/jplatipus/goodViberations">
     https://github.com/jplatipus/goodViberations</a>
 </p>
+<h1>26 Dec 2025: git tag v5.0</h1>
+<p>
+    I am now working on <strong>tag v5.0</strong>.<br/><br/>
+    There are a lot of activities in this project, quite a few are expected to perform many operations.
+    It has been decided to create one functionality specification html file per activity. The
+    functionality specification files are placed in a folder called functionality. As the project
+    progresses, activity by activity, new functionality files are added. The UI specifications are
+    moved across from <a href="UIActivities.html">UIActivities.html</a> to their new functionality
+    specification file.
+</p>
+<p>
+    The following is to be carried out:
+    <ul>
+        <li>Split up the original <a href= "Functionality.html">Functionality.html</a>. It now lists
+        the activity functionality specification files, in effect a functionality table of
+        contents.</li>
+        <li>create the functionality specifications for:
+            <ul>
+                <li><a href="functionality/AboutActivityFunctionality.html">AboutActivity</a></li>
+                <li><a href="functionality/HelpActivityFunctionality.html">HelpActivity</a></li>
+                <li><a href="functionality/MainActivityFunctionality.html">MainActivity</a></li>
+            </ul>
+        </li>
+    </ul>
+    Once the above new specification files have been created, it should be possible to ask Gemini to
+    update the activity classes with the new functionality.The generated code should be reviewed.
+    It should be possible to compile and
+    run the application. The application should have the appearance that is expected. The application
+    should run as expected.
+    <ul>
+        <li>Navigation to the AboutActivity and HelpActivity should work.</li>
+        <li>Navigation from AboutActivity and HelpActivity back to MainActivity should work.</li>
+    </ul>
+</p>
+<p>
+</p>
+<p>
+</p>
 <h1>17 Dec 2025: git tag v4.0</h1>
 <p>
     I am now working on <strong>tag v4.0</strong>.<br/><br/>
     The following is to be carried out:
     <ul>
-        <li>add help file for MainActivity (html) to the project.</li>
-        <li>add about file for AboutActivity (html) to the project.</li>
+        <li>add help file for MainActivity (html asset) to the project.</li>
+        <li>add about file for AboutActivity (html asset) to the project.</li>
         <li>update MainActivity so that the help button navigates to the HelpActivity,
             specifying which help file to display.</li>
         <li>update MainActivity so that the about button navigates to the AboutActivity.</li>
@@ -69,27 +107,27 @@
     I noticed that there is no code to generate a preview of each UI class. I asked Gemini to do this,
     but it did not. Gemini listed the code that it claimed to have added:<br/>
 
-<pre><cite>
-    @Preview(showBackground = true, name = "About Activity Preview")
-    @Composable
-    fun AboutActivityPreview() {
-        // This Composable wraps the XML layout for previewing.
-        AndroidView(
-            factory = { context ->
-                // Inflate the XML layout using the activity's context.
-                android.view.View.inflate(context, R.layout.activity_about, null)
-            },
-            update = { view ->
-                // You can add logic here to update the view in the preview if needed.
-                // For example, finding a button and setting its text.
-            }
-        )
-    }
-</cite></pre>
+    <pre><cite>
+        @Preview(showBackground = true, name = "About Activity Preview")
+        @Composable
+        fun AboutActivityPreview() {
+            // This Composable wraps the XML layout for previewing.
+            AndroidView(
+                factory = { context ->
+                    // Inflate the XML layout using the activity's context.
+                    android.view.View.inflate(context, R.layout.activity_about, null)
+                },
+                update = { view ->
+                    // You can add logic here to update the view in the preview if needed.
+                    // For example, finding a button and setting its text.
+                }
+            )
+        }
+    </cite></pre>
 
     I did it manually. and repeated the process for each class in the com.j3t.dataentryapp.ui
-package. THis involved pasting the method, changing its name and updating the call to
-android.view.View.inflate() to reflect the layout that should be previewed.
+    package. This involved pasting the method, changing its name and updating the call to
+    android.view.View.inflate() to reflect the layout that should be previewed.
 </p>
 <p>
     The code compiles, and is previewed in the Android Studio IDE. The code generated has generated

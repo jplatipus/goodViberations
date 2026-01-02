@@ -1,5 +1,6 @@
 package com.j3t.dataentryapp.ui.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -14,6 +15,7 @@ class DeleteEntryActivity : AppCompatActivity() {
     private lateinit var lblEntryName: TextView
     private lateinit var btnConfirmDelete: Button
     private lateinit var btnBack: Button
+    private lateinit var btnHelp: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +26,17 @@ class DeleteEntryActivity : AppCompatActivity() {
         lblEntryName = findViewById(R.id.lblEntryName)
         btnConfirmDelete = findViewById(R.id.btnConfirmDelete)
         btnBack = findViewById(R.id.btnBack)
+        btnHelp = findViewById(R.id.btnHelp)
+
+        btnBack.setOnClickListener {
+            finish()
+        }
+
+        btnHelp.setOnClickListener {
+            val intent = Intent(this, HelpActivity::class.java)
+            intent.putExtra("assetFileName", "DeleteEntryActivityHelp.html")
+            startActivity(intent)
+        }
     }
 
     @Preview(showBackground = true, name = "Delete Entry Activity Preview")

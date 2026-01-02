@@ -1,5 +1,6 @@
 package com.j3t.dataentryapp.ui.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -15,6 +16,7 @@ class OpenStoreActivity : AppCompatActivity() {
     private lateinit var txtMemorableDate: EditText
     private lateinit var btnOpenStore: Button
     private lateinit var btnBack: Button
+    private lateinit var btnHelp: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +28,17 @@ class OpenStoreActivity : AppCompatActivity() {
         txtMemorableDate = findViewById(R.id.txtMemorableDate)
         btnOpenStore = findViewById(R.id.btnOpenStore)
         btnBack = findViewById(R.id.btnBack)
+        btnHelp = findViewById(R.id.btnHelp)
+
+        btnBack.setOnClickListener {
+            finish()
+        }
+
+        btnHelp.setOnClickListener {
+            val intent = Intent(this, HelpActivity::class.java)
+            intent.putExtra("assetFileName", "OpenStoreActivityHelp.html")
+            startActivity(intent)
+        }
     }
 
     @Preview(showBackground = true, name = "Open Store Activity Preview")

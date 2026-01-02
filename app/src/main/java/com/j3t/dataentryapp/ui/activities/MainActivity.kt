@@ -1,5 +1,6 @@
 package com.j3t.dataentryapp.ui.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -31,6 +32,17 @@ class MainActivity : AppCompatActivity() {
         btnImportExportStore = findViewById(R.id.btnImportExportStore)
         btnAbout = findViewById(R.id.btnAbout)
         btnHelp = findViewById(R.id.btnHelp)
+
+        btnAbout.setOnClickListener {
+            val intent = Intent(this, AboutActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnHelp.setOnClickListener {
+            val intent = Intent(this, HelpActivity::class.java)
+            intent.putExtra("assetFileName", "MainActivityHelp.html")
+            startActivity(intent)
+        }
     }
 
     @Preview(showBackground = true, name = "Main Activity Preview")

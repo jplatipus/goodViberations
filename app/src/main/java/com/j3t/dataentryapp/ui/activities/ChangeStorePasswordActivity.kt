@@ -1,5 +1,6 @@
 package com.j3t.dataentryapp.ui.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -17,6 +18,7 @@ class ChangeStorePasswordActivity : AppCompatActivity() {
     private lateinit var txtConfirmNewMemorableDate: EditText
     private lateinit var btnSaveChanges: Button
     private lateinit var btnBack: Button
+    private lateinit var btnHelp: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +32,17 @@ class ChangeStorePasswordActivity : AppCompatActivity() {
         txtConfirmNewMemorableDate = findViewById(R.id.txtConfirmNewMemorableDate)
         btnSaveChanges = findViewById(R.id.btnSaveChanges)
         btnBack = findViewById(R.id.btnBack)
+        btnHelp = findViewById(R.id.btnHelp)
+
+        btnBack.setOnClickListener {
+            finish()
+        }
+
+        btnHelp.setOnClickListener {
+            val intent = Intent(this, HelpActivity::class.java)
+            intent.putExtra("assetFileName", "ChangeStorePasswordActivityHelp.html")
+            startActivity(intent)
+        }
     }
 
     @Preview(showBackground = true, name = "Change Store Password Activity Preview")

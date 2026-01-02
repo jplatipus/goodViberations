@@ -1,5 +1,6 @@
 package com.j3t.dataentryapp.ui.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -15,6 +16,7 @@ class ListEntriesActivity : AppCompatActivity() {
     private lateinit var btnNewEntry: Button
     private lateinit var btnSearchEntryNames: Button
     private lateinit var btnBack: Button
+    private lateinit var btnHelp: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +28,17 @@ class ListEntriesActivity : AppCompatActivity() {
         btnNewEntry = findViewById(R.id.btnNewEntry)
         btnSearchEntryNames = findViewById(R.id.btnSearchEntryNames)
         btnBack = findViewById(R.id.btnBack)
+        btnHelp = findViewById(R.id.btnHelp)
+
+        btnBack.setOnClickListener {
+            finish()
+        }
+
+        btnHelp.setOnClickListener {
+            val intent = Intent(this, HelpActivity::class.java)
+            intent.putExtra("assetFileName", "ListEntriesActivityHelp.html")
+            startActivity(intent)
+        }
     }
 
     @Preview(showBackground = true, name = "ListEntries Activity Preview")

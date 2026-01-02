@@ -52,6 +52,48 @@
     </ul>
 </p>
 <p>
+    I have issued some prompts to Gemini:
+    </p>
+<p>
+    <cite>
+        <blockquote>
+            I have updated specification files:  @UIActivities.html   @Functionality.html 
+             @MainActivityFunctionality.html   @AboutActivityFunctionality.html   @HelpActivityFunctionality.html 
+        </blockquote>
+    </cite>
+</p>
+<p>
+    <cite>
+        <blockquote>
+            I have also updated the classes source code:  @AddEntryActivity.kt   @AboutActivity.kt   @ChangeStorePasswordActivity.kt   @CreateNewStoreActivity.kt   @DeleteEntryActivity.kt   @EditEntryActivity.kt   @HelpActivity.kt 
+             @ImportExportStoreActivity.kt   @ListEntriesActivity.kt   @MainActivity.kt   @OpenStoreActivity.kt 
+        </blockquote>
+    </cite>
+</p>
+<p>
+    <cite>
+        <blockquote>
+            the plan should specify that the asset filename  @MainActivityHelp.html is passed to
+             @HelpActivity.kt by  @MainActivity.kt 
+        </blockquote>
+    </cite>
+
+    Issuing the above prompts in the <strong>Ask tab</strong> of the Gemini chat caused Gemini to
+    say it was making
+    the changes but it did nothing.
+    <br/><br/>
+    Issuing the same prompts again in the <strong>Agent tab</strong> did cause Gemini
+    to make code changes. It is adding more functionality than I expected. It has updated all the activities'
+    help and back buttons too. I like what it did, I was planning to add the help and back button
+    functionality in the specs for the other activities later, Gemini decided to do it now. It did
+    not update AndroidManifest.xml, so I asked the agent a question:
+    <cite>does @AndroidManifest.xml need to list every activity in the app?</cite>
+    The agent duly replied yes to the question and updated the manifest.
+</p>
+<p>
+    The app compiles, it also runs well, the navigation from the MainActivity to the AboutActivity
+    and HelpActivity works. The back button in these activities also works. The UI is not pretty,
+    and needs attention.
 </p>
 <p>
 </p>

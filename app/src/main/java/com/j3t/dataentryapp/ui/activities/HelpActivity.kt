@@ -24,6 +24,19 @@ class HelpActivity : AppCompatActivity() {
         htmlText = findViewById(R.id.htmlText)
         btnOk = findViewById(R.id.btnOk)
         btnBack = findViewById(R.id.btnBack)
+
+        val assetFileName = intent.getStringExtra("assetFileName")
+        if (assetFileName != null) {
+            htmlText.loadUrl("file:///android_asset/$assetFileName")
+        }
+
+        btnBack.setOnClickListener {
+            finish()
+        }
+
+        btnOk.setOnClickListener {
+            finish()
+        }
     }
 
     @Preview(showBackground = true, name = "Help Activity Preview")

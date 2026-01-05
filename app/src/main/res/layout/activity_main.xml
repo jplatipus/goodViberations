@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".ui.activities.MainActivity">
 
     <LinearLayout
@@ -12,43 +13,43 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnOpenStore"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="open store" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCreateNewStore"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="create new store" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnChangeStorePassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="change store password" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnClearExistingStore"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="clear existing store" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnImportExportStore"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="import/export store" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnAbout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="about" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnHelp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

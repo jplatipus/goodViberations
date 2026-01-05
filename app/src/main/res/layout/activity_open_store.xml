@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".ui.activities.OpenStoreActivity">
 
     <LinearLayout
@@ -12,31 +13,43 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <EditText
-            android:id="@+id/txtPassword"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="password" />
+            android:hint="password">
 
-        <EditText
-            android:id="@+id/txtMemorableDate"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="memorable date" />
+            android:layout_marginTop="8dp"
+            android:hint="memorable date">
 
-        <Button
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtMemorableDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnOpenStore"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="open store" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnBack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="back" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnHelp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

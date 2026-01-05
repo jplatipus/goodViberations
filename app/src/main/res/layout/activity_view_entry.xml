@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".ui.activities.ViewEntryActivity">
 
     <LinearLayout
@@ -48,25 +49,25 @@
             android:layout_width="match_parent"
             android:layout_height="200dp" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnDelete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="delete" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="edit" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnBack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="back" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnHelp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

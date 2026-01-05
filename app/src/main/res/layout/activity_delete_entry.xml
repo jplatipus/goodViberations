@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".ui.activities.DeleteEntryActivity">
 
     <LinearLayout
@@ -18,19 +19,19 @@
             android:layout_height="wrap_content"
             android:text="entry name" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnConfirmDelete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="confirm delete" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnBack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="back" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnHelp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

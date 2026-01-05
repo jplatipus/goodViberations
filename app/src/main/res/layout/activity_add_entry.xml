@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".ui.activities.AddEntryActivity">
 
     <LinearLayout
@@ -12,16 +13,22 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <EditText
-            android:id="@+id/txtEntryName"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="entry name" />
+            android:hint="entry name">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtEntryName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/lblDateTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="creation date and time" />
 
         <TextView
@@ -30,49 +37,63 @@
             android:layout_height="wrap_content"
             android:text="last modified date and time" />
 
-        <EditText
-            android:id="@+id/mtxNotes"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="notes"
-            android:inputType="textMultiLine" />
+            android:layout_marginTop="8dp"
+            android:hint="notes">
 
-        <EditText
-            android:id="@+id/txtPassword"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/mtxNotes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="password" />
+            android:layout_marginTop="8dp"
+            android:hint="password">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <ListView
             android:id="@+id/vlsFields"
             android:layout_width="match_parent"
-            android:layout_height="200dp" />
+            android:layout_height="200dp"
+            android:layout_marginTop="8dp" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnDelField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="delete field" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnAddField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="add field" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSave"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="save" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnBack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="back" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnHelp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

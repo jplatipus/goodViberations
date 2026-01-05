@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".ui.activities.ListEntriesActivity">
 
     <LinearLayout
@@ -17,25 +18,25 @@
             android:layout_width="match_parent"
             android:layout_height="300dp" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnNewEntry"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="new entry" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSearchEntryNames"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="search entryNames" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnBack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="back" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnHelp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

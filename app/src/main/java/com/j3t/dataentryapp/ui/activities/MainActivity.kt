@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        title = "Options"
+        title = "EncryptMe"
 
         btnOpenStore = findViewById(R.id.btnOpenStore)
         btnCreateNewStore = findViewById(R.id.btnCreateNewStore)

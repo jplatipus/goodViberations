@@ -1,4 +1,15 @@
 <resources>
 
-    <style name="Theme.DataEntryApp" parent="Theme.Material3.DayNight" />
+    <style name="Theme.DataEntryApp" parent="Theme.Material3.DayNight">
+        <item name="actionBarStyle">@style/CustomActionBar</item>
+    </style>
+
+    <style name="CustomActionBar" parent="Widget.Material3.ActionBar.Solid">
+        <item name="background">@color/title_background</item>
+        <item name="titleTextStyle">@style/CustomActionBarTitle</item>
+    </style>
+
+    <style name="CustomActionBarTitle" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/title_text</item>
+    </style>
 </resources>

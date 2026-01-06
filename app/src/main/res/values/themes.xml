@@ -2,6 +2,7 @@
 
     <style name="Theme.DataEntryApp" parent="Theme.Material3.DayNight">
         <item name="actionBarStyle">@style/CustomActionBar</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
     </style>
 
     <style name="CustomActionBar" parent="Widget.Material3.ActionBar.Solid">

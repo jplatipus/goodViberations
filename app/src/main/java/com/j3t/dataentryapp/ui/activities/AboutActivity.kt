@@ -23,13 +23,8 @@ class AboutActivity : AppCompatActivity() {
 
         htmlText = findViewById(R.id.htmlText)
         btnOk = findViewById(R.id.btnOk)
-        btnBack = findViewById(R.id.btnBack)
 
         htmlText.loadUrl("file:///android_asset/About.html")
-
-        btnBack.setOnClickListener {
-            finish()
-        }
 
         btnOk.setOnClickListener {
             finish()

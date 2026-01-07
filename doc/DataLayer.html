@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>goodViberations Data Layer</title>
-    <link rel="stylesheet" href="img/styles.css?v=5">
+    <link rel="stylesheet" href="img/styles.css?v=6">
 </head>
 <body>
 <a href="ReadMe.html"><- ReadMe.html</a>
@@ -52,5 +52,44 @@ This document describes:
 <h2>Data storage and retrieval</h2>
 <p>
     The list of entries are stored as xml.<br/>
+    A class called <strong>DataLayer</strong> in the package com.j3t.dataentryapp.datalayer has the methods all other
+    classes in the app use.
+</p>
+<p>
+    The following methods are present in the DataLayer class:
+    <table class="tblClassCode">
+
+    <tr>
+        <th>Method</th><th>parameters</th><th>Description</th>
+    </tr>
+    <tr>
+        <td>createStore</td>
+        <td>data: EntryList</td>
+        <td>
+            <ol>
+                <li>
+                    checks how many files exist in the context.filesDir, if there are 5 or more files,
+                    the oldest file is deleted.
+                </li>
+                <li>
+                    a new file whose name is made of "info" + ddmmyyyyhhmmss.xml is created in the
+                    context.filesDir.
+                </li>
+                <li>
+                    The data is written to the file as xml
+                </li>
+            </ol>
+        </td>
+    </tr>
+    <tr>
+        <td>deleteStore</td>
+        <td>Deletes all the files in the context.filesDir.</td>
+    </tr>
+    <tr>
+        <td>storeExists</td>
+        <td>Boolean method returns true if a store exists, false otherwise.</td>
+    </tr>
+</td>
+</table>
 </p>
 </body>

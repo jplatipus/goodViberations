@@ -17,7 +17,7 @@
     The project sources can be found on GitHub: <a href="https://github.com/jplatipus/goodViberations">
     https://github.com/jplatipus/goodViberations</a>
 </p>
-<h1>3 Jan 2026: git tag v6.0</h1>
+<h1>7 Jan 2026: git tag v6.0</h1>
     <table>
         <tr>
             <td style="vertical-align: top">
@@ -46,10 +46,41 @@
                     in the about and help activities caused some problems: it removed the ok button too. I put it back in
                     editing code. Then I hit something unexpected; <strong>Gemini tells me:</strong><br/><br/>
                     <cite>You have exceeded the limit of prompt requests per hour. Please try again later.</cite>.
-                    </p><p>This is not a friendly way to behave.</p>
+                </p>
+                <img src="img/GeminiIsFedUp.png" alt="Gemini is fed up"/>
+                <p>This is not a friendly way to behave.</p>
+
             </td>
         </tr>
     </table>
+<p>
+    Work has started on adding more details to the <a href="DataLayer.html"><strong>DataLayer specification</strong></a>.
+    The Android documentation has a section on app specific files: where they are kept,
+    how they can be accessed, and importantly, best practises.
+</p>
+<p>
+        <cite>
+            It is recommended not to open
+            and close files too often.
+        </cite>
+</p>
+<p>
+    The approach is to minimise reads and writes, and also to
+    only write to a file once. In previous versions of Android, problems have been encountered when
+    appending contents to a file, possibly due to caching. The hope is that only writing to a
+    file once will avoid data loss.
+</p>
+<p>
+    If there arises a subsequent need to add more fields to an existing file,
+    a new file is created instead, with the updated list of fields.
+    The filename is made up of
+    "info" + ddmmyyyyhhmmss.xml, and no more than 5 files are kept (4 backups + the latest version).
+</p>
+<p>
+    At present the specification defines a persistence class called <a href="DataLayer.html">DataLayer</a>. Once the specification
+    is completed, work can move on to the main activity button functionalities that have not been
+    addressed so far.
+</p>
 <h1>2 Jan 2026: git tag v5.0</h1>
 <p>
     I am now working on <strong>tag v5.0</strong>.<br/><br/>

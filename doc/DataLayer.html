@@ -22,10 +22,18 @@ This document describes:
 </p>
 <p>
     Each entry is a master, with a fixed set of fields and a detail that is a list of detail fields.
+    The class name is DataEntry. The package is com.j3t.dataentryapp.datalayer.
+</p>
+<p>
+    The fields of the DataEntry are kept in a class called DataField.
+    The package is com.j3t.dataentryapp.datalayer.
 </p>
 
-<h3>The master has the following fixed set of fields</h3>
+<h3>The DataEntry class has the following fixed set of fields</h3>
 <ul>
+    <li>version: this is a constant integer value that is used to track changes in the
+        class source code. Initially the version has a value set to 1.
+    </li>
     <li>name: the name of the entry, the value is unique to each entry, uniqueness is case insensitive.
         That is to say that a the values "a Name", "A Name", "a name" or "A NAME" are all considered to be
         the same name when checking for uniqueness.
@@ -36,12 +44,12 @@ This document describes:
     <li>password: a password entry, the value is not unique to each entry</li>
 </ul>
 <p>
-    The master also has a list of fields, the detail fields, as described below.
+    The DataEntry class also has a list of DataField fields, the detail fields, as described below.
 </p>
-<h3>Detail fields</h3>
+<h3>DataField fields</h3>
 <p>
-    Detail field instances relate to a specific master entry instance.
-    Detail fields can be considered to be a set of text fields, each field has a name and a value.
+    DataField field instances relate to a specific DataEntry entry instance.
+    DataField fields can be considered to be a set of text fields, each field has a name and a value.
     The name must be unique to the master entry instance.
 </p>
 <p>
@@ -51,45 +59,63 @@ This document describes:
 </p>
 <h2>Data storage and retrieval</h2>
 <p>
-    The list of entries are stored as xml.<br/>
+    The list of DataEntry instances are saved and loaded from a file in the context.filesDir, as xml.<br/>
     A class called <strong>DataLayer</strong> in the package com.j3t.dataentryapp.datalayer has the methods all other
     classes in the app use.
 </p>
 <p>
     The following methods are present in the DataLayer class:
     <table class="tblClassCode">
-
-    <tr>
-        <th>Method</th><th>parameters</th><th>Description</th>
-    </tr>
-    <tr>
-        <td>createStore</td>
-        <td>data: EntryList</td>
-        <td>
-            <ol>
-                <li>
-                    checks how many files exist in the context.filesDir, if there are 5 or more files,
-                    the oldest file is deleted.
-                </li>
-                <li>
-                    a new file whose name is made of "info" + ddmmyyyyhhmmss.xml is created in the
-                    context.filesDir.
-                </li>
-                <li>
-                    The data is written to the file as xml
-                </li>
-            </ol>
-        </td>
-    </tr>
-    <tr>
-        <td>deleteStore</td>
-        <td>Deletes all the files in the context.filesDir.</td>
-    </tr>
-    <tr>
-        <td>storeExists</td>
-        <td>Boolean method returns true if a store exists, false otherwise.</td>
-    </tr>
-</td>
-</table>
+        <tr>
+            <th>Method</th><th>parameters</th><th>Description</th>
+        </tr>
+        <tr>
+            <td>createStore</td>
+            <td>data: list of DataEntry instances</td>
+            <td>
+                The following operations are carried out by this method:
+                <ol>
+                    <li>
+                        checks how many files exist in the context.filesDir, if there are 5 or more files,
+                        the oldest file is deleted.
+                    </li>
+                    <li>
+                        a new file whose name is made of "info" + ddmmyyyyhhmmss + ".xml" is created in the
+                        context.filesDir.
+                    </li>
+                    <li>
+                        The data is written to the file as xml. The DataEntry list instance is returned by the method.
+                    </li>
+                </ol>
+            </td>
+        </tr>
+        <tr>
+            <td>saveStore</td>
+            <td>data: list of DataEntry instances</td>
+            <td>calls the createStore method. Returns the value returned by the createStore method.</td>
+        </tr>
+        <tr>
+            <td>loadStore</td>
+            <td>no parameter</td>
+            <td>
+                if there are no files in the context.filesDir, the method returns a new list of
+                DataEntry instances.<br/><br/>
+                if there are files in the context.filesDir: the contents of the latest xml file in the
+                context.filesDir are loaded into a new list of DataEntry instances.
+                The method returns  the list of DataEntry instances.
+                instance.
+            </td>
+        </tr>
+        <tr>
+            <td>deleteStore</td>
+            <td>no parameter</td>
+            <td>Deletes all the files in the context.filesDir.</td>
+        </tr>
+        <tr>
+            <td>storeExists</td>
+            <td>no parameter</td>
+            <td>Boolean method returns true if a store exists, false otherwise.</td>
+        </tr>
+    </table>
 </p>
 </body>

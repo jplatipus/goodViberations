@@ -53,4 +53,8 @@ cite {
 th, td {
   padding: 10px;
   border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.tblActivity
 }

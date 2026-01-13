@@ -84,7 +84,8 @@ This document describes:
                         context.filesDir.
                     </li>
                     <li>
-                        The data is written to the file as xml. The DataEntry list instance is returned by the method.
+                        The data is written to the file as xml. The DataEntry list instance, sorted by the name field,
+                        is returned by the method.
                     </li>
                 </ol>
             </td>
@@ -102,7 +103,7 @@ This document describes:
                 DataEntry instances.<br/><br/>
                 if there are files in the context.filesDir: the contents of the latest xml file in the
                 context.filesDir are loaded into a new list of DataEntry instances.
-                The method returns  the list of DataEntry instances.
+                The method returns  the list of DataEntry instances, sorted by the name field.
                 instance.
             </td>
         </tr>

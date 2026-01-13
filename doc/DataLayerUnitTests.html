@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>goodViberations Data Layer Unit Tests</title>
+    <link rel="stylesheet" href="img/styles.css?v=6">
+</head>
+<body>
+<a href="ReadMe.html"><- ReadMe.html</a>
+<h1>goodViberations: Data Layer Unit Tests</h1>
+<h2>Introduction</h2>
+<p>
+    The data layer classes need unit tests to verify that the code works as expected. The class DataLayer
+    has a corresponding unit test class called DataLayerUnitTests in the com.j3t.datalayer.datalayer package.
+    Below is a table that enumerates the unit test methods' functionality in DataLayerUnitTests.
+</p>
+<p>
+<table class="tblClassCode">
+    <tr>
+        <th>Method</th><th>Description</th>
+    </tr>
+    <tr>
+        <td>beforeEach</td>
+        <td>
+            This method is annotated to run before each test (@BeforeEach method annotation).
+            Two class variables are created: dataEntry1 and dataEntry2 as follows:<br/>
+            <ol>
+                <li>
+                    creates a DataField instance variable called field1, with the following values:<br/>
+                    &nbsp;&nbsp;name = "testFieldName1",<br/>
+                    &nbsp;&nbsp;value = "testFieldValue1"
+                </li>
+                <li>
+                    another DataField instance variable called field12 with the following values:<br/>
+                    &nbsp;&nbsp;name = "testFieldName2",<br/>
+                    &nbsp;&nbsp;value = "testFieldValue2"
+                </li>
+                <li>
+                    creates a DataEntry instance variable called dataEntry1, with the following values:<br/>
+                    &nbsp;&nbsp;name = "testName1",<br/>
+                    &nbsp;&nbsp;notes = "testNotes",<br/>
+                    &nbsp;&nbsp;password = "testPassword"
+                </li>
+                <li>
+                    field1 and field2 are added to the dataEntry1 instance variable detailFields.
+                </li>
+                <li>
+                    creates a DataField instance variable called field3 with the following values:<br/>
+                    &nbsp;&nbsp;name = "testFieldName3,<br/>
+                    &nbsp;&nbsp;value = "testFieldValue3"
+                </li>
+                <li>
+                    another DataField instance variable called field4 with the following values:<br/>
+                    &nbsp;&nbsp;name = "testFieldName4",<br/>
+                    &nbsp;&nbsp;value = "testFieldValue4"
+                </li>
+                <li>
+                    creates a DataEntry instance variable called dataEntry2, with the following values:<br/>
+                    &nbsp;&nbsp;name = "testName2",<br/>
+                    &nbsp;&nbsp;notes = "testNotes",<br/>
+                    &nbsp;&nbsp;password = "testPassword"
+                </li>
+                <li>
+                    field2 and field3 are added to the dataEntry2 instance variable detailFields.
+                </li>
+            </ol>
+            All the existing data files in the context.filesDir are deleted.
+        </td>
+    </tr>
+    <tr>
+        <td>createStoreTest</td>
+        <td>
+            The following operations are carried out by this method:
+            <ol>
+                <li>
+                    saveStore is called with the list of dataEntry1
+                </li>
+                <li>
+                    the context.filesDir number of files is counted, it must equal 1.
+                </li>
+                <li>
+                    saveStore is called with the list of dataEntry1 and dataEntry2.
+                </li>
+                <li>
+                    the number of files in context.filesDir is counted, it must equal 2.
+                </li>
+            </ol>
+        </td>
+    </tr>
+    <tr>
+        <td>saveStore</td>
+        <td>saveStore is called with the list of dataEntry1 and dataEntry2.<br/>
+            The count of files in conext.filesDir is checked, it must equal 1.
+        </td>
+    </tr>
+    <tr>
+        <td>loadStore</td>
+        <td>
+            <ol>
+                <li>saveStore is called with the list of dataEntry2 and dataEntry1.</li>
+                <li>loadStore is called, the returned list is checked as follows:<br/>
+                    <ul>
+                        <li>The first dataEntry instance in the list hase the name "testName1"<br/>
+                            &nbsp;&nbsp;The first dataEntry instance notes = "testNotes",<br/>
+                            &nbsp;&nbsp;The first dataEntry instance password = "testPassword"</li>
+                        <li>The second dataEntry instance in the list hase the name "testName2"</li>
+                    </ul>
+                </li>
+            </ol>
+        </td>
+    </tr>
+    <tr>
+        <td>deleteStore</td>
+        <td>
+            saveStore is called with the list of dataEntry2<br/>
+            saveStore is called with the list of dataEntry2 and dataEntry1.<br/>
+            deleteStore is called<br/>
+            a check is made to ensure there are no files in the context.filesDir
+        </td>
+    </tr>
+    <tr>
+        <td>storeExists</td>
+
+        <td>
+            storeExists is called to check that it returns false<br/>
+            saveStore is called with the list of dataEntry2<br/>
+            storeExists is called to check that it returns true
+        </td>
+    </tr>
+</table>
+
+</p>
+</body>

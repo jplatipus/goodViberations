@@ -23,6 +23,13 @@
     activities that load, save, edit and delete entries would need to be run. For this reason unit tests
     have been specified in the DataLayerUnitTests.html file. It is ready to be run in Gemini.
 </p>
+<p>
+    The implementation loads and saves the list of entries in an xml file. This will be used for
+    import and export store too, but specifying a filename instead of the DataLayer persisting in
+    context.filesDir, generating a filename of the form "info" + ddmmyyyyhhmmss + ".xml".
+    <br/><br/>
+    Some refactoring will be necessary at  later date to handle the import and export store in the DataLayer.
+</p>
 <h1>7 Jan 2026: git tag v6.0</h1>
     <table>
         <tr>

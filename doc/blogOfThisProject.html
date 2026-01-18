@@ -30,6 +30,40 @@
     <br/><br/>
     Some refactoring will be necessary at  later date to handle the import and export store in the DataLayer.
 </p>
+<p>
+    A prompt is issued to check that the DataLayer class is OK, and to generate the unit tests:
+    <br/><br/>
+    <cite>
+        I have specified unit tests in  @DataLayerUnitTests.html  for the DataLayer class specified
+        in  @DataLayer.html . Could you check if the DataLayeer class needs to be modified,
+        and also generate the unit tests please.
+    </cite>
+</p>
+<p>
+    Some snags were encountered. The gradle file build.gradle.kts(app) refers to an old robolectric library
+    that does not support Android sdk 36. A quick check on the
+    <a href="https://github.com/robolectric/robolectric/releases">roboelectric  github</a> points to a newer version.
+    The gradle file is updated, and the build is synced. Rebuilding the project should works, but some unit test errors
+    are occurring.
+</p>
+<p>
+    The unit tests fail on saveStoreTest, this is because an attempt is made to save the file twice in a second
+    thus overwriting the previous file, when it should be a new file. This has identified a bug in
+    the spec for the data layer! The specification for createStore in <a href="DataLayer.html"><strong>
+    DataLayer specification</strong></a>.
+    has been updated to include a random number between 0 and 100. Unit tests now all pass. One snag
+    is that sometimes Gemini changes the annotation in DataLayerUnitTests.kt
+    from @Config(sdk = [36]) to @Config(sdk = [34]) which causes the unit test runner to fail with long and gryptic
+    error messages. For now the error message is recognised by me, and the unit test file
+    annotation updated. It is hoped that Gemini won't change build.gradle.kts(app) in the future. The line
+    that specifies which version of robolectric to use was manually specified as
+    testImplementation("org.robolectric:robolectric:4.16"), this one works with the Android SDK 36.
+
+
+</p>
+<p>
+    testImplementation("org.robolectric:robolectric:4.16")
+</p>
 <h1>7 Jan 2026: git tag v6.0</h1>
     <table>
         <tr>

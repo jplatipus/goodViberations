@@ -17,13 +17,17 @@ class DataLayer(private val context: Context) {
         }
 
         val timeStamp = SimpleDateFormat("ddMMyyyyHHmmss", Locale.getDefault()).format(Date())
-        val fileName = "info$timeStamp.xml"
+        val randomInt = (0..100).random()
+        val fileName = "info$timeStamp$randomInt.xml"
         val file = File(filesDir, fileName)
 
-        val xmlString = convertToXml(data)
+        // Sort data by name (case-insensitive) as specified
+        val sortedData = data.sortedBy { it.name.lowercase(Locale.getDefault()) }
+
+        val xmlString = convertToXml(sortedData)
         file.writeText(xmlString)
 
-        return data
+        return sortedData
     }
 
     fun saveStore(data: List<DataEntry>): List<DataEntry> {
@@ -37,11 +41,14 @@ class DataLayer(private val context: Context) {
         }
 
         val latestFile = files.maxByOrNull { it.lastModified() }
-        return latestFile?.let { parseXml(it.readText()) } ?: mutableListOf()
+        val loadedData = latestFile?.let { parseXml(it.readText()) } ?: mutableListOf()
+        
+        // Return list sorted by name field (case-insensitive)
+        return loadedData.sortedBy { it.name.lowercase(Locale.getDefault()) }
     }
 
     fun deleteStore() {
-        filesDir.listFiles()?.forEach { it.delete() }
+        filesDir.listFiles { _, name -> name.startsWith("info") && name.endsWith(".xml") }?.forEach { it.delete() }
     }
 
     fun storeExists(): Boolean {

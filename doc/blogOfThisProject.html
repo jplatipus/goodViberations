@@ -57,12 +57,13 @@
     error messages. For now the error message is recognised by me, and the unit test file
     annotation updated. It is hoped that Gemini won't change build.gradle.kts(app) in the future. The line
     that specifies which version of robolectric to use was manually specified as
-    testImplementation("org.robolectric:robolectric:4.16"), this one works with the Android SDK 36.
-
-
+    testImplementation("org.robolectric:robolectric:4.16"), this one works with the Android SDK 36:
+    <cite>
+        testImplementation("org.robolectric:robolectric:4.16")
+    </cite>
 </p>
 <p>
-    testImplementation("org.robolectric:robolectric:4.16")
+    The methods in the DataLayer have been updated to take a map instead of a list. This ensures that the name used for an entry is unique.
 </p>
 <h1>7 Jan 2026: git tag v6.0</h1>
     <table>

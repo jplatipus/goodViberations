@@ -9,7 +9,7 @@ class DataLayer(private val context: Context) {
 
     private val filesDir: File = context.filesDir
 
-    fun createStore(data: List<DataEntry>): List<DataEntry> {
+    fun createStore(data: Map<String, DataEntry>): Map<String, DataEntry> {
         val files = filesDir.listFiles { _, name -> name.startsWith("info") && name.endsWith(".xml") }
         if (files != null && files.size >= 5) {
             val oldestFile = files.minByOrNull { it.lastModified() }
@@ -21,8 +21,9 @@ class DataLayer(private val context: Context) {
         val fileName = "info$timeStamp$randomInt.xml"
         val file = File(filesDir, fileName)
 
-        // Sort data by name (case-insensitive) as specified
-        val sortedData = data.sortedBy { it.name.lowercase(Locale.getDefault()) }
+        // Sort data by name (case-insensitive) as specified. 
+        // TreeMap handles sorting by key automatically.
+        val sortedData = data.toSortedMap(String.CASE_INSENSITIVE_ORDER)
 
         val xmlString = convertToXml(sortedData)
         file.writeText(xmlString)
@@ -30,21 +31,21 @@ class DataLayer(private val context: Context) {
         return sortedData
     }
 
-    fun saveStore(data: List<DataEntry>): List<DataEntry> {
+    fun saveStore(data: Map<String, DataEntry>): Map<String, DataEntry> {
         return createStore(data)
     }
 
-    fun loadStore(): List<DataEntry> {
+    fun loadStore(): Map<String, DataEntry> {
         val files = filesDir.listFiles { _, name -> name.startsWith("info") && name.endsWith(".xml") }
         if (files.isNullOrEmpty()) {
-            return mutableListOf()
+            return mutableMapOf()
         }
 
         val latestFile = files.maxByOrNull { it.lastModified() }
-        val loadedData = latestFile?.let { parseXml(it.readText()) } ?: mutableListOf()
+        val loadedData = latestFile?.let { parseXml(it.readText()) } ?: mutableMapOf()
         
-        // Return list sorted by name field (case-insensitive)
-        return loadedData.sortedBy { it.name.lowercase(Locale.getDefault()) }
+        // Return sorted map
+        return loadedData.toSortedMap(String.CASE_INSENSITIVE_ORDER)
     }
 
     fun deleteStore() {
@@ -56,10 +57,10 @@ class DataLayer(private val context: Context) {
         return !files.isNullOrEmpty()
     }
 
-    private fun convertToXml(data: List<DataEntry>): String {
+    private fun convertToXml(data: Map<String, DataEntry>): String {
         val sb = StringBuilder()
         sb.append("<entries>\n")
-        data.forEach { entry ->
+        data.values.forEach { entry ->
             sb.append("  <entry name=\"${escapeXml(entry.name)}\" notes=\"${escapeXml(entry.notes)}\" password=\"${escapeXml(entry.password)}\" creation=\"${entry.creationDateTime.time}\" modified=\"${entry.lastModifiedDateTime.time}\" version=\"${entry.version}\">\n")
             entry.detailFields.forEach { field ->
                 sb.append("    <field name=\"${escapeXml(field.name)}\" value=\"${escapeXml(field.value)}\" />\n")
@@ -70,8 +71,8 @@ class DataLayer(private val context: Context) {
         return sb.toString()
     }
 
-    private fun parseXml(xml: String): List<DataEntry> {
-        val entries = mutableListOf<DataEntry>()
+    private fun parseXml(xml: String): Map<String, DataEntry> {
+        val entries = mutableMapOf<String, DataEntry>()
         val entryRegex = "<entry name=\"(.*?)\" notes=\"(.*?)\" password=\"(.*?)\" creation=\"(.*?)\" modified=\"(.*?)\" version=\"(.*?)\">(.*?)</entry>".toRegex(RegexOption.DOT_MATCHES_ALL)
         val fieldRegex = "<field name=\"(.*?)\" value=\"(.*?)\" />".toRegex()
 
@@ -87,9 +88,13 @@ class DataLayer(private val context: Context) {
             )
             fieldRegex.findAll(fieldsXml).forEach { fieldMatch ->
                 val (fName, fValue) = fieldMatch.destructured
-                entry.detailFields.add(DataField(unescapeXml(fName), unescapeXml(fValue)))
+                val field = DataField(unescapeXml(fName), unescapeXml(fValue))
+                // Ensure field uniqueness during load as well
+                if (!entry.detailFields.any { it.name.equals(field.name, ignoreCase = true) }) {
+                    entry.detailFields.add(field)
+                }
             }
-            entries.add(entry)
+            entries[entry.name.lowercase(Locale.getDefault())] = entry
         }
         return entries
     }

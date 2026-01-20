@@ -39,7 +39,7 @@ cite {
     display:block;
 }
 
-.tblActivity .tblClassCode {
+table, .tblActivity, .tblClassCode {
     padding: 15px;
     border-radius: 20px;
     border-style: solid;

@@ -18,4 +18,11 @@ data class DataEntry(
     fun isNameMatch(otherName: String): Boolean {
         return name.equals(otherName, ignoreCase = true)
     }
+
+    fun addDetailField(field: DataField) {
+        if (detailFields.any { it.name.equals(field.name, ignoreCase = true) }) {
+            throw IllegalArgumentException("Field name '${field.name}' must be unique within an entry.")
+        }
+        detailFields.add(field)
+    }
 }

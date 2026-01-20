@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>blog: goodViberations app, built using AI Agent(s)</title>
-    <link rel="stylesheet" href="img/styles.css?v=5">
+    <link rel="stylesheet" href="img/styles.css?v=7">
 </head>
 <body>
 <a href="ReadMe.html"><- ReadMe.html</a>
@@ -63,7 +63,23 @@
     </cite>
 </p>
 <p>
-    The methods in the DataLayer have been updated to take a map instead of a list. This ensures that the name used for an entry is unique.
+    The methods in the DataLayer have been updated to take a map instead of a list. This ensures that 
+    the name used for an entry is unique. The following prompt is issued to generate the updated code:
+    <br/><br/>
+    <cite>I have updated  @DataLayer.html and  @DataLayerUnitTests.html </cite>
+    <br/><br/>
+    Attempting to run the unit tests, gives the error <i>Requires newer sdk version #36 (current version is #34)</i>.
+    This is because Gemini has changed the line in DataLayerUnitTests to <i>@Config(sdk = [36])</i>. The line
+    is manually set to be <i>@Config(sdk = [36])</i>. Some way of telling Gemini to leave the sdk version alone
+    needs to be found. The following prompt is issued to inform Gemini of the changes I made:
+    <br/><br/>
+    <cite>
+        I have updated  @build.gradle.kts to use<br/>
+        org.robolectric:robolectric:4.16.<br/>
+        This means that  @DataLayerUnitTests.kt can now use Android SDK 36
+    </cite>
+    <br/><br/>
+    The unit tests now pass.
 </p>
 <h1>7 Jan 2026: git tag v6.0</h1>
     <table>
@@ -275,130 +291,12 @@
                     // You can add logic here to update the view in the preview if needed.
                     // For example, finding a button and setting its text.
                 }
-            )
-        }
-    </cite></pre>
-
-    I did it manually. and repeated the process for each class in the com.j3t.dataentryapp.ui
-    package. This involved pasting the method, changing its name and updating the call to
-    android.view.View.inflate() to reflect the layout that should be previewed.
-</p>
-<p>
-    The code compiles, and is previewed in the Android Studio IDE. The code generated has generated
-    member variables for the widgets. All looks good, so the tag v3.0 can be pusehd to GitHub.
-</p>
-<p>
-</p>
-<h1>16 Dec 2025: git tag v3.0</h1>
-<h3>Code refactoring to move activity classes</h3>
-<p>
-    As mentioned in tag v2.0, all the classes are in com.j3t.dataentryapp. The classes should be moved to
-    com.j3t.dataentryapp.ui.activities.
-</p>
-<p>
-    The first prompt given to the agent was:<br/><br/>
-    <cite>can you move all the activity classes to the package
-    com.j3t.dataentryapp.ui.activities</cite><br/><br/>
-    The agent duly refactored the code and manifest to the new package structure without moving the files.
-</p>
-<p>
-    The next prompt was:<br/><br/>
-    <cite>you also need to move the activity files to the ui folder</cite><br/><br/>
-    The agent duly moved the activity files to the correct folder.
-</p>
-<p>
-    The <a href="UIActivities.html">UIActivities.html</a> file has been updated to reflect the new package structure.
-    It is hoped that by doing so, a fresh code generation request will place the files in the correct package and folder.
-    This has not been tried, as the code is already there at present.
-</p>
-<p>
-    The project has been compiled (build menu -> assemble app run configuration). The code compiled without a hitch.
-
-    Once built, each generated  UI activity is opened, a preview is displayed, which is very helpful:
-    it is possible to see what the initial UI looks like, and it is also possible to see if each activity
-    has the widgets (buttons, text fields, lists...) that it should have. Everything looks good. Below is a screenshot of
-    Android Studio's preview:
-</p>
-<p>
-    <table class="centeredStyle" style="width:80%" >
-        <tr>
-            <td>
-                <img src="img/v3_0_review_generated_UI_code.png" alt="v3_0_review_generated_UI_code.png" width="100%"/>
-            </td>
-        </tr>
-        <tr>
-            <td style="vertical-align: bottom">
-                <div style="text-align:center">Preview of generated UI code.</div>
-            </td>
-        </tr>
-    </table>
-</p>
-<h3>Improve the documentation styles</h3>
-<p>A stylesheet (doc/img/styles.css) has been added to the project. This file defines the default font, page border,
-    colours and a few other styles to make the documentation more attractive to me. Each HTML file has been updated to
-    link to the stylesheet.
-</p>
-<p>
-    GitHub displays HTML files in the raw format. The project's readme file on GitHub, which must be in Markdown, has a hyperlink to my
-    website (<a href="https://www.j3ltd.com">www.j3ltd.com</a>), where the documentation can be viewed using a standard web browser.
-</p>
-
-<h1>15 Dec 2025: git tag v2.0</h1>
-<p>
-    I am now working on <strong>tag v2.0</strong>, adding the ui specification (<a href="UIActivities.html">UIActivities.html</a>),
-    and a start for the functionality specification (<a href="Functionality.html">Functionality.html</a>).
-    It is expected that the specs will be updated over the course of this project. Each addition to this blog
-    should be accompanied by a git tag, in this way it is possible to get a snapshot of the project that
-    matches the blog entry.
-</p>
-<p>
-    All the screens (activities) of the app are now described in <a href="UIActivities.html">UIActivities.html</a>.
-</p>
-<p>
-    The data layer has been moved to <a href="DataLayer.html">DataLayer.html</a>, a brief description of the
-    data structure (list of entries) has been started on.
-</p>
-<p>
-    The functionality has not really been started on, it has a placeholder as described in <a href="Functionality.html">Functionality.html</a>.
-</p>
-<p>
-    At this point it is possible to run the agent on the specification files. The expected output is
-    a set of class files for the UI and data layer. Once generated these can be reviewed to see what
-    Gemini has created. This gives me the opportunity to get acquainted with using the IDE to preview
-    UI classes and to learn a bit of Kotlin, from a consumer's viewpoint.
-</p>
-<p>
-    The following prompt is given, it was suggested by the IDE's smart code suggestion:<br/><br/>
-    <cite>can you generate the code for the ui specification?</cite>
-</p>
-<p>
-    <table class="centeredStyle" style="width:80%" >
-        <tr>
-            <td>
-                <img src="img/v2_0_ui_spec_generated_code.png" alt="v2_0_ui_spec_generated_code.png"/>
-            </td>
-            <td style="vertical-align: top">
-                <p>
-                    It looks like it generated the classes I hoped for, they now need to be reviewed: I hope to be able to
-                    preview them in the IDE.
-                </p>
-                <p>
-                    One class and class file was generated per activity. It may be worth specifying a package to put these
-                    classes in, at present all the classes are in com.j3t.dataentryapp. It would be better in
-                    com.j3t.dataentryapp.ui.activities
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2" style="vertical-align: bottom">
-                <div style="text-align:center">Conversation to generate ui classes using the agent.</div>
-            </td>
-        </tr>
-    </table>
-</p>
-<h1>In the beginning (git tags v1.0 and v2.0)</h1>
-<p>
-    I've created a new android app using Android Studio, and pushed it to git with the
-    <strong>tag v1.0</strong>
+</cite></pre>
+    But it didn't do it. I had to manually add this to each UI activity. Then I found that the XML layouts
+    did not have the widget IDs specified. I asked Gemini to fix this:<br/><br/>
+    <cite>all the activities layout files should have the android:id specified for each widget</cite>
+    <br/><br/>
+    This worked well.
 </p>
 </body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CreateNewStore functionality</title>
+    <link rel="stylesheet" href="../img/styles.css?v=7">
+</head>
+<body>
+<a href="../ReadMe.html"><- ReadMe.html</a>&nbsp;&nbsp;||&nbsp;&nbsp;<a href="../Functionality.html"><- ../Functionality.html</a>
+
+<h1>CreateNewStoreActivity UI specification</h1>
+<strong>Class name:</strong> CreateNewStoreActivity<br/>
+<strong>Title:</strong> Create Store<br/>
+<table  class="tblActivity">
+    <thead>
+    <tr>
+        <th>Widget label</th><th>Widget type</th><th>Widget name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><td>password</td><td>text field</td><td>txtPassword</td></tr>
+    <tr><td>memorable date</td><td>text field</td><td>txtMemorableDate</td></tr>
+    <tr><td>confirm password</td><td>text field</td><td>txtConfirmPassword</td></tr>
+    <tr><td>confirm memorable date</td><td>text field</td><td>txtConfirmMemorableDate</td></tr>
+    <tr><td>create store</td><td>button</td><td>btnCreateStore</td></tr>
+    <tr><td>back</td><td>button</td><td>btnBack</td></tr>
+    <tr><td>help</td><td>button</td><td>btnHelp</td></tr>
+    </tbody>
+</table>
+</p>
+<h1>CreateNewStoreActivity functionality</h1>
+<p>
+    When the button btnBack is pressed, the activity is popped of the activity stack.
+</p>
+<p>
+    When the btnHelp button is pressed, the activity navigates to the HelpActivity, requesting that
+    the asset file CreateNewStoreActivityHelp.html be displayed.
+</p>
+<p>
+    When the btnCreateStore is pressed, the following is carried out:
+    <ol>
+        <li>The <b>txtPassword </b>field is checked to see if it has at least 8 characters, if not
+            an error alert is displayed with the message "A password must have at least 8 characters".
+        </li>
+        <li>
+            The <b>txtMemorableDate</b> field is checked that it is not empty. If it is empty an error dialog is
+            displayed with the message "Please supply a date that is memorable to you."
+        </li>
+        <li>
+            <b>txtPassword</b> and <b>txtConfirmPassword</b> are compared, if they do not match an error dialog
+            is displayed with the message "The passwords do not match, please ensure they are the same".
+        </li>
+        <li>
+            <b>txtMemorableDate</b> and <b>txtConfirmMemorableDate</b> are  compared, if they do not match an error dialog
+            is displayed with the message "The memorable dates do not match, please ensure they are the same".
+        </li>
+        <li>
+            If errors have been displayed, the processing stops, allowing the user to decide what
+            to do next: correct errors, or tap help or tap back.<br/><br/>
+        </li>
+        <li>
+            If no error has been reported, the steps outlined below are carried out.
+        </li>
+        <li>
+            creates a DataField instance variable called field1, with the following values:<br/>
+            &nbsp;&nbsp;name = "A field name",<br/>
+            &nbsp;&nbsp;value = "A field value"
+        </li>
+        <li>
+            another DataField instance variable called field12 with the following values:<br/>
+            &nbsp;&nbsp;name = "A second field",<br/>
+            &nbsp;&nbsp;value = "A value for the second field"
+        </li>
+        <li>
+            creates a DataEntry instance variable called dataEntry1, with the following values:<br/>
+            &nbsp;&nbsp;name = "A sample",<br/>
+            &nbsp;&nbsp;notes = "These are some sample\nnotes for the sample",<br/>
+            &nbsp;&nbsp;password = "apassword"
+        </li>
+        <li>
+            field1 and field2 are added to the dataEntry1 instance variable detailFields.
+        </li>
+        <li><b>createStore</b> is called, in the <b>DataLayer</b> class, with the map of dataEntry1</li>
+        <li>
+            This activity is popped off the activity stack, and then the app navigates to
+            <b>ListEntriesActivity</b>.
+        </li>
+    </ol>
+</p>
+
+
+</body>

@@ -4,10 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.viewinterop.AndroidView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.j3t.dataentryapp.R
+import com.j3t.dataentryapp.datalayer.DataLayer
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,48 +15,71 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnChangeStorePassword: Button
     private lateinit var btnClearExistingStore: Button
     private lateinit var btnImportExportStore: Button
-    private lateinit var btnAbout: Button
-    private lateinit var btnHelp: Button
+    private lateinit var bottomNavigation: BottomNavigationView
+    private lateinit var dataLayer: DataLayer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         title = "EncryptMe"
+        dataLayer = DataLayer(this)
 
         btnOpenStore = findViewById(R.id.btnOpenStore)
         btnCreateNewStore = findViewById(R.id.btnCreateNewStore)
         btnChangeStorePassword = findViewById(R.id.btnChangeStorePassword)
         btnClearExistingStore = findViewById(R.id.btnClearExistingStore)
         btnImportExportStore = findViewById(R.id.btnImportExportStore)
-        btnAbout = findViewById(R.id.btnAbout)
-        btnHelp = findViewById(R.id.btnHelp)
+        bottomNavigation = findViewById(R.id.bottomNavigation)
 
-        btnAbout.setOnClickListener {
-            val intent = Intent(this, AboutActivity::class.java)
-            startActivity(intent)
+        bottomNavigation.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.btnAbout -> {
+                    startActivity(Intent(this, AboutActivity::class.java))
+                    true
+                }
+                R.id.btnHelp -> {
+                    val intent = Intent(this, HelpActivity::class.java)
+                    intent.putExtra("assetFileName", "MainActivityHelp.html")
+                    startActivity(intent)
+                    true
+                }
+                else -> false
+            }
         }
 
-        btnHelp.setOnClickListener {
-            val intent = Intent(this, HelpActivity::class.java)
-            intent.putExtra("assetFileName", "MainActivityHelp.html")
-            startActivity(intent)
+        btnOpenStore.setOnClickListener {
+            startActivity(Intent(this, OpenStoreActivity::class.java))
+        }
+
+        btnCreateNewStore.setOnClickListener {
+            startActivity(Intent(this, CreateNewStoreActivity::class.java))
+        }
+
+        btnChangeStorePassword.setOnClickListener {
+            startActivity(Intent(this, ChangeStorePasswordActivity::class.java))
+        }
+
+        btnClearExistingStore.setOnClickListener {
+            // Logic for ClearExistingStoreActivity navigation (once implemented)
+        }
+
+        btnImportExportStore.setOnClickListener {
+            startActivity(Intent(this, ImportExportStoreActivity::class.java))
         }
     }
 
-    @Preview(showBackground = true, name = "Main Activity Preview")
-    @Composable
-    fun MainActivityPreview() {
-        // This Composable wraps the XML layout for previewing.
-        AndroidView(
-            factory = { context ->
-                // Inflate the XML layout using the activity's context.
-                android.view.View.inflate(context, R.layout.activity_main, null)
-            },
-            update = { view ->
-                // You can add logic here to update the view in the preview if needed.
-                // For example, finding a button and setting its text.
-            }
-        )
+    override fun onResume() {
+        super.onResume()
+        updateButtonStates()
+    }
+
+    private fun updateButtonStates() {
+        val storeExists = dataLayer.storeExists()
+        btnOpenStore.isEnabled = storeExists
+        btnChangeStorePassword.isEnabled = storeExists
+        btnClearExistingStore.isEnabled = storeExists
+        btnImportExportStore.isEnabled = storeExists
+        btnCreateNewStore.isEnabled = !storeExists
     }
 }

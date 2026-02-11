@@ -18,8 +18,29 @@
     https://github.com/jplatipus/goodViberations</a>
 </p>
 <h1>29 Jan 2026: git tag v8.0</h1>
-    The functionality specification  for CreateNewStore is written in the file
-<a href="functionality/CreateNewStoreFunctionality.html">CreateNewStoreFunctionality.html</a>.
+    The functionality specification  for CreateNewStoreActivity is written in the file
+<a href="functionality/CreateNewStoreFunctionality.html">CreateNewStoreFunctionality.html</a>.<br/>
+The functionality specification  for ListEntriesActivity is written in the file
+<a href="functionality/ListEntriesActivityFunctionality.html">ListEntriesActivityFunctionality.html</a>.<br/>
+Some changes to the DataLayer functionality were also made. The following prompt was issued to Gemini:<br/><br/>
+<cite>I have updated  @UIActivities.html   @Functionality.html   @DataLayer.html 
+     @MainActivityFunctionality.html   @ListEntriesActivityFunctionality.html 
+     @CreateNewStoreFunctionality.html specifications, can you update the code please</cite><br/><br/>
+The agent starts the process, then, before completion, I get the message:<br/><br/>
+<cite><strong>You have exceeded the limit of prompt requests per hour. Please try again later.</strong></cite><br/><br/>
+The agent has left the codebase in an incomplete state that does not compile.
+It is hoped that an hour later, asking the agent to complete the task will be successful.<br/><br/>
+An hour later the following prompt was issued:<br/>
+<cite>can you finish the task please</cite>
+<br/><br/>
+The agent finished the task, the code compiles and runs. The navigation bar at the bottom of the screen
+is present in MainActivity and CreateNewStoreActivity, but not in ListEntriesActivity.
+<br/><br/>
+The agent window displays the message again:
+<cite>You have exceeded the limit of prompt requests per hour. Please try again later.</cite>
+<br/><br/>
+This behaviour is becoming worrisome, just one prompt is too much for Gemini.
+
 <h1>17 Jan 2026: git tag v7.0</h1>
 <p>
     The data layer functionality can't be tested easily without having unit tests: the app must be run, and the

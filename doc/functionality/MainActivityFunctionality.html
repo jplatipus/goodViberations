@@ -25,18 +25,58 @@
     <tr><td>change store password</td><td>button</td><td>btnChangeStorePassword</td></tr>
     <tr><td>clear existing store</td><td>button</td><td>btnClearExistingStore</td></tr>
     <tr><td>import/export store</td><td>button</td><td>btnImportExportStore</td></tr>
-    <tr><td>about</td><td>button</td><td>btnAbout</td></tr>
-    <tr><td>help</td><td>button</td><td>btnHelp</td></tr>
+    </tbody>
+</table>
+</p>
+<p>
+The activity has a navigation bar at the bottom of the screen, with the following navigation bar items:
+<table class="tblActivity">
+    <thead>
+    <tr>
+        <td>icon position</td><td>icon name</td><td>item variable name</td>
+    </tr>
+    </thead>
+    <tbody>
+        <tr><td>far left</td><td>about</td><td>btnAbout</td></tr>
+        <tr><td>far right</td><td>help</td><td>btnHelp</td></tr>
     </tbody>
 </table>
 </p>
 <h1>MainActivity functionality</h1>
+<p>
+    When the activity is displayed, the following is carried out:
+    <ul>
+        <li>The method storeExists is called, the returned value is saved in the variable storeExists</li>
+        <li>If storeExists is true, the button btnOpenStore is enabled, otherwise the button is disabled</li>
+        <li>If storeExists is true, the button btnChangeStorePassword is enabled, otherwise the button is disabled</li>
+        <li>If storeExists is true, the button btnClearExistingStore is enabled, otherwise the button is disabled</li>
+        <li>If storeExists is true, the button btnImportExportStore is enabled, otherwise the button is disabled</li>
+        <li>If storeExists is true, the button btnCreateNewStore is disabled, otherwise the button is enabled</li>
+        <li>The button btnAbout is enabled</li>
+        <li>The button btnHelp is enabled</li>
+    </ul>
+</p>
 <p>
     When the about button (btnAbout) is tapped, the activity navigates to the AboutActivity
 </p>
 <p>
     When the help button (btnHelp) is tapped, the activity navigates to the HelpActivity, requesting that
     the asset file MainActivityHelp.html be displayed.
+</p>
+<p>
+    When the btnOpenStore button is tapped, the activity navigates to the OpenStoreActivity.
+</p>
+<p>
+    When the btnCreateNewStore button is tapped, the activity navigates to the CreateNewStoreActivity.
+</p>
+<p>
+    When the btnChangeStorePassword button is tapped, the activity navigates to the ChangeStorePasswordActivity.
+</p>
+<p>
+    When the btnClearExistingStore button is tapped, the activity navigates to the ClearExistingStoreActivity.
+</p>
+<p>
+    When the btnImportExportStore button is tapped, the activity navigates to the ImportExportStoreActivity.
 </p>
 </body>
 </html>

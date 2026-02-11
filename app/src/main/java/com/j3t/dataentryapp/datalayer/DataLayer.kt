@@ -21,10 +21,7 @@ class DataLayer(private val context: Context) {
         val fileName = "info$timeStamp$randomInt.xml"
         val file = File(filesDir, fileName)
 
-        // Sort data by name (case-insensitive) as specified. 
-        // TreeMap handles sorting by key automatically.
         val sortedData = data.toSortedMap(String.CASE_INSENSITIVE_ORDER)
-
         val xmlString = convertToXml(sortedData)
         file.writeText(xmlString)
 
@@ -44,8 +41,12 @@ class DataLayer(private val context: Context) {
         val latestFile = files.maxByOrNull { it.lastModified() }
         val loadedData = latestFile?.let { parseXml(it.readText()) } ?: mutableMapOf()
         
-        // Return sorted map
         return loadedData.toSortedMap(String.CASE_INSENSITIVE_ORDER)
+    }
+
+    fun listEntryNames(): List<String> {
+        val store = loadStore()
+        return store.values.map { it.name }.sortedWith(String.CASE_INSENSITIVE_ORDER)
     }
 
     fun deleteStore() {
@@ -89,7 +90,6 @@ class DataLayer(private val context: Context) {
             fieldRegex.findAll(fieldsXml).forEach { fieldMatch ->
                 val (fName, fValue) = fieldMatch.destructured
                 val field = DataField(unescapeXml(fName), unescapeXml(fValue))
-                // Ensure field uniqueness during load as well
                 if (!entry.detailFields.any { it.name.equals(field.name, ignoreCase = true) }) {
                     entry.detailFields.add(field)
                 }

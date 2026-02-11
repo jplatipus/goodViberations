@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ListEntriesActivity UI specification</title>
+    <link rel="stylesheet" href="../img/styles.css?v=7">
+</head>
+<body>
+<a href="../ReadMe.html"><- ReadMe.html</a>&nbsp;&nbsp;||&nbsp;&nbsp;<a href="../Functionality.html"><- ../Functionality.html</a>
+<h1>ListEntriesActivity UI Specification</h1>
+<p>
+    <strong>Class name:</strong> ListEntriesActivity<br/>
+    <strong>Title:</strong>List Entries<br/>
+    <strong>Level:</strong> level three activity, displayed when there is an existing store<br/>
+    <table  class="tblActivity">
+        <thead>
+        <tr>
+            <th>Widget label</th><th>Widget type</th><th>Widget name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr><td>entries</td><td>vertically scrolling list</td><td>vlsEntryNames</td></tr>
+        <tr><td>new entry</td><td>button</td><td>btnNewEntry</td></tr>
+        <tr><td>search entryNames</td><td>button</td><td>btnSearchEntryNames</td></tr>
+        <tr><td>back</td><td>button</td><td>btnBack</td></tr>
+        <tr><td>help</td><td>button</td><td>btnHelp</td></tr>
+        </tbody>
+    </table>
+</p>
+<p>
+    The activity has a navigation bar at the bottom of the screen, with the following navigation bar items:
+<table class="tblActivity">
+    <thead>
+    <tr>
+        <td>icon position</td><td>icon name</td><td>item variable name</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><td>far left</td><td>exit</td><td>btnBack</td></tr>
+    <tr><td>far right</td><td>help</td><td>btnHelp</td></tr>
+    </tbody>
+</table>
+</p>
+<h1>ListEntriesActivity functionality</h1>
+<p>
+    When the activity is displayed, the following is carried out:
+    <ul>
+        <li>The method listEntryNames is called, the returned value is saved in the variable entryNames</li>
+        <li>The vlsEntries widget is populated with the entryNames</li>
+    </ul>
+</p>
+<p>
+    When the button btnBack is pressed, the activity is popped of the activity stack.
+</p>
+<p>
+    When the btnHelp button is pressed, the activity navigates to the HelpActivity, requesting that
+    the asset file CreateNewStoreActivityHelp.html be displayed.
+</p>
+</body>

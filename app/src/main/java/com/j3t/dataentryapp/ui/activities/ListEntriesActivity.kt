@@ -3,57 +3,64 @@ package com.j3t.dataentryapp.ui.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.viewinterop.AndroidView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.j3t.dataentryapp.R
+import com.j3t.dataentryapp.datalayer.DataLayer
 
 class ListEntriesActivity : AppCompatActivity() {
 
     private lateinit var vlsEntryNames: ListView
     private lateinit var btnNewEntry: Button
     private lateinit var btnSearchEntryNames: Button
-    private lateinit var btnBack: Button
-    private lateinit var btnHelp: Button
+    private lateinit var bottomNavigation: BottomNavigationView
+    private lateinit var dataLayer: DataLayer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_entries)
 
         title = "List Entries"
+        dataLayer = DataLayer(this)
 
         vlsEntryNames = findViewById(R.id.vlsEntryNames)
         btnNewEntry = findViewById(R.id.btnNewEntry)
         btnSearchEntryNames = findViewById(R.id.btnSearchEntryNames)
-        btnBack = findViewById(R.id.btnBack)
-        btnHelp = findViewById(R.id.btnHelp)
+        bottomNavigation = findViewById(R.id.bottomNavigation)
 
-        btnBack.setOnClickListener {
-            finish()
+        populateEntryList()
+
+        bottomNavigation.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.btnBack -> {
+                    finish()
+                    true
+                }
+                R.id.btnHelp -> {
+                    val intent = Intent(this, HelpActivity::class.java)
+                    // Spec says CreateNewStoreActivityHelp.html for this activity as well
+                    intent.putExtra("assetFileName", "CreateNewStoreActivityHelp.html")
+                    startActivity(intent)
+                    true
+                }
+                else -> false
+            }
         }
 
-        btnHelp.setOnClickListener {
-            val intent = Intent(this, HelpActivity::class.java)
-            intent.putExtra("assetFileName", "ListEntriesActivityHelp.html")
-            startActivity(intent)
+        btnNewEntry.setOnClickListener {
+            startActivity(Intent(this, AddEntryActivity::class.java))
+        }
+
+        btnSearchEntryNames.setOnClickListener {
+            startActivity(Intent(this, SearchEntriesActivity::class.java))
         }
     }
 
-    @Preview(showBackground = true, name = "ListEntries Activity Preview")
-    @Composable
-    fun ListEntriesActivityPreview() {
-        // This Composable wraps the XML layout for previewing.
-        AndroidView(
-            factory = { context ->
-                // Inflate the XML layout using the activity's context.
-                android.view.View.inflate(context, R.layout.activity_list_entries, null)
-            },
-            update = { view ->
-                // You can add logic here to update the view in the preview if needed.
-                // For example, finding a button and setting its text.
-            }
-        )
+    private fun populateEntryList() {
+        val entryNames = dataLayer.listEntryNames()
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, entryNames)
+        vlsEntryNames.adapter = adapter
     }
 }

@@ -17,7 +17,7 @@
     The project sources can be found on GitHub: <a href="https://github.com/jplatipus/goodViberations">
     https://github.com/jplatipus/goodViberations</a>
 </p>
-<h1>29 Jan 2026: git tag v8.0</h1>
+<h1>12 Feb 2026: git tag v8.0</h1>
     The functionality specification  for CreateNewStoreActivity is written in the file
 <a href="functionality/CreateNewStoreFunctionality.html">CreateNewStoreFunctionality.html</a>.<br/>
 The functionality specification  for ListEntriesActivity is written in the file
@@ -30,17 +30,48 @@ The agent starts the process, then, before completion, I get the message:<br/><b
 <cite><strong>You have exceeded the limit of prompt requests per hour. Please try again later.</strong></cite><br/><br/>
 The agent has left the codebase in an incomplete state that does not compile.
 It is hoped that an hour later, asking the agent to complete the task will be successful.<br/><br/>
-An hour later the following prompt was issued:<br/>
+An hour later the following prompt was issued:<br/><br/>
 <cite>can you finish the task please</cite>
 <br/><br/>
 The agent finished the task, the code compiles and runs. The navigation bar at the bottom of the screen
 is present in MainActivity and CreateNewStoreActivity, but not in ListEntriesActivity.
 <br/><br/>
-The agent window displays the message again:
+The agent window displays the message again:<br/><br/>
 <cite>You have exceeded the limit of prompt requests per hour. Please try again later.</cite>
 <br/><br/>
-This behaviour is becoming worrisome, just one prompt is too much for Gemini.
+This behaviour is becoming worrisome, just one prompt is too much for Gemini. It is possible that Gemini
+counts my leaving the laptop with Android Studio open as making use of Gemini. The next day, Gemini is
+asked to complete the task with the following prompt:<br/><br/>
+<cite>It appears that  @ListEntriesActivityFunctionality.html has not been implemented,
+    could you please do this?</cite><br/><br/>
 
+The app opens, but a store already exists, so it is not possible to create a new store. The existing
+store has the file name <i>/data/user/0/com.j3t.dataentryapp/files/info1102202617382842.xml</i><br/><br/>
+The file can be found by using the AndroidStudio->View->ToolWindows->DeviceExporer, then navigating to the
+/data/data/com.j3t.dataentryapp/files/info1102202617382842.xml .<br/><br/>
+<table style="vertical-align: top">
+    <tr>
+        <td style="vertical-align: top">
+
+            Out of interest, the file is inspected:<br/>
+            <blockquote>
+                &lt;entries><br/>
+                    &nbsp;&nbsp;&lt;entry name="A sample" notes="These are some sample<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;notes for the sample" password="apassword" creation="1770831508026" modified="1770831508026" version="1"><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;field name="A field name" value="A field value" /><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;field name="A second field" value="A value for the second field" /><br/>
+                &nbsp;&nbsp;&lt;/entry><br/>
+                &lt;/entries><br/>
+            </blockquote>
+            The file is deleted, the app is launched again. This time create new store is enabled, a new store is created.
+            As hoped, the app lists the new store contents, with one sample entry.
+        </td><td>
+            <img src="img/TagV80.png"/>
+    </td>
+    </tr>
+</table>
+<br/><br/>
+This is a good place to commit the project to GitHub
 <h1>17 Jan 2026: git tag v7.0</h1>
 <p>
     The data layer functionality can't be tested easily without having unit tests: the app must be run, and the

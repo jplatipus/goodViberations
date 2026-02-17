@@ -39,12 +39,22 @@ cite {
     display:block;
 }
 
-table, .tblActivity, .tblClassCode {
+.tblActivity, .tblClassCode {
     padding: 15px;
     border-radius: 20px;
     border-style: solid;
     border-color: GhostWhite;
     background-color: LightGray;
+    border-width: 3px;
+    text-align:left;
+    border-collapse: collapse;
+}
+
+table {
+    padding: 15px;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: white;
     border-width: 3px;
     text-align:left;
     border-collapse: collapse;

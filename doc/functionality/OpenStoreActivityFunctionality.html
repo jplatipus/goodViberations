@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OpenStore functionality</title>
+    <link rel="stylesheet" href="../img/styles.css?v=8">
+</head>
+<body>
+<a href="../ReadMe.html"><- ReadMe.html</a>&nbsp;&nbsp;||&nbsp;&nbsp;<a href="../Functionality.html"><- ../Functionality.html</a>
+<h1>OpenStoreActivity UI specification</h1>
+<strong>Class name:</strong> OpenStoreActivity<br/>
+<strong>Title:</strong> Open Store<br/>
+<p>
+<table  class="tblActivity">
+    <thead>
+    <tr>
+        <th>Widget label</th><th>Widget type</th><th>Widget name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><td>password</td><td>text field</td><td>txtPassword</td></tr>
+    <tr><td>memorable date</td><td>text field</td><td>txtMemorableDate</td></tr>
+    <tr><td>open store</td><td>button</td><td>btnOpenStore</td></tr>
+    </tbody>
+</table>
+</p>
+<p>
+    The activity has a navigation bar at the bottom of the screen, with the following navigation bar items:
+<table class="tblActivity">
+    <thead>
+    <tr>
+        <td>icon position</td><td>icon name</td><td>item variable name</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><td>far left</td><td>exit</td><td>btnBack</td></tr>
+    <tr><td>far right</td><td>help</td><td>btnHelp</td></tr>
+    </tbody>
+</table>
+</p>
+<h1>OpenStoreActivity functionality</h1>
+<p>
+    When the button btnBack is pressed, the activity is popped of the activity stack.
+</p>
+<p>
+    When the btnHelp button is pressed, the activity navigates to the HelpActivity, requesting that
+    the asset file OpenStoreActivityHelp.html be displayed.
+</p>
+<p>
+    When the btnOpenStore is pressed, the following is carried out:<br/>
+    This activity is popped off the activity stack, and then the app navigates to
+    <a href="ListEntriesActivityFunctionality.html"><b>ListEntriesActivity</b></a>.
+</p>
+</body>
+</html>

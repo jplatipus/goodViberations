@@ -12,7 +12,6 @@ import com.j3t.dataentryapp.R
 class HelpActivity : AppCompatActivity() {
 
     private lateinit var htmlText: WebView
-    private lateinit var btnOk: Button
     private lateinit var btnBack: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,14 +21,14 @@ class HelpActivity : AppCompatActivity() {
         title = "Help"
 
         htmlText = findViewById(R.id.htmlText)
-        btnOk = findViewById(R.id.btnOk)
+        btnBack = findViewById(R.id.btnBack)
 
         val assetFileName = intent.getStringExtra("assetFileName")
         if (assetFileName != null) {
             htmlText.loadUrl("file:///android_asset/$assetFileName")
         }
 
-        btnOk.setOnClickListener {
+        btnBack.setOnClickListener {
             finish()
         }
     }

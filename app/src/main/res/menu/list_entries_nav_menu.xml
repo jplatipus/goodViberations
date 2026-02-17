@@ -5,6 +5,14 @@
         android:icon="@drawable/exit"
         android:title="exit" />
     <item
+        android:id="@+id/btnAddEntry"
+        android:icon="@drawable/add"
+        android:title="add" />
+    <item
+        android:id="@+id/btnSearch"
+        android:icon="@drawable/search"
+        android:title="search" />
+    <item
         android:id="@+id/btnHelp"
         android:icon="@drawable/help"
         android:title="help" />

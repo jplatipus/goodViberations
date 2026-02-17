@@ -8,6 +8,7 @@ import android.widget.EditText
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.viewinterop.AndroidView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.j3t.dataentryapp.R
 
 class OpenStoreActivity : AppCompatActivity() {
@@ -15,8 +16,7 @@ class OpenStoreActivity : AppCompatActivity() {
     private lateinit var txtPassword: EditText
     private lateinit var txtMemorableDate: EditText
     private lateinit var btnOpenStore: Button
-    private lateinit var btnBack: Button
-    private lateinit var btnHelp: Button
+    private lateinit var bottomNavigation: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,17 +27,28 @@ class OpenStoreActivity : AppCompatActivity() {
         txtPassword = findViewById(R.id.txtPassword)
         txtMemorableDate = findViewById(R.id.txtMemorableDate)
         btnOpenStore = findViewById(R.id.btnOpenStore)
-        btnBack = findViewById(R.id.btnBack)
-        btnHelp = findViewById(R.id.btnHelp)
+        bottomNavigation = findViewById(R.id.bottomNavigation)
 
-        btnBack.setOnClickListener {
-            finish()
+        bottomNavigation.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.btnBack -> {
+                    finish()
+                    true
+                }
+                R.id.btnHelp -> {
+                    val intent = Intent(this, HelpActivity::class.java)
+                    intent.putExtra("assetFileName", "OpenStoreActivityHelp.html")
+                    startActivity(intent)
+                    true
+                }
+                else -> false
+            }
         }
 
-        btnHelp.setOnClickListener {
-            val intent = Intent(this, HelpActivity::class.java)
-            intent.putExtra("assetFileName", "OpenStoreActivityHelp.html")
-            startActivity(intent)
+        btnOpenStore.setOnClickListener {
+            // Currently just navigates as per spec
+            finish()
+            startActivity(Intent(this, ListEntriesActivity::class.java))
         }
     }
 

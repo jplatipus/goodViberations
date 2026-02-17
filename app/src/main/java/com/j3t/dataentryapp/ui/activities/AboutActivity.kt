@@ -12,7 +12,6 @@ import com.j3t.dataentryapp.R
 class AboutActivity : AppCompatActivity() {
 
     private lateinit var htmlText: WebView
-    private lateinit var btnOk: Button
     private lateinit var btnBack: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,11 +21,11 @@ class AboutActivity : AppCompatActivity() {
         title = "About"
 
         htmlText = findViewById(R.id.htmlText)
-        btnOk = findViewById(R.id.btnOk)
+        btnBack = findViewById(R.id.btnBack)
 
         htmlText.loadUrl("file:///android_asset/About.html")
 
-        btnOk.setOnClickListener {
+        btnBack.setOnClickListener {
             finish()
         }
     }

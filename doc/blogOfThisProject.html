@@ -18,17 +18,35 @@
     https://github.com/jplatipus/goodViberations</a>
 </p>
 <h1>17 Feb 2026: git tag v9.0</h1>
-The functionality for open store is added in <a href="functionality/OpenStoreActivityFunctionality.html">OpenStoreActivityFunctionality.html</a>.<br/>
-Some icons are added to the <a href="functionality/ListEntriesActivityFunctionality.html">list entries activity</a>.<br/><br/>
+The functionality for open store is added in <a href="functionality/OpenStoreActivityFunctionality.html">
+    OpenStoreActivityFunctionality.html</a>.<br/><br/>
+Some icons are added to the <a href="functionality/ListEntriesActivityFunctionality.html">list entries activity</a>.
+<a href="https://fonts.google.com/icons">https://fonts.google.com/icons</a>. gives the option of downloading
+the icons for Android (xml files) or web  (svg vector files). I prefer to download them as svg, they are in the project's doc/img/GoogleIcons folder.
+Downloading svg files makes it easier to view the images, the resources manager in Android Studio is good at importing svg files,
+so this is the route chosen.<br/><br/>
 The following prompt is given to generate the code changes:<br/><br/>
 <cite>Could you update the code please. I have changed  @CreateNewStoreActivityFunctionality.html ,
  @ListEntriesActivityFunctionality.html and added  @OpenStoreActivityFunctionality.html </cite><br/><br/>
 The app is run, but the navigation bar icons displayed do not match what the specification requests. A new prompt is issued:<br/><br/>
 <cite>The navigation bar icons do not match the specs, could you check this please</cite><br/><br/>
 The app is run again, and the exit icon is still the old icon, even though it has been updated with a new drawable, so the
-following prompt is issued:
+following prompt is issued:<br/><br/>
 <cite>I have changed the exit icon drawable, could you update the menus to reflect the new icon please</cite><br/><br/>
 The app is run again, this time the exit icon is the new icon. The open store functionality is as requested.<br/><br/>
+It is interesting to note that no problems were encountered concerning the limit of prompt requests per hour.
+Android Studio has not been used for a couple of days, and the development laptop was switched off. Hence it is likely that
+the previous problems were due to leaving the laptop on for a prolonged period of time, with Android Studio running while I was
+fast asleep.
+<br/><br/>
+The list entries activity has buttons for new entry and search entryNames, this functionality is also 
+present in the navigation bar, so the buttons are removed from the list entries activity. The following
+prompt is issued to Gemini:<br/><br/>
+<cite>I have updated   @ListEntriesActivityFunctionality.html , btnSearchEntryNames and 
+    btnNewEntryhave been removed.</cite>
+<br/><br/>
+The agent updated the <i>activity_list_entries.xml</i> and <i>ListEntriesActivity.kt</i> files. 
+The redundant buttons have been removed, and their actions are now correctly handled by the bottom navigation bar.
 <h1>12 Feb 2026: git tag v8.0</h1>
 <table style="vertical-align: top">
     <tr>
@@ -221,161 +239,6 @@ This is a good place to commit the project to GitHub
 </p>
 <p>
     At present the specification defines a persistence class called <a href="DataLayer.html">DataLayer</a>. Once the specification
-    is completed, work can move on to the main activity button functionalities that have not been
-    addressed so far.
-</p>
-<h1>2 Jan 2026: git tag v5.0</h1>
-<p>
-    I am now working on <strong>tag v5.0</strong>.<br/><br/>
-    There are a lot of activities in this project, quite a few are expected to perform many operations.
-    It has been decided to create one functionality specification html file per activity. The
-    functionality specification files are placed in a folder called functionality. As the project
-    progresses, activity by activity, new functionality files are added. The UI specifications are
-    moved across from <a href="UIActivities.html">UIActivities.html</a> to their new functionality
-    specification file.
-</p>
-<p>
-    The following is to be carried out:
-    <ul>
-        <li>Split up the original <a href= "Functionality.html">Functionality.html</a>. It now lists
-        the activity functionality specification files, in effect a functionality table of
-        contents.</li>
-        <li>create the functionality specifications for:
-            <ul>
-                <li><a href="functionality/AboutActivityFunctionality.html">AboutActivity</a></li>
-                <li><a href="functionality/HelpActivityFunctionality.html">HelpActivity</a></li>
-                <li><a href="functionality/MainActivityFunctionality.html">MainActivity</a></li>
-            </ul>
-        </li>
-    </ul>
-    Once the above new specification files have been created, it should be possible to ask Gemini to
-    update the activity classes with the new functionality.The generated code should be reviewed.
-    It should be possible to compile and
-    run the application. The application should have the appearance that is expected. The application
-    should run as expected.
-    <ul>
-        <li>Navigation to the AboutActivity and HelpActivity should work.</li>
-        <li>Navigation from AboutActivity and HelpActivity back to MainActivity should work.</li>
-    </ul>
-</p>
-<p>
-    I have issued some prompts to Gemini:
-    </p>
-<p>
-    <cite>
-        <blockquote>
-            I have updated specification files:  @UIActivities.html   @Functionality.html 
-             @MainActivityFunctionality.html   @AboutActivityFunctionality.html   @HelpActivityFunctionality.html 
-        </blockquote>
-    </cite>
-</p>
-<p>
-    <cite>
-        <blockquote>
-            I have also updated the classes source code:  @AddEntryActivity.kt   @AboutActivity.kt   @ChangeStorePasswordActivity.kt   @CreateNewStoreActivity.kt   @DeleteEntryActivity.kt   @EditEntryActivity.kt   @HelpActivity.kt 
-             @ImportExportStoreActivity.kt   @ListEntriesActivity.kt   @MainActivity.kt   @OpenStoreActivity.kt 
-        </blockquote>
-    </cite>
-</p>
-<p>
-    <cite>
-        <blockquote>
-            the plan should specify that the asset filename  @MainActivityHelp.html is passed to
-             @HelpActivity.kt by  @MainActivity.kt 
-        </blockquote>
-    </cite>
-
-    Issuing the above prompts in the <strong>Ask tab</strong> of the Gemini chat caused Gemini to
-    say it was making
-    the changes but it did nothing.
-    <br/><br/>
-    Issuing the same prompts again in the <strong>Agent tab</strong> did cause Gemini
-    to make code changes. It is adding more functionality than I expected. It has updated all the activities'
-    help and back buttons too. I like what it did, I was planning to add the help and back button
-    functionality in the specs for the other activities later, Gemini decided to do it now. It did
-    not update AndroidManifest.xml, so I asked the agent a question:
-    <cite>does @AndroidManifest.xml need to list every activity in the app?</cite>
-    The agent duly replied yes to the question and updated the manifest.
-</p>
-<p>
-    The app compiles, it also runs well, the navigation from the MainActivity to the AboutActivity
-    and HelpActivity works. The back button in these activities also works. The UI is not pretty,
-    and needs attention.
-</p>
-<p>
-</p>
-<h1>17 Dec 2025: git tag v4.0</h1>
-<p>
-    I am now working on <strong>tag v4.0</strong>.<br/><br/>
-    The following is to be carried out:
-    <ul>
-        <li>add help file for MainActivity (html asset) to the project.</li>
-        <li>add about file for AboutActivity (html asset) to the project.</li>
-        <li>update MainActivity so that the help button navigates to the HelpActivity,
-            specifying which help file to display.</li>
-        <li>update MainActivity so that the about button navigates to the AboutActivity.</li>
-        <li>add an ok button on the AboutActivity that navigates back to MainActivity.</li>
-        <li>add an ok button on the HelpActivity that navigates back to MainActivity.</li>
-        <li>specify class member variable names for all the UI widgets.</li>
-    </ul>
-    I did not know where html assets should be placed in the project, so I asked the agent:<br/><br/>
-    <cite>where in the project should I put help files which are displayed to the user in the HelpActivity?</cite><br/></br/>
-    The agent responded with the following helpful answer:<br/><br/>
-    <cite>
-        For help files, especially HTML content, the best practice is to place them in the assets directory.
-        In your project, this would be located at /pathToThisProject/goodViberations/app/src/main/assets.
-        If this folder doesn't exist, you should create it.<br/><br/>
-        You can then access these files in your HelpActivity by using the AssetManager.
-    </cite><br/>
-</p>
-<p>
-    <ul>
-        <li>New asset files have been created (About.html and MainActivityHelp.html) in the assets folder.</li>
-        <li>The UIActivities specification has been updated to reflect the new asset folder structure.</li>
-        <li>
-            The AboutActivity UI specification and the HelpActivity UI specification
-            have been updated to display the relevant html asset file.</li>
-        <li>
-            The AboutActivity UI specification and the HelpActivity UI specification have been updated to
-            display an ok button added so that the activity can be popped
-            off the activity stack.
-        </li>
-        <li>The Functionality specification has detail added for the navigation from the MainActivity to the AboutActivity and HelpActivity.</li>
-    </ul>
-</p>
-<p>
-    The   agent's context  has been cleared. I intend generate    to code   again from the specs.
-</p>
-<p>
-    At this point I believe that everything intended for this build is now in place. It is time to ask the agent to perform the changes.
-</p>
-<p>
-    The agent generated the UI code but did not add <cite>appcompat = "1.7.1"</cite>. I asked Gemini to do this,
-    it claimed to have updated my gradle files, but it did not. So I did it manually<br/><br/>
-    Adding the appcompat resolves the compilation errors.<br/><br/>
-    I noticed that there is no code to generate a preview of each UI class. I asked Gemini to do this,
-    but it did not. Gemini listed the code that it claimed to have added:<br/>
-
-    <pre><cite>
-        @Preview(showBackground = true, name = "About Activity Preview")
-        @Composable
-        fun AboutActivityPreview() {
-            // This Composable wraps the XML layout for previewing.
-            AndroidView(
-                factory = { context ->
-                    // Inflate the XML layout using the activity's context.
-                    android.view.View.inflate(context, R.layout.activity_about, null)
-                },
-                update = { view ->
-                    // You can add logic here to update the view in the preview if needed.
-                    // For example, finding a button and setting its text.
-                }
-</cite></pre>
-    But it didn't do it. I had to manually add this to each UI activity. Then I found that the XML layouts
-    did not have the widget IDs specified. I asked Gemini to fix this:<br/><br/>
-    <cite>all the activities layout files should have the android:id specified for each widget</cite>
-    <br/><br/>
-    This worked well.
-</p>
+    is completed, work can move on to the main activity button
 </body>
 </html>

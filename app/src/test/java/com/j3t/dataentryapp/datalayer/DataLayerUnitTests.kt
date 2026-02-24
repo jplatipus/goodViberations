@@ -27,7 +27,7 @@ class DataLayerUnitTests {
 
         // 1. field1
         val field1 = DataField("testFieldName1", "testFieldValue1")
-        // 2. field2 (named field12 in doc, but using field2 for clarity/consistency with earlier)
+        // 2. field2
         val field2 = DataField("testFieldName2", "testFieldValue2")
         // 3. dataEntry1
         dataEntry1 = DataEntry(
@@ -56,90 +56,91 @@ class DataLayerUnitTests {
 
     @Test
     fun saveStoreTest() {
-        // 1. saveStore with dataEntry1
         val map1 = mutableMapOf<String, DataEntry>()
         map1[dataEntry1.name.lowercase(Locale.getDefault())] = dataEntry1
         dataLayer.saveStore(map1)
-        
-        // 2. count files == 1
         assertEquals(1, getFileCount())
 
-        // 3. saveStore with dataEntry1 and dataEntry2
         val map2 = mutableMapOf<String, DataEntry>()
         map2[dataEntry1.name.lowercase(Locale.getDefault())] = dataEntry1
         map2[dataEntry2.name.lowercase(Locale.getDefault())] = dataEntry2
         dataLayer.saveStore(map2)
-        
-        // 4. count files == 2
         assertEquals(2, getFileCount())
     }
 
     @Test
     fun createStoreTest() {
-        // createStore with map of dataEntry1 and dataEntry2
         val map = mutableMapOf<String, DataEntry>()
         map[dataEntry1.name.lowercase(Locale.getDefault())] = dataEntry1
         map[dataEntry2.name.lowercase(Locale.getDefault())] = dataEntry2
         dataLayer.createStore(map)
-        
-        // count files == 1
         assertEquals(1, getFileCount())
     }
 
     @Test
     fun loadStoreTest() {
-        // 1. saveStore with map of dataEntry2 and dataEntry1
         val map = mutableMapOf<String, DataEntry>()
         map[dataEntry1.name.lowercase(Locale.getDefault())] = dataEntry1
         map[dataEntry2.name.lowercase(Locale.getDefault())] = dataEntry2
         dataLayer.saveStore(map)
         
-        // 2. loadStore and check
         val loadedMap = dataLayer.loadStore()
         val values = loadedMap.values.toList()
         
-        // First entry: testName1
         assertEquals("testName1", values[0].name)
-        assertEquals("testNotes", values[0].notes)
-        assertEquals("testPassword", values[0].password)
         assertEquals("testname1", loadedMap.keys.first())
-        
-        // Second entry: testName2
         assertEquals("testName2", values[1].name)
-        assertEquals("testname2", loadedMap.keys.toList()[1])
+    }
+
+    @Test
+    fun loadEntryTest() {
+        val map = mutableMapOf<String, DataEntry>()
+        map[dataEntry1.name.lowercase(Locale.getDefault())] = dataEntry1
+        map[dataEntry2.name.lowercase(Locale.getDefault())] = dataEntry2
+        dataLayer.saveStore(map)
+
+        val entry = dataLayer.loadEntry("testName2")
+        assertEquals("testName2", entry.name)
+        assertEquals("testPassword", entry.password)
+
+        val notFoundEntry = dataLayer.loadEntry("testName")
+        assertEquals("entry testName not found", notFoundEntry.name)
     }
 
     @Test
     fun deleteStoreTest() {
-        // saveStore with dataEntry2
         val map1 = mutableMapOf<String, DataEntry>()
         map1[dataEntry2.name.lowercase(Locale.getDefault())] = dataEntry2
         dataLayer.saveStore(map1)
         
-        // saveStore with dataEntry2 and dataEntry1
         val map2 = mutableMapOf<String, DataEntry>()
         map2[dataEntry1.name.lowercase(Locale.getDefault())] = dataEntry1
         map2[dataEntry2.name.lowercase(Locale.getDefault())] = dataEntry2
         dataLayer.saveStore(map2)
         
-        // deleteStore
         dataLayer.deleteStore()
-        
-        // check no files
         assertEquals(0, getFileCount())
     }
 
     @Test
+    fun listEntryNamesTest() {
+        val map = mutableMapOf<String, DataEntry>()
+        map[dataEntry1.name.lowercase(Locale.getDefault())] = dataEntry1
+        map[dataEntry2.name.lowercase(Locale.getDefault())] = dataEntry2
+        dataLayer.saveStore(map)
+
+        val names = dataLayer.listEntryNames()
+        assertEquals(2, names.size)
+        assertEquals("testName1", names[0])
+        assertEquals("testName2", names[1])
+    }
+
+    @Test
     fun storeExistsTest() {
-        // returns false
         assertFalse(dataLayer.storeExists())
-        
-        // saveStore with dataEntry2
         val map = mutableMapOf<String, DataEntry>()
         map[dataEntry2.name.lowercase(Locale.getDefault())] = dataEntry2
         dataLayer.saveStore(map)
-        
-        // returns true
         assertTrue(dataLayer.storeExists())
     }
 

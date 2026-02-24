@@ -49,6 +49,11 @@ class DataLayer(private val context: Context) {
         return store.values.map { it.name }.sortedWith(String.CASE_INSENSITIVE_ORDER)
     }
 
+    fun loadEntry(name: String): DataEntry {
+        val store = loadStore()
+        return store[name.lowercase(Locale.getDefault())] ?: DataEntry(name = "entry $name not found")
+    }
+
     fun deleteStore() {
         filesDir.listFiles { _, name -> name.startsWith("info") && name.endsWith(".xml") }?.forEach { it.delete() }
     }

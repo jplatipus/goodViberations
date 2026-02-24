@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="img/styles.css?v=7">
 </head>
 <body>
-<a href="ReadMe.html"><- ReadMe.html</a>
+<a href="ReadMe.html"><- ReadMe.html</a>&nbsp;&nbsp;||&nbsp;&nbsp;<a href="Functionality.html"><- ../Functionality.html</a>
 <h1>goodViberations: Data Layer</h1>
 <h2>Introduction</h2>
 <p>
@@ -118,6 +118,17 @@ This document describes:
             </td>
             <td>
                 calls the loadStore method. Returns a list of the names of the entries, sorted by the key (name)
+            </td>
+        </tr>
+        <tr>
+            <td>loadEntry</td>
+            <td>
+                name: the name of the entry
+            </td>
+            <td>
+                calls the loadStore method. If the returned map contains an entry with the given name,
+                returns the DataEntry instance with the given name. Otherwise returns a new DataEntry
+                instance with the name "entry " + name + " not found".
             </td>
         </tr>
         <tr>

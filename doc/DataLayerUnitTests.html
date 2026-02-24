@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="img/styles.css?v=7">
 </head>
 <body>
-<a href="ReadMe.html"><- ReadMe.html</a>
+<a href="ReadMe.html"><- ReadMe.html</a>&nbsp;&nbsp;||&nbsp;&nbsp;<a href="Functionality.html"><- ../Functionality.html</a>
 <h1>goodViberations: Data Layer Unit Tests</h1>
 <h2>Introduction</h2>
 <p>
@@ -111,6 +111,25 @@
             </ol>
         </td>
     </tr>
+    <td>loadEntryTest</td>
+    <td>
+        <ol>
+            <li>saveStore is called with the map of dataEntry2 and dataEntry1.</li>
+            <li>loadEntry is called, with the parameter name given as "testName2". The returned DataEntry is checked as follows:<br/>
+                <ul>
+                    <li>The DataEntry instance has the name "testName2".</li>
+                    <li>The DataEntry instance has the password "testPassword".</li>
+                </ul>
+            </li>
+            <li>loadEntry is called, with the parameter name given as "testName". The returned DataEntry
+                is saved in the variable dataEntry. The returned DataEntry is checked as follows:<br/>
+                <ul>
+                    <li>The dataEntry instance has the name "entry testName not found".</li>
+                </ul>
+            </li>
+        </ol>
+    </td>
+    </tr>
     <tr>
         <td>deleteStoreTest</td>
         <td>
@@ -121,8 +140,21 @@
         </td>
     </tr>
     <tr>
+        <td>listEntryNamesTest</td>
+        <td>
+            <ol>
+                <li>saveStore is called with the map of dataEntry2 and dataEntry1.</li>
+                <li>listEntryNames is called, the returned list is checked as follows:<br/>
+                    <ul>
+                        <li>The first entry in the list has the value "testName1"
+                        <li>The second dataEntry instance in the list has the value "testName2"</li>
+                    </ul>
+                </li>
+            </ol>
+        </td>
+    </tr>
+    <tr>
         <td>storeExistsTest</td>
-
         <td>
             storeExists is called to check that it returns false<br/>
             saveStore is called with the map of dataEntry2<br/>

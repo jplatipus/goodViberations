@@ -43,7 +43,7 @@
 <p>
     When the activity is displayed, the following is carried out:
     <ul>
-        <li>The method listEntryNames is called, the returned value is saved in the variable entryNames</li>
+        <li>The method listEntryNames in <a href="../DataLayer.html">DataLayer</a> is called, the returned value is saved in the variable entryNames</li>
         <li>The vlsEntries widget is populated with the entryNames</li>
     </ul>
 </p>
@@ -51,7 +51,14 @@
     When the button btnBack is pressed, the activity is popped of the activity stack.
 </p>
 <p>
-    When the btnHelp button is pressed, the activity navigates to the HelpActivity, requesting that
+    When the btnHelp button is pressed, the activity navigates to the <a href="HelpActivityFunctionality.html">HelpActivity</a>, requesting that
     the asset file CreateNewStoreActivityHelp.html be displayed.
+</p>
+<p>
+    when the btnAddEntry button is pressed, the activity navigates to the AddEntryActivity.
+</p>
+<p>
+    when a list entry is selected, the activity pops off the activity stack.
+    The activity navigates to the <a href="ViewEntryActivityFunctionality.html">ViewEntryActivity</a>. The selected entryName is passed to the <a href="ViewEntryActivityFunctionality.html">ViewEntryActivity</a>.
 </p>
 </body>

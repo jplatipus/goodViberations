@@ -1,70 +1,113 @@
 package com.j3t.dataentryapp.ui.activities
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import android.widget.ListView
-import android.widget.TextView
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.viewinterop.AndroidView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.j3t.dataentryapp.R
+import com.j3t.dataentryapp.datalayer.DataLayer
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class ViewEntryActivity : AppCompatActivity() {
 
-    private lateinit var lblEntryName: TextView
-    private lateinit var lblDateTime: TextView
-    private lateinit var lblLastModifiedDateTime: TextView
-    private lateinit var mblNotes: TextView
-    private lateinit var lblPassword: TextView
     private lateinit var vlsFields: ListView
-    private lateinit var btnDelete: Button
-    private lateinit var btnEdit: Button
-    private lateinit var btnBack: Button
-    private lateinit var btnHelp: Button
+    private lateinit var bottomNavigation: BottomNavigationView
+    private lateinit var dataLayer: DataLayer
+    private var entryName: String? = null
+    private var clipboardListIndex: Int = -1
+    private val rows = mutableListOf<ViewEntryRow>()
+    private lateinit var adapter: ViewEntryAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_entry)
 
         title = "View Entry"
+        dataLayer = DataLayer(this)
+        entryName = intent.getStringExtra("entryName")
 
-        lblEntryName = findViewById(R.id.lblEntryName)
-        lblDateTime = findViewById(R.id.lblDateTime)
-        lblLastModifiedDateTime = findViewById(R.id.lblLastModifiedDateTime)
-        mblNotes = findViewById(R.id.mblNotes)
-        lblPassword = findViewById(R.id.lblPassword)
         vlsFields = findViewById(R.id.vlsFields)
-        btnDelete = findViewById(R.id.btnDelete)
-        btnEdit = findViewById(R.id.btnEdit)
-        btnBack = findViewById(R.id.btnBack)
-        btnHelp = findViewById(R.id.btnHelp)
+        bottomNavigation = findViewById(R.id.bottomNavigation)
 
-        btnBack.setOnClickListener {
-            finish()
+        setupActivity()
+
+        bottomNavigation.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.btnBack -> {
+                    finish()
+                    startActivity(Intent(this, ListEntriesActivity::class.java))
+                    true
+                }
+                R.id.btnEdit -> {
+                    val intent = Intent(this, EditEntryActivity::class.java)
+                    intent.putExtra("entryName", entryName)
+                    startActivity(intent)
+                    true
+                }
+                R.id.btnCopy -> {
+                    copySelectedToClipboard()
+                    true
+                }
+                R.id.btnHelp -> {
+                    val intent = Intent(this, HelpActivity::class.java)
+                    intent.putExtra("assetFileName", "CreateNewStoreActivityHelp.html")
+                    startActivity(intent)
+                    true
+                }
+                else -> false
+            }
         }
 
-        btnHelp.setOnClickListener {
-            val intent = Intent(this, HelpActivity::class.java)
-            intent.putExtra("assetFileName", "ViewEntryActivityHelp.html")
-            startActivity(intent)
+        vlsFields.setOnItemClickListener { _, _, position, _ ->
+            bottomNavigation.menu.findItem(R.id.btnCopy).isEnabled = true
+            // Store selected position for copy action
+            vlsFields.setSelection(position)
+            vlsFields.tag = position
         }
     }
 
-    @Preview(showBackground = true, name = "View Entry Activity Preview")
-    @Composable
-    fun ViewEntryActivityPreview() {
-        // This Composable wraps the XML layout for previewing.
-        AndroidView(
-            factory = { context ->
-                // Inflate the XML layout using the activity's context.
-                android.view.View.inflate(context, R.layout.activity_view_entry, null)
-            },
-            update = { view ->
-                // You can add logic here to update the view in the preview if needed.
-                // For example, finding a button and setting its text.
-            }
-        )
+    private fun setupActivity() {
+        if (entryName == null) return
+
+        val entryData = dataLayer.loadEntry(entryName!!)
+        val dateFormat = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault())
+
+        rows.add(ViewEntryRow("Name", entryData.name))
+        rows.add(ViewEntryRow("Created", dateFormat.format(entryData.creationDateTime)))
+        rows.add(ViewEntryRow("Modified", dateFormat.format(entryData.lastModifiedDateTime)))
+        rows.add(ViewEntryRow("Password", entryData.password))
+
+        entryData.detailFields.forEach { field ->
+            rows.add(ViewEntryRow(field.name, field.value))
+        }
+
+        rows.add(ViewEntryRow("Notes", entryData.notes))
+
+        adapter = ViewEntryAdapter(this, rows)
+        vlsFields.adapter = adapter
+        bottomNavigation.menu.findItem(R.id.btnCopy).isEnabled = false
+    }
+
+    private fun copySelectedToClipboard() {
+        val selectedPosition = vlsFields.tag as? Int ?: return
+        if (selectedPosition < 0 || selectedPosition >= rows.size) return
+
+        val row = rows[selectedPosition]
+        val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clip = ClipData.newPlainText("Copied Text", row.value)
+        clipboard.setPrimaryClip(clip)
+
+        // Update UI status
+        if (clipboardListIndex != -1) {
+            rows[clipboardListIndex].isCopied = false
+        }
+        clipboardListIndex = selectedPosition
+        row.isCopied = true
+        adapter.notifyDataSetChanged()
     }
 }

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ViewEntryActivity functionality</title>
+    <link rel="stylesheet" href="../img/styles.css?v=7">
+</head>
+<body>
+<a href="../ReadMe.html"><- ReadMe.html</a>&nbsp;&nbsp;||&nbsp;&nbsp;<a href="../Functionality.html"><- ../Functionality.html</a>
+<h1>ViewEntryActivity UI Specification</h1>
+<p>
+    <strong>Class name:</strong> ViewEntryActivity<br/>
+    <strong>Title:</strong>View Entry<br/>
+    <strong>Level:</strong> level four activity, displayed when there is an existing store<br/>
+</p>
+<p>
+    The activity is displayed when a list entry is selected in the ListEntriesActivity.
+    ListEntriesActivity has supplied the entryName to the ViewEntryActivity.<br/><br/>
+    The activity has a navigation bar at the bottom of the screen, with the following navigation bar items:
+    <table class="tblActivity">
+        <thead>
+        <tr>
+            <td>icon position</td><td>icon name</td><td>item variable name</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr><td>far left</td><td>exit</td><td>btnBack</td></tr>
+        <tr><td>left</td><td>edit</td><td>btnEdit</td></tr>
+        <tr><td>right</td><td>copy</td><td>btnCopy</td></tr>
+        <tr><td>far right</td><td>help</td><td>btnHelp</td></tr>
+        </tbody>
+    </table>
+</p>
+<p>
+    The activity has a vertically scrolling list of rows. Each row has a text fields and an image icon to the right of the text.
+    The scrolling list is saved in the variable vlsFields
+</p>
+<p>
+    When the activity is initially displayed, the following is carried out:
+    <ol>
+        <li>A member variable called clipboardListIndex is set to -1</li>
+        <li>The method loadEntry in DataLayer is called, with the name parameter given as entryName.
+            The returned value is saved in the variable entryData</li>
+        <li>A new row in the vlsFields list is created for the entryData name member variable. If the name value is in the clipboard,
+            the row's image icon is set to the copied drawable, otherwise it is set to the copyempty drawable</li>
+        <li>
+        <li>A new row in the vlsFields list is created for the entryData creationDateTime member variable.
+        If the creationDateTime value is in the clipboard,
+            the row's image icon is set to the copied drawable, otherwise it is set to the copyempty drawable</li>
+        <li>A new row in the vlsFields list is created for the entryData lastModifiedDateTime member variable.
+            If the lastModifiedDateTime value is in the clipboard,
+            the row's image icon is set to the copied drawable, otherwise it is set to the copyempty drawable</li>
+        <li>A new row in the vlsFields list is created for the entryData password member variable.
+            If the password value is in the clipboard,
+            the row's image icon is set to the copied drawable, otherwise it is set to the copyempty drawable</li>
+        <li>For each field in the entryData detailFields list, a new row in the vlsFields list is created.
+            If the field value is in the clipboard,
+            the row's image icon is set to the copied drawable, otherwise it is set to the copyempty drawable</li>
+        <li>A new row in the vlsFields list is created for the entryData notes member variable. If the
+            notes value is in the clipboard,
+            the row's image icon is set to the copied drawable, otherwise it is set to the copyempty drawable.
+            The notes text field should be large enough to contain the entire notes multiline text</li>
+        <li>btnCopy is disabled</li>
+    </ol>
+</p>
+<h1>ViewEntryActivity functionality</h1>
+<p>
+    When the button btnEdit is pressed, the activity navigates to the EditEntryActivity.
+    The selected entryName is passed to the EditEntryActivity
+</p>
+<p>
+    When a row in the vlsFields list is selected, btnCopy in the navigation bar is enabled.
+</p>
+<p>
+    When the button btnCopy is pressed, the following is carried out:
+    <ul>
+        <li>the selected entry is copied to the clipboard.</li>
+        <li>If clipboardListIndex is not equal to -1, the image icon in the row at index clipboardListIndex
+            is set to the copyempty drawable.</li>
+        <li>The value of clipboardListIndex is set to the vlsFields list index of the row that was selected.</li>
+        <li>The image icon in the row at index clipboardListIndex is set to the copied drawable.</li>
+        <li>The value of clipboardListIndex is set to the vlsFields list index of the row that was selected.</li>
+    </ul>
+</p>
+<p>
+    When the button btnBack is pressed, the activity is popped of the activity stack, and then the app navigates to
+    <a href="ListEntriesActivityFunctionality.html"><b>ListEntriesActivity</b></a>.
+</p>
+<p>
+    When the btnHelp button is pressed, the activity navigates to the <a href="HelpActivityFunctionality.html">HelpActivity</a>, requesting that
+    the asset file CreateNewStoreActivityHelp.html be displayed.
+</p>
+</body>

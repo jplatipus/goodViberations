@@ -50,6 +50,14 @@ class ListEntriesActivity : AppCompatActivity() {
                 else -> false
             }
         }
+
+        vlsEntryNames.setOnItemClickListener { _, _, position, _ ->
+            val entryName = vlsEntryNames.adapter.getItem(position) as String
+            val intent = Intent(this, ViewEntryActivity::class.java)
+            intent.putExtra("entryName", entryName)
+            finish()
+            startActivity(intent)
+        }
     }
 
     private fun populateEntryList() {

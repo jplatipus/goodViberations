@@ -7,11 +7,29 @@
     android:fitsSystemWindows="true"
     tools:context=".ui.activities.ViewEntryActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/title_background"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="@color/title_text">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="back"
+            android:src="@android:drawable/ic_menu_revert" />
+
+    </androidx.appcompat.widget.Toolbar>
+
     <ListView
         android:id="@+id/vlsFields"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigation" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

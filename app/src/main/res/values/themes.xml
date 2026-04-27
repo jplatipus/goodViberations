@@ -5,6 +5,11 @@
         <item name="colorPrimary">@color/colorPrimary</item>
     </style>
 
+    <style name="Theme.DataEntryApp.NoActionBar" parent="Theme.DataEntryApp">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
     <style name="CustomActionBar" parent="Widget.Material3.ActionBar.Solid">
         <item name="background">@color/title_background</item>
         <item name="titleTextStyle">@style/CustomActionBarTitle</item>

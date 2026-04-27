@@ -43,7 +43,7 @@ class ListEntriesActivity : AppCompatActivity() {
                 }
                 R.id.btnHelp -> {
                     val intent = Intent(this, HelpActivity::class.java)
-                    intent.putExtra("assetFileName", "CreateNewStoreActivityHelp.html")
+                    intent.putExtra("assetFileName", "listEntries.html")
                     startActivity(intent)
                     true
                 }

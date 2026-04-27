@@ -6,7 +6,9 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageButton
 import android.widget.ListView
+import androidx.appcompat.widget.Toolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.j3t.dataentryapp.R
 import com.j3t.dataentryapp.datalayer.DataLayer
@@ -27,9 +29,19 @@ class ViewEntryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_entry)
 
-        title = "View Entry"
         dataLayer = DataLayer(this)
         entryName = intent.getStringExtra("entryName")
+        title = entryName ?: "View Entry"
+
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(true)
+
+        val btnBack = findViewById<ImageButton>(R.id.btnBack)
+        btnBack.setOnClickListener {
+            finish()
+            startActivity(Intent(this, ListEntriesActivity::class.java))
+        }
 
         vlsFields = findViewById(R.id.vlsFields)
         bottomNavigation = findViewById(R.id.bottomNavigation)
@@ -38,9 +50,9 @@ class ViewEntryActivity : AppCompatActivity() {
 
         bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.btnBack -> {
+                R.id.btnExit -> {
                     finish()
-                    startActivity(Intent(this, ListEntriesActivity::class.java))
+                    startActivity(Intent(this, MainActivity::class.java))
                     true
                 }
                 R.id.btnEdit -> {
@@ -55,7 +67,7 @@ class ViewEntryActivity : AppCompatActivity() {
                 }
                 R.id.btnHelp -> {
                     val intent = Intent(this, HelpActivity::class.java)
-                    intent.putExtra("assetFileName", "CreateNewStoreActivityHelp.html")
+                    intent.putExtra("assetFileName", "entryDetails.html")
                     startActivity(intent)
                     true
                 }
@@ -66,7 +78,6 @@ class ViewEntryActivity : AppCompatActivity() {
         vlsFields.setOnItemClickListener { _, _, position, _ ->
             bottomNavigation.menu.findItem(R.id.btnCopy).isEnabled = true
             // Store selected position for copy action
-            vlsFields.setSelection(position)
             vlsFields.tag = position
         }
     }
@@ -91,6 +102,7 @@ class ViewEntryActivity : AppCompatActivity() {
         adapter = ViewEntryAdapter(this, rows)
         vlsFields.adapter = adapter
         bottomNavigation.menu.findItem(R.id.btnCopy).isEnabled = false
+        clipboardListIndex = -1
     }
 
     private fun copySelectedToClipboard() {

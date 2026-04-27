@@ -33,7 +33,9 @@
         <activity android:name="com.j3t.dataentryapp.ui.activities.ListEntriesActivity" />
         <activity android:name="com.j3t.dataentryapp.ui.activities.OpenStoreActivity" />
         <activity android:name="com.j3t.dataentryapp.ui.activities.SearchEntriesActivity" />
-        <activity android:name="com.j3t.dataentryapp.ui.activities.ViewEntryActivity" />
+        <activity
+            android:name="com.j3t.dataentryapp.ui.activities.ViewEntryActivity"
+            android:theme="@style/Theme.DataEntryApp.NoActionBar" />
     </application>
 
 </manifest>

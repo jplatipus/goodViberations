@@ -29,6 +29,7 @@ The specification is updated, and the following prompt is issued to Gemini:
     @ViewEntryActivityFunctionality.html , in the latter a new image button is added to the
     title bar. Can you update the code please?
 </pre>
+When run, the app crashes. The logcat shows the cause being the new titlebar. The following prompt is issued:
 <pre>
     I'm getting the following error in my running application. The error is: FATAL EXCEPTION: main
 ```
@@ -40,6 +41,7 @@ at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:4467) wit
 ```
 Fix this issue
 </pre>
+The error is fixed, the back button works as wanted.
 <h1>25 Feb 2026: git tag v10.0</h1>
 The help files for two activites have been added to the src/main/assets folder of the project:
 <ul>

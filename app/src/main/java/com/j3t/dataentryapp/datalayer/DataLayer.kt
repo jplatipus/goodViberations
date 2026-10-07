@@ -32,6 +32,13 @@ class DataLayer(private val context: Context) {
         return createStore(data)
     }
 
+    fun saveEntry(entry: DataEntry) {
+        val store = loadStore().toMutableMap()
+        entry.lastModifiedDateTime = Date()
+        store[entry.name.lowercase(Locale.getDefault())] = entry
+        saveStore(store)
+    }
+
     fun loadStore(): Map<String, DataEntry> {
         val files = filesDir.listFiles { _, name -> name.startsWith("info") && name.endsWith(".xml") }
         if (files.isNullOrEmpty()) {

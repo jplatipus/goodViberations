@@ -22,6 +22,7 @@ class ViewEntryActivity : AppCompatActivity() {
     private lateinit var dataLayer: DataLayer
     private var entryName: String? = null
     private var clipboardListIndex: Int = -1
+    private var selectedPosition: Int = -1
     private val rows = mutableListOf<ViewEntryRow>()
     private lateinit var adapter: ViewEntryAdapter
 
@@ -76,9 +77,8 @@ class ViewEntryActivity : AppCompatActivity() {
         }
 
         vlsFields.setOnItemClickListener { _, _, position, _ ->
+            selectedPosition = position
             bottomNavigation.menu.findItem(R.id.btnCopy).isEnabled = true
-            // Store selected position for copy action
-            vlsFields.tag = position
         }
     }
 
@@ -88,6 +88,13 @@ class ViewEntryActivity : AppCompatActivity() {
         val entryData = dataLayer.loadEntry(entryName!!)
         val dateFormat = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault())
 
+        val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clipData = clipboard.primaryClip
+        val currentClipboardText = if (clipData != null && clipData.itemCount > 0) {
+            clipData.getItemAt(0).text?.toString()
+        } else null
+
+        rows.clear()
         rows.add(ViewEntryRow("Name", entryData.name))
         rows.add(ViewEntryRow("Created", dateFormat.format(entryData.creationDateTime)))
         rows.add(ViewEntryRow("Modified", dateFormat.format(entryData.lastModifiedDateTime)))
@@ -99,14 +106,21 @@ class ViewEntryActivity : AppCompatActivity() {
 
         rows.add(ViewEntryRow("Notes", entryData.notes))
 
+        clipboardListIndex = -1
+        for (i in rows.indices) {
+            if (currentClipboardText != null && rows[i].value == currentClipboardText) {
+                rows[i].isCopied = true
+                clipboardListIndex = i
+                break
+            }
+        }
+
         adapter = ViewEntryAdapter(this, rows)
         vlsFields.adapter = adapter
         bottomNavigation.menu.findItem(R.id.btnCopy).isEnabled = false
-        clipboardListIndex = -1
     }
 
     private fun copySelectedToClipboard() {
-        val selectedPosition = vlsFields.tag as? Int ?: return
         if (selectedPosition < 0 || selectedPosition >= rows.size) return
 
         val row = rows[selectedPosition]
@@ -114,8 +128,7 @@ class ViewEntryActivity : AppCompatActivity() {
         val clip = ClipData.newPlainText("Copied Text", row.value)
         clipboard.setPrimaryClip(clip)
 
-        // Update UI status
-        if (clipboardListIndex != -1) {
+        if (clipboardListIndex != -1 && clipboardListIndex < rows.size) {
             rows[clipboardListIndex].isCopied = false
         }
         clipboardListIndex = selectedPosition

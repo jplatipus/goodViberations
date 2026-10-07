@@ -144,6 +144,18 @@ class DataLayerUnitTests {
         assertTrue(dataLayer.storeExists())
     }
 
+    @Test
+    fun saveEntryTest() {
+        dataLayer.saveEntry(dataEntry1)
+        val loaded = dataLayer.loadEntry(dataEntry1.name)
+        assertEquals("testName1", loaded.name)
+
+        dataEntry1.notes = "updated notes"
+        dataLayer.saveEntry(dataEntry1)
+        val reloaded = dataLayer.loadEntry(dataEntry1.name)
+        assertEquals("updated notes", reloaded.notes)
+    }
+
     private fun getFileCount(): Int {
         val files = context.filesDir.listFiles { _, name -> name.startsWith("info") && name.endsWith(".xml") }
         return files?.size ?: 0

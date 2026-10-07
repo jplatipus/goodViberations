@@ -27,12 +27,20 @@
         <activity android:name="com.j3t.dataentryapp.ui.activities.ChangeStorePasswordActivity" />
         <activity android:name="com.j3t.dataentryapp.ui.activities.CreateNewStoreActivity" />
         <activity android:name="com.j3t.dataentryapp.ui.activities.DeleteEntryActivity" />
-        <activity android:name="com.j3t.dataentryapp.ui.activities.EditEntryActivity" />
+        <activity
+            android:name="com.j3t.dataentryapp.ui.activities.EditEntryActivity"
+            android:theme="@style/Theme.DataEntryApp.NoActionBar" />
         <activity android:name="com.j3t.dataentryapp.ui.activities.HelpActivity" />
         <activity android:name="com.j3t.dataentryapp.ui.activities.ImportExportStoreActivity" />
-        <activity android:name="com.j3t.dataentryapp.ui.activities.ListEntriesActivity" />
+        <activity
+            android:name="com.j3t.dataentryapp.ui.activities.ListEntriesActivity"
+            android:theme="@style/Theme.DataEntryApp.NoActionBar" />
         <activity android:name="com.j3t.dataentryapp.ui.activities.OpenStoreActivity" />
         <activity android:name="com.j3t.dataentryapp.ui.activities.SearchEntriesActivity" />
+        <activity android:name="com.j3t.dataentryapp.ui.activities.ClearExistingStoreActivity" />
+        <activity
+            android:name="com.j3t.dataentryapp.ui.activities.EditEntryFieldActivity"
+            android:theme="@style/Theme.DataEntryApp.NoActionBar" />
         <activity
             android:name="com.j3t.dataentryapp.ui.activities.ViewEntryActivity"
             android:theme="@style/Theme.DataEntryApp.NoActionBar" />

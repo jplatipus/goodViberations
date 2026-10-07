@@ -4,7 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.ImageButton
 import android.widget.ListView
+import androidx.appcompat.widget.Toolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.j3t.dataentryapp.R
 import com.j3t.dataentryapp.datalayer.DataLayer
@@ -19,8 +21,19 @@ class ListEntriesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_entries)
 
-        title = "List Entries"
+        val entryName = intent.getStringExtra("entryName") ?: "List Entries"
+        title = entryName
         dataLayer = DataLayer(this)
+
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(true)
+
+        val btnBack = findViewById<ImageButton>(R.id.btnBack)
+        btnBack.setOnClickListener {
+            finish()
+            startActivity(Intent(this, MainActivity::class.java))
+        }
 
         vlsEntryNames = findViewById(R.id.vlsEntryNames)
         bottomNavigation = findViewById(R.id.bottomNavigation)
@@ -29,11 +42,13 @@ class ListEntriesActivity : AppCompatActivity() {
 
         bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.btnBack -> {
+                R.id.btnExit -> {
                     finish()
+                    startActivity(Intent(this, MainActivity::class.java))
                     true
                 }
                 R.id.btnAddEntry -> {
+                    finish()
                     startActivity(Intent(this, AddEntryActivity::class.java))
                     true
                 }
@@ -52,10 +67,10 @@ class ListEntriesActivity : AppCompatActivity() {
         }
 
         vlsEntryNames.setOnItemClickListener { _, _, position, _ ->
-            val entryName = vlsEntryNames.adapter.getItem(position) as String
-            val intent = Intent(this, ViewEntryActivity::class.java)
-            intent.putExtra("entryName", entryName)
+            val selectedEntryName = vlsEntryNames.adapter.getItem(position) as String
             finish()
+            val intent = Intent(this, ViewEntryActivity::class.java)
+            intent.putExtra("entryName", selectedEntryName)
             startActivity(intent)
         }
     }

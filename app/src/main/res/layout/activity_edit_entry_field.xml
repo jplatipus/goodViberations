@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".ui.activities.EditEntryActivity">
+    tools:context=".ui.activities.EditEntryFieldActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -40,57 +40,46 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="entry name">
+                android:hint="Field name">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtEntryName"
+                    android:id="@+id/txtFieldName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/lblDateTime"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="creation date and time" />
-
-            <TextView
-                android:id="@+id/lblLastModifiedDateTime"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="last modified date and time" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:hint="notes">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/mtxNotes"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textMultiLine" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:hint="password">
+                android:layout_marginTop="16dp"
+                android:hint="Field value">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtPassword"
+                    android:id="@+id/txtFieldValue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <ListView
-                android:id="@+id/lstDetailFields"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnOK"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_marginTop="8dp" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="OK" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnBackAction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="back" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnHelpAction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="help" />
 
         </LinearLayout>
     </ScrollView>

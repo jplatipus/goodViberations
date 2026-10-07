@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        title = "EncryptMe"
+        title = "Options"
         dataLayer = DataLayer(this)
 
         btnOpenStore = findViewById(R.id.btnOpenStore)
@@ -49,22 +49,27 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnOpenStore.setOnClickListener {
+            finish()
             startActivity(Intent(this, OpenStoreActivity::class.java))
         }
 
         btnCreateNewStore.setOnClickListener {
+            finish()
             startActivity(Intent(this, CreateNewStoreActivity::class.java))
         }
 
         btnChangeStorePassword.setOnClickListener {
+            finish()
             startActivity(Intent(this, ChangeStorePasswordActivity::class.java))
         }
 
         btnClearExistingStore.setOnClickListener {
-            // Logic for ClearExistingStoreActivity navigation (once implemented)
+            finish()
+            startActivity(Intent(this, ClearExistingStoreActivity::class.java))
         }
 
         btnImportExportStore.setOnClickListener {
+            finish()
             startActivity(Intent(this, ImportExportStoreActivity::class.java))
         }
     }
@@ -81,5 +86,7 @@ class MainActivity : AppCompatActivity() {
         btnClearExistingStore.isEnabled = storeExists
         btnImportExportStore.isEnabled = storeExists
         btnCreateNewStore.isEnabled = !storeExists
+        bottomNavigation.menu.findItem(R.id.btnAbout)?.isEnabled = true
+        bottomNavigation.menu.findItem(R.id.btnHelp)?.isEnabled = true
     }
 }

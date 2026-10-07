@@ -32,12 +32,17 @@
     </tr>
     </thead>
     <tbody>
-    <tr><td>far left</td><td>exit</td><td>btnBack</td></tr>
+    <tr><td>far left</td><td>exit</td><td>btnExit</td></tr>
     <tr><td>right of exit</td><td>add</td><td>btnAddEntry</td></tr>
     <tr><td>right of add</td><td>search</td><td>btnSearch</td></tr>
     <tr><td>far right</td><td>help</td><td>btnHelp</td></tr>
     </tbody>
 </table>
+</p>
+<p>
+    The title in the title bar displayed at the top of the activity is the entryName.<br/>
+    The title bar has a left arrow image button, called btnBack, on the left hand side.
+    The arrow points left.
 </p>
 <h1>ListEntriesActivity functionality</h1>
 <p>
@@ -48,14 +53,17 @@
     </ul>
 </p>
 <p>
-    When the button btnBack is pressed, the activity is popped of the activity stack.
+    When the button btnExit is pressed, This activity is popped off the activity stack, and then the app navigates to MainActivity.
+</p>
+<p>
+    When the button btnBack is pressed, This activity is popped off the activity stack, and then the app navigates to MainActivity.
 </p>
 <p>
     When the btnHelp button is pressed, the activity navigates to the <a href="HelpActivityFunctionality.html">HelpActivity</a>, requesting that
     the asset file listEntries.html be displayed.
 </p>
 <p>
-    when the btnAddEntry button is pressed, the activity navigates to the AddEntryActivity.
+    when the btnAddEntry button is pressed, this activity is popped off the activity stack, and then the app navigates to the AddEntryActivity.
 </p>
 <p>
     when a list entry is selected, the activity pops off the activity stack.

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EditEntryFieldActivity functionality</title>
+    <link rel="stylesheet" href="../img/styles.css?v=7">
+</head>
+<body>
+<a href="../ReadMe.html"><- ReadMe.html</a>&nbsp;&nbsp;||&nbsp;&nbsp;<a href="../Functionality.html"><- ../Functionality.html</a>
+<p>
+    <strong>Class name:</strong> EditEntryFieldActivity<br/>
+    <strong>Title:</strong>Edit Field<br/>
+    <strong>Level:</strong> level six activity, displayed when a entry field has been selected for editing.<br/>
+</p>
+<h2>UI Specification</h2>
+<p>
+    The title in the title bar displayed at the center, top of the activity is the entryName.<br/>
+    The title bar has a left arrow image button, called <strong>btnBack</strong>, on the left hand side of the title bar.<br/>
+    The arrow points left.
+</p>
+
+<table  class="tblActivity">
+    <thead>
+    <tr>
+        <th>Widget label</th><th>Widget type</th><th>Widget name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><td>Field name</td><td>text field</td><td>txtFieldName</td>
+    <tr><td>Field value</td><td>text field</td><td>txtFieldValue</td>
+    <tr><td>OK</td><td>button</td><td>btnOK</td></tr>
+    <tr><td>back</td><td>button</td><td>btnBack</td></tr>
+    <tr><td>help</td><td>button</td><td>btnHelp</td></tr>
+    </tbody>
+</table>
+
+<p>
+    The activity has a navigation bar at the bottom of the screen, with the following navigation bar items:
+<table class="tblActivity">
+    <thead>
+    <tr>
+        <td>icon position</td><td>icon name</td><td>item variable name</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><td>far left</td><td>exit</td><td>btnExit</td></tr>
+    <tr><td>left</td><td>add field</td><td>btnAddField</td></tr>
+    <tr><td>right</td><td>save</td><td>btnSave</td></tr>
+    <tr><td>far right</td><td>help</td><td>btnHelp</td></tr>
+    </tbody>
+</table>
+
+</p>
+<h2>Initialisation</h2>
+<p>
+    When the activity is initially displayed, if the given entryName is a blank or empty string, the following is carried out:
+<ol>
+    <li>A member variable called selectedListIndex is set to -1</li>
+    <li>a new EntryData instance is created, called entryData.</li>
+</ol>
+</p>
+<p>
+    When the activity is initially displayed, if the given entryName is not a blank or empty string, the following is carried out:
+<ol>
+    <li>A member variable called selectedListIndex is set to -1</li>
+    <li>The method loadEntry in DataLayer is called, with the name parameter given as entryName.
+        The returned value is saved in the variable entryData</li>
+    <li>The selectedIndex parameter passed to this method is saved in the variable selectedListIndex. This is used to
+    extract the field name and field value from the entryData object.</li>
+    <li>txtFieldName is set to the field name.</li>
+    <li>txtFieldValue is set to the field value.</li>
+</ol>
+</p>
+<h2>Functionality</h2>
+<p>
+    When the button btnBack is pressed, the activity is popped of the activity stack, and then the app navigates to
+    <a href="EditEntryActivityFunctionality.html"><b>EditEntryActivity</b></a>.
+</p>
+<p>When the btnExit is pressed, the activity is popped of the activity stack
+    (two parent activities also need to be popped off the activity stack), and then the app navigates to
+    <a href="MainActivityFunctionality.html"><b>MainActivity</b>
+<p>
+    When the btnHelp button is pressed, the activity navigates to the <a href="HelpActivityFunctionality.html">HelpActivity</a>, requesting that
+    the asset file EditEntryField.html be displayed.
+</p>
+<p>
+    When the btnSave  button is pressed, the activity:
+    <ol>
+        <li>Updates the <code>entryData</code> object with the current values from the UI widgets.</li>
+        <li>Calls the <code>saveEntry</code> method in <code>DataLayer</code>, passing the <code>entryData</code> object.</li>
+        <li>The activity is popped off the activity stack, and then the app navigates to the <a href="EditEntryActivityFunctionality.html">EditEntryActivity</a>.
+            The value of  is passed to the parameter entryDataParameter <a href="EditEntryActivityFunctionality.html">EditEntryActivity</a>.</li>
+    </ol>
+</p>
+</body>

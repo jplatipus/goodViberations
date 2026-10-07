@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EditEntryActivity functionality</title>
+    <link rel="stylesheet" href="../img/styles.css?v=7">
+</head>
+<body>
+<a href="../ReadMe.html"><- ReadMe.html</a>&nbsp;&nbsp;||&nbsp;&nbsp;<a href="../Functionality.html"><- ../Functionality.html</a>
+<p>
+    <strong>Class name:</strong> EditEntryActivity<br/>
+    <strong>Title:</strong>Edit Entry<br/>
+    <strong>Level:</strong> level five activity, displayed when there is an existing store.<br/>
+</p>
+<p>
+    The activity is displayed when an entry is created.<br/>
+    This activity is also displayed when an existing entry
+    is displayed in the ViewEntryActivity and the edit button is pressed.<br/>
+    The entryName is supplied to the EditEntryActivity.<br/><br/>
+</p>
+<h2>UI Specification</h2>
+<p>
+   The activity has the following widgets:
+    <table  class="tblActivity">
+        <thead>
+        <tr>
+            <th>Widget label</th><th>Widget type</th><th>Widget name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr><td>entry name</td><td>text field</td><td>txtEntryName</td></tr>
+        <tr><td>creation date and time</td><td>text</td><td>lblDateTime</td></tr>
+        <tr><td>last modified date and time</td><td>text</td><td>lblLastModifiedDateTime</td></tr>
+        <tr><td>notes</td><td>multiline text area</td><td>mtxNotes</td></tr>
+        <tr><td>password</td><td>text  field</td><td>txtPassword</td></tr>
+        <tr><td>list of detail fields</td><td>vertical list of single line text field entries</td><td>lstDetailFields</td></tr>
+        </tbody>
+    </table>
+</p>
+<p>
+    The activity has a navigation bar at the bottom of the screen, with the following navigation bar items:
+    <table class="tblActivity">
+        <thead>
+        <tr>
+            <td>icon position</td><td>icon name</td><td>item variable name</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr><td>far left</td><td>exit</td><td>btnExit</td></tr>
+        <tr><td>left</td><td>add field</td><td>btnAddField</td></tr>
+        <tr><td>right</td><td>save</td><td>btnSave</td></tr>
+        <tr><td>far right</td><td>help</td><td>btnHelp</td></tr>
+        </tbody>
+    </table>
+</p>
+<p>
+    The title in the title bar displayed at the center, top of the activity is the entryName.<br/>
+    The title bar has a left arrow image button, called <strong>btnBack</strong>, on the left hand side of the title bar.<br/>
+    The arrow points left.
+</p>
+<p>
+    The activity has a vertically scrolling list of rows. Each row has a text field and an image
+    button to the far right of the row. The image is of an arrow head pointing right.
+    The scrolling list is saved in the variable vlsFields
+</p>
+<h2>Initialisation</h2>
+<p>
+    When the activity is initially displayed, if the given entryName is a blank or empty string, the following is carried out:
+    <ol>
+        <li>A member variable called selectedListIndex is set to -1</li>
+        <li>a new EntryData instance is created, called entryData.</li>
+    </ol>
+</p>
+<p>
+    When the activity is initially displayed, if the given entryName is not a blank or empty string, the following is carried out:
+    <ol>
+        <li>A member variable called selectedListIndex is set to -1</li>
+        <li>The method loadEntry in DataLayer is called, with the name parameter given as entryName.
+            The returned value is saved in the variable entryData</li>
+    </ol>
+</p>
+<p>
+    The display's widget contents are initialised:
+    <ol>
+        <li>A new row in the vlsFields list is created for the entryData <strong>name</strong> member variable.</li>
+        <li>A new row in the vlsFields list is created for the entryData <strong>creationDateTime</strong> member variable.</li>
+        <li>A new row in the vlsFields list is created for the entryData <strong>lastModifiedDateTime</strong> member variable.</li>
+        <li>A new row in the vlsFields list is created for the entryData <strong>password</strong> member variable.</li>
+        <li>For each field in the entryData detailFields list, <strong>a new row</strong> in the vlsFields list is created.
+        </li>
+        <li>A new row in the vlsFields list is created for the entryData <strong>notes</strong> member variable
+            The notes text field should be large enough to contain the entire notes multiline text</li>
+    </ol>
+</p>
+<h2>EditEntryActivity functionality</h2>
+<h2>Post initialisation activity functionality</h2>
+<p>
+    When a row in the vlsFields list is selected, the followimg is carried out:
+    <ol>
+        <li>selectedListIndex member variable  is set to the selected index of this row.</li>
+        <li>The textfield in the row is enabled.</li>
+        <li>The textfield gains input focus.</li>
+        <li>The text cursor appears in the textfield.</li>
+    </ol>
+</p>
+<p>
+    When the image button in the row is pressed, the following is carried out:
+    <ol>
+    <li>selectedListIndex member variable  is set to the selected index of this row.</li>
+    <li>The app navigates to <a href="EditEntryFieldActivityFunctionality.html">EditEntryFieldActivity</a>.
+        The selected entryName and the selectedListIndex member variable are passed to the activity <a href="EditEntryFieldActivityFunctionality.html">EditEntryFieldActivity</a></li>
+</ol>
+</p>
+<p>
+    When the button btnBack is pressed, the activity is popped of the activity stack, and then the app navigates to
+    <a href="ListEntriesActivityFunctionality.html"><b>ListEntriesActivity</b></a>.
+</p>
+<p>When the btnExit is pressed, the activity is popped of the activity stack
+    (two parent activities also need to be popped off the activity stack), and then the app navigates to
+    <a href="MainActivityFunctionality.html"><b>MainActivity</b></a></p>
+<p>
+    When the btnHelp button is pressed, the activity navigates to the <a href="HelpActivityFunctionality.html">HelpActivity</a>, requesting that
+    the asset file entryEdit.html be displayed.
+</p>
+<p>
+    When the btnSave  button is pressed, the activity:
+    <ol>
+        <li>Updates the <code>entryData</code> object with the current values from the UI widgets.</li>
+        <li>Calls the <code>saveEntry</code> method in <code>DataLayer</code>, passing the <code>entryData</code> object.</li>
+        <li>the activity is popped of the activity stack, the activity navigates to the <a href="ViewEntryActivityFunctionality.html">ViewEntryActivity</a>.
+            The value of entryName is passed to the <a href="ViewEntryActivityFunctionality.html">ViewEntryActivity</a>.</li>
+    </ol>
+</p>
+<p>
+    When the btnAddField button is pressed, the activity
+    <ol>
+    <li>selectedListIndex member variable  is set -1.</li>
+    <li>The app navigates to EditEntryFieldActivity.</li>
+</ol>
+</p>
+</body>
